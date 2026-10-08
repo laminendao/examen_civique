@@ -21,3 +21,22 @@ create policy "progress_insert_own" on public.progress
   for insert with check (auth.uid() = user_id);
 create policy "progress_update_own" on public.progress
   for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+
+-- Suppression de compte par l'utilisateur lui-même (bouton « Supprimer mon compte »).
+-- Supprime l'utilisateur connecté ; sa progression est effacée automatiquement (on delete cascade).
+create or replace function public.delete_my_account()
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if auth.uid() is null then
+    raise exception 'not authenticated';
+  end if;
+  delete from auth.users where id = auth.uid();
+end;
+$$;
+
+revoke execute on function public.delete_my_account() from public, anon;
+grant execute on function public.delete_my_account() to authenticated;

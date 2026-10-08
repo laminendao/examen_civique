@@ -264,6 +264,18 @@ input[type=search]:focus{border-color:var(--accent);outline:none}
 footer{background:var(--dark);color:#d9d6d3;font-size:.86rem}
 footer .container{padding-block:28px;display:flex;flex-direction:column;gap:8px}
 footer b{color:#fff}
+.footlinks{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15)}
+.footlinks a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.footlinks span{margin-left:auto;color:#a8a5a1}
+.legal h2{font-size:1.15rem;font-weight:800;margin:22px 0 6px}
+.legal h2:first-child{margin-top:0}
+.legal p,.legal li{margin:0 0 8px;font-size:.95rem}
+.legal ul{padding-left:20px;margin:0 0 8px}
+.legal a{color:var(--accent);font-weight:600}
+.danger{border:2px solid var(--ko);border-radius:var(--radius);padding:20px;background:#fff;display:flex;flex-direction:column;gap:12px}
+.danger h2{margin:0;font-size:1.1rem;font-weight:800;color:var(--ko)}
+.btn.danger-btn{border-color:var(--ko);color:var(--ko)}
+.btn.danger-btn.fill{background:var(--ko);color:#fff}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 <!-- ===== Connexion : renseigner ici l'URL et la clé publique (anon) du projet Supabase =====
@@ -271,7 +283,10 @@ footer b{color:#fff}
 <script>
 window.EC_CONFIG = {
   supabaseUrl: "https://rqxohlirhgyxzokzqaha.supabase.co",
-  supabaseAnonKey: "sb_publishable_F4N_k5e8o0lGebWe0kdB5A_zT1CuffJ"
+  supabaseAnonKey: "sb_publishable_F4N_k5e8o0lGebWe0kdB5A_zT1CuffJ",
+  // Mentions légales : éditeur du site et adresse de contact (RGPD)
+  editorName: "Mouhamadou Lamine NDAO",
+  contactEmail: "ndao.lamine0404@gmail.com"
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -298,6 +313,7 @@ window.EC_CONFIG = {
       <div class="menu" id="menu" hidden>
         <div class="menu-head"><b id="who"></b><span id="who-mail"></span></div>
         <button type="button" data-tab="weak">🎯 Mes points à améliorer</button>
+        <button type="button" data-tab="account">⚙️ Mon compte et mes données</button>
         <button type="button" id="logout">🚪 Se déconnecter</button>
       </div>
     </div>
@@ -353,6 +369,7 @@ window.EC_CONFIG = {
     <div><b>🇫🇷 Examen civique · carte de résident</b> — site d'entraînement non officiel.</div>
     <div>Questions : liste officielle du ministère de l'Intérieur (formation-civique.interieur.gouv.fr, licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées.</div>
     <div id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</div>
+    <nav class="footlinks" aria-label="Informations légales"><a href="#legal" data-tab="legal">Mentions légales</a><a href="#privacy" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 Mouhamadou Lamine NDAO · Tous droits réservés</span></nav>
   </div>
 </footer>
 
@@ -737,7 +754,125 @@ function showReview(){
   render();
 }
 
-const TABS = {home:showHome, daily:showDaily, exam:showExam, themes:showThemes, weak:showWeak, review:showReview};
+/* ---------- Pages légales et compte ---------- */
+let authReturn = false;
+const EDITOR = CFG.editorName || "l'éditeur du site";
+const CONTACT = CFG.contactEmail || "";
+const mail = CONTACT ? `<a href="mailto:${esc(CONTACT)}">${esc(CONTACT)}</a>` : "l'adresse indiquée par l'éditeur";
+function backBtn(){
+  return authReturn ? `<div class="row"><button class="btn" id="back-auth">⬅️ Retour à la connexion</button></div>` : `<div class="row"><button class="btn" data-tab="home">🏠 Retour à l'accueil</button></div>`;
+}
+function bindBack(){
+  const b = document.getElementById("back-auth");
+  if (b) b.addEventListener("click", ()=>{ authReturn = false; try { history.replaceState(null, "", APP_URL); } catch(e) {} showAuth("signup"); });
+}
+function showLegal(){
+  view.innerHTML = page("📄", "Mentions légales", "Informations prévues par la loi pour la confiance dans l'économie numérique (LCEN).", `
+    <div class="card legal">
+      <h2>Éditeur du site</h2>
+      <p>Ce site est édité à titre personnel et non commercial par ${esc(EDITOR)}.<br>Contact : ${mail}</p>
+      <h2>Hébergement</h2>
+      <p>Site hébergé par GitHub Pages : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (<a href="https://github.com" target="_blank" rel="noopener">github.com</a>).</p>
+      <p>Comptes et progression hébergés par Supabase, Inc. (<a href="https://supabase.com" target="_blank" rel="noopener">supabase.com</a>).</p>
+      <h2>Nature du site</h2>
+      <p>Ce site est un outil d'entraînement <b>non officiel</b>. Il n'est ni édité ni validé par le ministère de l'Intérieur, France Éducation international ou la CCI Paris Île-de-France. Pour toute information officielle, consulte <a href="https://formation-civique.interieur.gouv.fr/examen-civique/" target="_blank" rel="noopener">formation-civique.interieur.gouv.fr</a>.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>Les questions sont issues de la liste officielle publiée par le ministère de l'Intérieur, réutilisée sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/" target="_blank" rel="noopener">licence ouverte Etalab 2.0</a>.</p>
+      <p>Les réponses, les explications, les fiches « À retenir », le code, la mise en page et le design du site sont la propriété de ${esc(EDITOR)}. Toute reproduction ou réutilisation, totale ou partielle, sans autorisation écrite est interdite.</p>
+      <h2>Responsabilité</h2>
+      <p>Les réponses et explications ont été rédigées avec soin pour la révision, mais peuvent contenir des erreurs ou devenir obsolètes. Elles n'ont pas de valeur officielle. Signale toute erreur à ${mail}.</p>
+    </div>
+    ${backBtn()}`, true);
+  bindBack();
+}
+function showPrivacy(){
+  view.innerHTML = page("🔒", "Politique de confidentialité", "Comment tes données sont utilisées, conformément au RGPD. Dernière mise à jour : octobre 2026.", `
+    <div class="card legal">
+      <h2>Responsable du traitement</h2>
+      <p>${esc(EDITOR)}, joignable à ${mail}.</p>
+      <h2>Données collectées</h2>
+      <ul>
+        <li><b>Avec un compte :</b> adresse e-mail, mot de passe (stocké chiffré, jamais lisible), nom complet.</li>
+        <li><b>Facultatif :</b> genre et situation professionnelle, uniquement si tu les indiques.</li>
+        <li><b>Progression :</b> tes réponses aux questions, tes jours d'entraînement et ta série du jour.</li>
+        <li><b>Sans compte :</b> ta progression reste dans ton navigateur et n'est envoyée nulle part.</li>
+      </ul>
+      <h2>Pourquoi ces données</h2>
+      <ul>
+        <li>Créer ton compte et te permettre de te connecter (exécution du service).</li>
+        <li>Sauvegarder ta progression et calculer tes points à améliorer (exécution du service).</li>
+        <li>Genre et situation professionnelle : statistiques globales sur les utilisateurs du site (consentement, champs facultatifs).</li>
+      </ul>
+      <p>Tes données ne sont ni vendues, ni louées, ni utilisées pour de la publicité. Aucun cookie de suivi ou de mesure d'audience n'est utilisé.</p>
+      <h2>Où sont les données</h2>
+      <p>Les comptes et la progression sont hébergés par Supabase, Inc., sous-traitant technique. Le site charge aussi des polices depuis Google Fonts et une bibliothèque depuis jsDelivr : ces services reçoivent l'adresse IP de ton appareil lors du chargement de la page.</p>
+      <p>Le navigateur garde une copie locale de ta session et de ta progression (stockage local), nécessaire au fonctionnement du site.</p>
+      <h2>Durée de conservation</h2>
+      <p>Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, elles sont effacées immédiatement et définitivement.</p>
+      <h2>Tes droits</h2>
+      <p>Tu peux à tout moment accéder à tes données, les corriger, les supprimer, t'opposer à leur traitement ou demander leur portabilité. Tu peux supprimer ton compte toi-même depuis <b>⚙️ Mon compte et mes données</b> (menu de ta pastille), ou écrire à ${mail}.</p>
+      <p>Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+    </div>
+    ${backBtn()}`, true);
+  bindBack();
+}
+function showAccount(){
+  if (!user){
+    view.innerHTML = page("⚙️", "Mes données", "Tu utilises le site sans compte.", `
+      <div class="card"><p style="margin:0 0 12px">Ta progression est enregistrée seulement dans ce navigateur. Pour l'effacer, utilise le bouton en bas de l'onglet <b>🎯 À améliorer</b>.</p><div class="row"><button class="btn primary" id="go-login">👤 Se connecter ou créer un compte</button></div></div>`, true);
+    document.getElementById("go-login").addEventListener("click", ()=>showAuth("login"));
+    return;
+  }
+  view.innerHTML = page("⚙️", "Mon compte et mes données", "", `
+    <div class="card legal">
+      <h2>Mes informations</h2>
+      <p><b>Nom :</b> ${esc(user.name)}<br><b>E-mail :</b> ${esc(user.email||"")}${user.gender?`<br><b>Genre :</b> ${esc(user.gender)}`:""}${user.occupation?`<br><b>Situation professionnelle :</b> ${esc(user.occupation)}`:""}</p>
+      <p class="note">Pour modifier ces informations, écris à ${mail}. Voir aussi la <a href="#privacy" data-tab="privacy">politique de confidentialité</a>.</p>
+      <div class="row"><button class="btn" id="export">📥 Télécharger mes données</button></div>
+    </div>
+    <div class="danger" id="del-box">
+      <h2>🗑️ Supprimer mon compte</h2>
+      <p style="margin:0">Ton compte, ton e-mail, tes informations et toute ta progression seront effacés définitivement. Cette action est irréversible.</p>
+      <div class="row"><button class="btn danger-btn" id="del">Supprimer mon compte</button></div>
+    </div>`, true);
+  document.getElementById("export").addEventListener("click", ()=>{
+    const blob = new Blob([JSON.stringify({compte:{nom:user.name, email:user.email, genre:user.gender||null, situation_professionnelle:user.occupation||null}, progression:store}, null, 2)], {type:"application/json"});
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "mes-donnees-examen-civique.json"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  });
+  document.getElementById("del").addEventListener("click", ()=>{
+    const box = document.getElementById("del-box");
+    box.innerHTML = `<h2>⚠️ Confirmer la suppression</h2>
+      <p style="margin:0">Pour confirmer, tape <b>SUPPRIMER</b> ci-dessous.</p>
+      <label class="field" for="del-confirm">Confirmation<input id="del-confirm" type="text" autocomplete="off"></label>
+      <p class="msg err" id="del-err" hidden></p>
+      <div class="row"><button class="btn danger-btn fill" id="del-yes" disabled>🗑️ Supprimer définitivement</button><button class="btn" id="del-no">Annuler</button></div>`;
+    const inp = document.getElementById("del-confirm"), yes = document.getElementById("del-yes");
+    inp.focus();
+    inp.addEventListener("input", ()=>{ yes.disabled = inp.value.trim().toUpperCase() !== "SUPPRIMER"; });
+    document.getElementById("del-no").addEventListener("click", ()=>go("account"));
+    yes.addEventListener("click", async ()=>{
+      yes.disabled = true; yes.textContent = "⏳ Suppression…";
+      try {
+        const {error} = await sb.rpc("delete_my_account");
+        if (error) throw error;
+        try { localStorage.removeItem(KEY+":"+user.id); } catch(e) {}
+        clearTimeout(pushTimer);
+        try { await sb.auth.signOut(); } catch(e) {}
+        user = null; store = emptyStore();
+        showAuth("login", ["info","Ton compte et toutes tes données ont été supprimés."]);
+      } catch(err){
+        const el = document.getElementById("del-err"); el.hidden = false;
+        el.textContent = /function|schema cache|not find/i.test(err.message||"")
+          ? "La suppression automatique n'est pas encore activée sur le serveur. Écris à " + (CONTACT||"l'éditeur") + " pour faire supprimer ton compte."
+          : frErr(err);
+        yes.textContent = "🗑️ Supprimer définitivement"; yes.disabled = false;
+      }
+    });
+  });
+}
+
+const TABS = {home:showHome, daily:showDaily, exam:showExam, themes:showThemes, weak:showWeak, review:showReview, legal:showLegal, privacy:showPrivacy, account:showAccount};
 let current = "home";
 function go(tab, render=true){
   if (!TABS[tab]) tab = "home";
@@ -750,8 +885,12 @@ function go(tab, render=true){
 document.addEventListener("click", e=>{
   const t = e.target.closest("[data-tab]");
   if (!t) return;
-  if (!document.getElementById("auth").hidden) return;
   e.preventDefault();
+  if (!document.getElementById("auth").hidden){
+    if (!["legal","privacy"].includes(t.dataset.tab)) return;
+    authReturn = true;
+    document.getElementById("auth").hidden = true; view.hidden = false;
+  }
   const m = document.getElementById("menu"); if (m) m.hidden = true;
   go(t.dataset.tab);
 });
@@ -794,7 +933,7 @@ function showAuth(mode="login", msg=null){
     signup: F("a-name","Nom complet","text","name",'maxlength="80"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')
       + `<div class="two">` + SEL("a-gender","Genre <small>(facultatif)</small>",["Femme","Homme","Autre","Je préfère ne pas répondre"])
       + SEL("a-job","Situation pro. <small>(facultatif)</small>",["Salarié(e)","Indépendant(e) / entrepreneur","Fonctionnaire","Demandeur(se) d'emploi","Étudiant(e)","Retraité(e)","Sans activité professionnelle","Autre"]) + `</div>`
-      + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site.</p>`,
+      + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site. En créant un compte, tu acceptes la <a href="#privacy" data-tab="privacy" style="color:var(--accent);font-weight:700">politique de confidentialité</a>.</p>`,
     reset: F("a-email","E-mail","email","email"),
     newpass: F("a-pass","Nouveau mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')};
   const btn = {login:"Se connecter ➜", signup:"✨ Créer mon compte", reset:"📧 Envoyer le lien", newpass:"💾 Enregistrer"};
@@ -858,6 +997,7 @@ function showAuth(mode="login", msg=null){
 }
 
 function startApp(){
+  authReturn = false;
   authBox.hidden = true; authBox.innerHTML = "";
   view.hidden = false;
   setChrome(true);
@@ -881,7 +1021,7 @@ function startApp(){
 }
 async function enter(u){
   const meta = u.user_metadata || {};
-  user = {id:u.id, email:u.email, name: meta.full_name || meta.name || (u.email||"").split("@")[0]};
+  user = {id:u.id, email:u.email, name: meta.full_name || meta.name || (u.email||"").split("@")[0], gender: meta.gender||null, occupation: meta.occupation||null};
   await loadRemote();
   startApp();
 }

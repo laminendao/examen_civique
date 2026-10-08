@@ -41,7 +41,7 @@ Mise en place, une seule fois :
    La clé « anon » est faite pour être publique : la sécurité repose sur les règles de l'étape 2. Ne jamais mettre la clé `service_role` dans le site.
 5. Facultatif : dans **Authentication > Sign In / Providers > Email**, désactiver **Confirm email** pour que les comptes soient actifs sans passer par l'e-mail de confirmation.
 
-Si quelqu'un s'est entraîné sans compte sur un appareil, sa progression est reprise automatiquement lors de la première connexion sur cet appareil.
+Chaque compte a sa propre progression, indépendante de celle faite sans compte. À l'inscription, le site demande le nom complet, puis, de façon facultative, le genre et la situation professionnelle. Ces informations sont visibles dans Supabase, dans **Authentication > Users**, champ *raw user meta data*. Un bouton en bas de l'onglet **À améliorer** permet de remettre sa progression à zéro.
 
 ## Bon à savoir
 
