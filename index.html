@@ -9,21 +9,14 @@
 <style>
 /* Palette inspirée des couleurs du Cnam : rouge, anthracite, gris clair */
 :root{
-  --bg:#f4f4f4; --surface:#ffffff; --ink:#1d1d1b; --muted:#5f5f5c; --line:#dcdcda;
-  --accent:#c1002a; --accent-ink:#ffffff; --accent-soft:#fbe7eb; --band:#c1002a; --band-ink:#ffffff;
+  --bg:#fbf1f3; --surface:#ffffff; --ink:#1d1d1b; --muted:#5f5f5c; --line:#ecd6db;
+  --accent:#c1002a; --accent-ink:#ffffff; --accent-soft:#f9dfe5; --band:#c1002a; --band-ink:#ffffff;
   --ok:#1b6e3c; --ok-soft:#e3f2e8; --ko:#a3361c; --ko-soft:#fbeae4;
   --tip:#f7f3ea; --tip-line:#e6dcc4;
   --display:"Source Serif 4", Georgia, "Times New Roman", serif;
   --body:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141414; --surface:#1e1e1e; --ink:#ececea; --muted:#a3a3a0; --line:#333331;
-  --accent:#ff5a72; --accent-ink:#1a0006; --accent-soft:#3a1820; --band:#8e001f; --band-ink:#ffffff;
-  --ok:#6fcf93; --ok-soft:#173326; --ko:#f2967c; --ko-soft:#3a2119; --tip:#26231d; --tip-line:#3d372b; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#141414; --surface:#1e1e1e; --ink:#ececea; --muted:#a3a3a0; --line:#333331;
-  --accent:#ff5a72; --accent-ink:#1a0006; --accent-soft:#3a1820; --band:#8e001f; --band-ink:#ffffff;
-  --ok:#6fcf93; --ok-soft:#173326; --ko:#f2967c; --ko-soft:#3a2119; --tip:#26231d; --tip-line:#3d372b; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
 .band{background:var(--band);color:var(--band-ink)}
@@ -49,7 +42,7 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 .bar i{display:block;height:100%;background:var(--accent);transition:width .2s}
 .q{font-family:var(--display);font-size:1.25rem;line-height:1.35;margin:0;text-wrap:balance}
 .opts{display:flex;flex-direction:column;gap:8px}
-.opt{font:inherit;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:baseline}
+.opt{font:inherit;text-align:left;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;display:flex;gap:10px;align-items:baseline}
 .opt:hover:not(:disabled){border-color:var(--accent)}
 .opt .k{font-weight:700;color:var(--muted);min-width:1.2em}
 .opt:disabled{cursor:default}
