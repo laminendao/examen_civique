@@ -109,6 +109,8 @@ input[type=search]{font:inherit;width:100%;padding:10px 12px;border-radius:10px;
 .auth h2{font-family:var(--display);font-size:1.4rem;margin:0}
 .auth form{display:flex;flex-direction:column;gap:12px}
 .field{display:flex;flex-direction:column;gap:4px;font-size:.9rem;font-weight:600}
+.field small{font-weight:400;color:var(--muted)}
+.field select{font:inherit;font-weight:400;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink)}
 .field input{font:inherit;font-weight:400;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink)}
 .field input:focus{border-color:var(--accent)}
 .link{font:inherit;font-size:.9rem;background:none;border:0;padding:0;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
@@ -215,12 +217,6 @@ async function loadRemote(){
     const {data, error} = await sb.from("progress").select("data").eq("user_id", user.id).maybeSingle();
     if (error) { setSync("Serveur injoignable : la progression enregistrée sur cet appareil est utilisée."); return; }
     if (data && data.data) store = mergeStores(data.data, store);
-    else if (!lsGet(KEY+":imported")){
-      // Première connexion sur cet appareil : on reprend la progression faite sans compte
-      const anon = lsGet(KEY);
-      if (anon && Object.keys(anon.stats||{}).length) store = mergeStores(anon, store);
-      lsSet(KEY+":imported", true);
-    }
     lsSet(localKey(), store);
     await pushRemote();
   } catch(e){ setSync("Serveur injoignable : la progression enregistrée sur cet appareil est utilisée."); }
@@ -440,8 +436,26 @@ function showWeak(){
       <p style="margin:0" class="note">Bilan calculé automatiquement à partir de tes ${answered} questions déjà travaillées. Une notion apparaît ici dès qu'une de ses questions a été ratée à la dernière tentative, ou si ton taux de réussite y est sous 80 %. Elle disparaît quand tu la maîtrises.</p>
     </div>
     <div class="weak" style="margin-top:14px">${weak.length?weak.map(card).join(""):`<div class="card"><p style="margin:0">Aucun point faible pour l'instant sur les notions travaillées. Continue la série du jour pour couvrir les autres questions.</p></div>`}</div>
-    ${good.length?`<h3 class="sec" style="margin-top:22px">Notions solides</h3><p class="note" style="margin:4px 0 0">${good.map(o=>esc(NOTIONS[o.k][0])+" ("+pct(o.rate)+")").join(" · ")}</p>`:""}`;
-  bindTrain();
+    ${good.length?`<h3 class="sec" style="margin-top:22px">Notions solides</h3><p class="note" style="margin:4px 0 0">${good.map(o=>esc(NOTIONS[o.k][0])+" ("+pct(o.rate)+")").join(" · ")}</p>`:""}
+    ${resetBlock()}`;
+  bindTrain(); bindReset();
+}
+
+function resetBlock(){
+  return `<div class="sep" style="margin-top:24px"><button type="button" class="link" id="reset">Remettre ma progression à zéro</button></div>`;
+}
+function bindReset(){
+  const b = document.getElementById("reset"); if (!b) return;
+  b.addEventListener("click",()=>{
+    const box = b.parentElement;
+    box.innerHTML = `<p style="margin:0 0 8px">Effacer toute ta progression${user?" dans ce compte":" sur cet appareil"} (réponses, jours d'affilée, points à améliorer) ? C'est définitif.</p>
+      <div class="row"><button class="btn sm" id="reset-yes">Oui, tout effacer</button><button class="btn ghost sm" id="reset-no">Annuler</button></div>`;
+    document.getElementById("reset-no").addEventListener("click",()=>go("weak"));
+    document.getElementById("reset-yes").addEventListener("click",async()=>{
+      store = emptyStore(); save(); clearTimeout(pushTimer); await pushRemote();
+      refreshStats(); go("daily");
+    });
+  });
 }
 
 function showReview(){
@@ -490,15 +504,19 @@ function showAuth(mode="login", msg=null){
   document.getElementById("userbar").hidden = true;
   authBox.hidden = false;
   const F = (id,label,type,ac,extra="") => `<label class="field" for="${id}">${label}<input id="${id}" type="${type}" autocomplete="${ac}" required ${extra} ${id==="a-email"&&lastEmail?`value="${esc(lastEmail)}"`:""}></label>`;
+  const SEL = (id,label,opts) => `<label class="field" for="${id}"><span>${label}</span><select id="${id}"><option value="">—</option>${opts.map(o=>`<option>${esc(o)}</option>`).join("")}</select></label>`;
   const titles = {login:"Se connecter", signup:"Créer un compte", reset:"Mot de passe oublié", newpass:"Nouveau mot de passe"};
   const intro = {
     login:"Connecte-toi pour retrouver ta progression sur tous tes appareils.",
-    signup:"Un compte par personne : chacun garde sa propre progression et ses points à améliorer.",
+    signup:"Un compte par personne : chaque compte a sa propre progression et ses propres points à améliorer.",
     reset:"Indique ton e-mail : tu recevras un lien pour choisir un nouveau mot de passe.",
     newpass:"Choisis ton nouveau mot de passe."};
   const fields = {
     login: F("a-email","E-mail","email","email")+F("a-pass","Mot de passe","password","current-password"),
-    signup: F("a-name","Prénom","text","given-name",'maxlength="40"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe (8 caractères minimum)","password","new-password",'minlength="8"'),
+    signup: F("a-name","Nom complet","text","name",'maxlength="80"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe (8 caractères minimum)","password","new-password",'minlength="8"')
+      + SEL("a-gender","Genre <small>(facultatif)</small>",["Femme","Homme","Autre","Je préfère ne pas répondre"])
+      + SEL("a-job","Situation professionnelle <small>(facultatif)</small>",["Salarié(e)","Indépendant(e) / entrepreneur","Fonctionnaire","Demandeur(se) d'emploi","Étudiant(e)","Retraité(e)","Sans activité professionnelle","Autre"])
+      + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site.</p>`,
     reset: F("a-email","E-mail","email","email"),
     newpass: F("a-pass","Nouveau mot de passe (8 caractères minimum)","password","new-password",'minlength="8"')};
   const btn = {login:"Se connecter", signup:"Créer mon compte", reset:"Envoyer le lien", newpass:"Enregistrer"};
@@ -528,7 +546,7 @@ function showAuth(mode="login", msg=null){
         if (error) throw error;
         await enter(data.user);
       } else if (mode==="signup"){
-        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{name:v("a-name").trim()}, emailRedirectTo:APP_URL}});
+        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{full_name:v("a-name").trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL}});
         if (error) throw error;
         if (data.session) await enter(data.user);
         else showAuth("login", ["info","Compte créé. Ouvre le lien reçu par e-mail pour l'activer, puis connecte-toi ici."]);
@@ -564,7 +582,7 @@ function startApp(){
 }
 async function enter(u){
   const meta = u.user_metadata || {};
-  user = {id:u.id, email:u.email, name: meta.name || (u.email||"").split("@")[0]};
+  user = {id:u.id, email:u.email, name: meta.full_name || meta.name || (u.email||"").split("@")[0]};
   await loadRemote();
   startApp();
 }
