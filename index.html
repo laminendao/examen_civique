@@ -18,6 +18,7 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;margin:0}
 .band{background:var(--band);color:var(--band-ink)}
 .band .in{max-width:720px;margin:0 auto;padding:22px 16px 20px}
@@ -100,12 +101,40 @@ input[type=search]{font:inherit;width:100%;padding:10px 12px;border-radius:10px;
 .mini b{font-weight:600}
 @media (max-width:420px){.band h1{font-size:1.45rem}.stat b{font-size:1.15rem}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+.userbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.userbar .who{font-size:.88rem;font-weight:600}
+.userbar button{font:inherit;font-size:.82rem;font-weight:600;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:4px 12px;cursor:pointer}
+.userbar button:hover{background:rgba(255,255,255,.26)}
+.auth{max-width:420px;width:100%;margin:0 auto}
+.auth h2{font-family:var(--display);font-size:1.4rem;margin:0}
+.auth form{display:flex;flex-direction:column;gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;font-size:.9rem;font-weight:600}
+.field input{font:inherit;font-weight:400;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.field input:focus{border-color:var(--accent)}
+.link{font:inherit;font-size:.9rem;background:none;border:0;padding:0;color:var(--accent);font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.msg{font-size:.9rem;border-radius:8px;padding:8px 10px}
+.msg.err{background:var(--ko-soft);color:var(--ko)}
+.msg.info{background:var(--ok-soft);color:var(--ok)}
+.links{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.sep{border-top:1px solid var(--line);padding-top:12px;font-size:.88rem;color:var(--muted)}
+#app:not([hidden]){display:contents}
+.sync{font-size:.85rem;color:var(--ko)}
 </style>
+<!-- ===== Connexion : renseigner ici l'URL et la clé publique (anon) du projet Supabase =====
+     Laisser vide = mode sans compte (progression gardée dans le navigateur). Voir README.md. -->
+<script>
+window.EC_CONFIG = {
+  supabaseUrl: "https://rqxohlirhgyxzokzqaha.supabase.co",
+  supabaseAnonKey: "sb_publishable_F4N_k5e8o0lGebWe0kdB5A_zT1CuffJ"
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 </head>
 <body>
 
 <header class="band">
   <div class="in">
+    <div class="userbar" id="userbar" hidden><span class="who" id="who"></span><button id="logout" type="button">Se déconnecter</button></div>
     <span class="tag">Page d'entraînement</span>
     <h1>Examen civique · carte de résident</h1>
     <p>Un outil d'entraînement non officiel pour réviser les 209 questions publiées par le ministère de l'Intérieur. Chaque réponse est corrigée et expliquée, et la page repère tes points faibles au fil des séries. À l'examen : 40 questions, 32 bonnes réponses pour réussir.</p>
@@ -113,6 +142,9 @@ input[type=search]{font:inherit;width:100%;padding:10px 12px;border-radius:10px;
 </header>
 
 <div class="wrap">
+  <section class="auth card" id="auth" hidden></section>
+  <div id="app" hidden>
+  <p class="sync" id="sync" hidden></p>
   <section class="stats" aria-label="Progression">
     <div class="stat"><b id="st-streak">0</b><span>Jours d'affilée</span></div>
     <div class="stat"><b id="st-mastered">0</b><span>Maîtrisées / 209</span></div>
@@ -128,8 +160,9 @@ input[type=search]{font:inherit;width:100%;padding:10px 12px;border-radius:10px;
   </nav>
 
   <main id="view"></main>
+  </div>
 
-  <p class="note">Questions : liste officielle du ministère de l'Intérieur (formation-civique.interieur.gouv.fr, licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées. Ta progression est enregistrée dans ce navigateur uniquement.</p>
+  <p class="note">Questions : liste officielle du ministère de l'Intérieur (formation-civique.interieur.gouv.fr, licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées. <span id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</span></p>
 </div>
 
 <script>
@@ -140,9 +173,58 @@ const Q = DATA.questions.map((x,i)=>({id:i,t:x[0],n:x[1],q:x[2],a:x[3],d:x[4],x:
 const DAILY_N = 15, EXAM_N = 40, PASS = 32;
 const KEY = "ec-cr-v1";
 
-let store = {stats:{}, days:{}, daily:null};
-try { const s = JSON.parse(localStorage.getItem(KEY)||"null"); if (s) store = Object.assign(store, s); } catch(e) {}
-function save(){ try { localStorage.setItem(KEY, JSON.stringify(store)); } catch(e) {} }
+/* ---------- Comptes et sauvegarde ---------- */
+const CFG = window.EC_CONFIG || {};
+const RECOVERING = /type=recovery/.test(location.hash);
+const sb = (CFG.supabaseUrl && CFG.supabaseAnonKey && window.supabase) ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey) : null;
+const APP_URL = location.origin + location.pathname;
+let user = null;            // {id, email, name} quand connecté
+const emptyStore = () => ({stats:{}, days:{}, daily:null});
+let store = emptyStore();
+const lsGet = k => { try { return JSON.parse(localStorage.getItem(k)||"null"); } catch(e) { return null; } };
+const lsSet = (k,v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch(e) {} };
+const localKey = () => user ? KEY+":"+user.id : KEY;
+function loadLocal(){ store = Object.assign(emptyStore(), lsGet(localKey()) || {}); }
+let pushTimer = null;
+function save(){
+  lsSet(localKey(), store);
+  if (sb && user){ clearTimeout(pushTimer); pushTimer = setTimeout(pushRemote, 700); }
+}
+function setSync(t){ const el=document.getElementById("sync"); el.hidden=!t; el.textContent=t||""; }
+async function pushRemote(){
+  if (!sb || !user) return;
+  try {
+    const {error} = await sb.from("progress").upsert({user_id:user.id, data:store, updated_at:new Date().toISOString()});
+    setSync(error ? "Synchronisation impossible pour l'instant : ta progression est gardée sur cet appareil et sera renvoyée à la prochaine réponse." : "");
+  } catch(e){ setSync("Hors ligne : ta progression est gardée sur cet appareil."); }
+}
+function mergeStores(a,b){
+  a = Object.assign(emptyStore(), a||{}); b = Object.assign(emptyStore(), b||{});
+  const m = emptyStore();
+  for (const id of new Set([...Object.keys(a.stats), ...Object.keys(b.stats)])){
+    const x=a.stats[id], y=b.stats[id]; m.stats[id] = !x ? y : !y ? x : (y.seen>x.seen ? y : x);
+  }
+  m.days = Object.assign({}, a.days, b.days);
+  const da=a.daily, db=b.daily;
+  m.daily = !da ? db : !db ? da : (da.date!==db.date ? (da.date>db.date?da:db) : (db.pos>da.pos?db:da));
+  return m;
+}
+async function loadRemote(){
+  loadLocal();
+  try {
+    const {data, error} = await sb.from("progress").select("data").eq("user_id", user.id).maybeSingle();
+    if (error) { setSync("Serveur injoignable : la progression enregistrée sur cet appareil est utilisée."); return; }
+    if (data && data.data) store = mergeStores(data.data, store);
+    else if (!lsGet(KEY+":imported")){
+      // Première connexion sur cet appareil : on reprend la progression faite sans compte
+      const anon = lsGet(KEY);
+      if (anon && Object.keys(anon.stats||{}).length) store = mergeStores(anon, store);
+      lsSet(KEY+":imported", true);
+    }
+    lsSet(localKey(), store);
+    await pushRemote();
+  } catch(e){ setSync("Serveur injoignable : la progression enregistrée sur cet appareil est utilisée."); }
+}
 
 function todayStr(d=new Date()){ const z=n=>String(n).padStart(2,"0"); return d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate()); }
 function rng(seed){ let h=2166136261; for(const c of seed){h^=c.charCodeAt(0);h=Math.imul(h,16777619);} return ()=>{h^=h<<13;h^=h>>>17;h^=h<<5;return ((h>>>0)%100000)/100000;}; }
@@ -389,9 +471,124 @@ function go(tab, render=true){
   if (render) TABS[tab]();
 }
 document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.tab)));
-const h = location.hash.slice(1);
-refreshStats();
-go(TABS[h]?h:"daily");
+/* ---------- Écrans de connexion ---------- */
+const authBox = document.getElementById("auth");
+let lastEmail = "";
+const ERRORS = [
+  [/invalid login credentials/i, "E-mail ou mot de passe incorrect."],
+  [/already registered|already exists/i, "Un compte existe déjà avec cet e-mail. Connecte-toi ou réinitialise ton mot de passe."],
+  [/email not confirmed/i, "Ton adresse n'est pas encore confirmée : clique sur le lien reçu par e-mail."],
+  [/password should be at least|weak password/i, "Le mot de passe doit contenir au moins 8 caractères."],
+  [/invalid email|unable to validate email/i, "Cette adresse e-mail n'est pas valide."],
+  [/rate limit|too many/i, "Trop de tentatives. Réessaie dans quelques minutes."],
+  [/fetch|network/i, "Connexion au serveur impossible. Vérifie ta connexion internet."],
+];
+const frErr = e => { const m = (e && e.message) || String(e); for (const [r,t] of ERRORS) if (r.test(m)) return t; return "Une erreur est survenue : " + m; };
+
+function showAuth(mode="login", msg=null){
+  document.getElementById("app").hidden = true;
+  document.getElementById("userbar").hidden = true;
+  authBox.hidden = false;
+  const F = (id,label,type,ac,extra="") => `<label class="field" for="${id}">${label}<input id="${id}" type="${type}" autocomplete="${ac}" required ${extra} ${id==="a-email"&&lastEmail?`value="${esc(lastEmail)}"`:""}></label>`;
+  const titles = {login:"Se connecter", signup:"Créer un compte", reset:"Mot de passe oublié", newpass:"Nouveau mot de passe"};
+  const intro = {
+    login:"Connecte-toi pour retrouver ta progression sur tous tes appareils.",
+    signup:"Un compte par personne : chacun garde sa propre progression et ses points à améliorer.",
+    reset:"Indique ton e-mail : tu recevras un lien pour choisir un nouveau mot de passe.",
+    newpass:"Choisis ton nouveau mot de passe."};
+  const fields = {
+    login: F("a-email","E-mail","email","email")+F("a-pass","Mot de passe","password","current-password"),
+    signup: F("a-name","Prénom","text","given-name",'maxlength="40"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe (8 caractères minimum)","password","new-password",'minlength="8"'),
+    reset: F("a-email","E-mail","email","email"),
+    newpass: F("a-pass","Nouveau mot de passe (8 caractères minimum)","password","new-password",'minlength="8"')};
+  const btn = {login:"Se connecter", signup:"Créer mon compte", reset:"Envoyer le lien", newpass:"Enregistrer"};
+  const links = {
+    login:`<button type="button" class="link" data-m="signup">Créer un compte</button><button type="button" class="link" data-m="reset">Mot de passe oublié ?</button>`,
+    signup:`<button type="button" class="link" data-m="login">J'ai déjà un compte</button>`,
+    reset:`<button type="button" class="link" data-m="login">Retour à la connexion</button>`,
+    newpass:``};
+  authBox.innerHTML = `<h2>${titles[mode]}</h2><p class="note" style="margin:0">${intro[mode]}</p>
+    ${msg?`<p class="msg ${msg[0]}" role="status">${esc(msg[1])}</p>`:""}
+    <form id="auth-form" novalidate>${fields[mode]}<button class="btn" type="submit">${btn[mode]}</button></form>
+    <div class="links">${links[mode]}</div>
+    ${mode!=="newpass"?`<div class="sep">Tu peux aussi <button type="button" class="link" id="guest">continuer sans compte</button> : ta progression restera alors seulement dans ce navigateur.</div>`:""}`;
+  authBox.querySelectorAll("[data-m]").forEach(b=>b.addEventListener("click",()=>showAuth(b.dataset.m)));
+  const g = document.getElementById("guest"); if (g) g.addEventListener("click", enterGuest);
+  const form = document.getElementById("auth-form");
+  form.querySelector("input").focus();
+  form.addEventListener("submit", async e=>{
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const v = id => (document.getElementById(id)||{}).value || "";
+    if (v("a-email")) lastEmail = v("a-email").trim();
+    const sub = form.querySelector("button[type=submit]"); sub.disabled = true; sub.textContent = "Patiente…";
+    try {
+      if (mode==="login"){
+        const {data, error} = await sb.auth.signInWithPassword({email:v("a-email").trim(), password:v("a-pass")});
+        if (error) throw error;
+        await enter(data.user);
+      } else if (mode==="signup"){
+        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{name:v("a-name").trim()}, emailRedirectTo:APP_URL}});
+        if (error) throw error;
+        if (data.session) await enter(data.user);
+        else showAuth("login", ["info","Compte créé. Ouvre le lien reçu par e-mail pour l'activer, puis connecte-toi ici."]);
+      } else if (mode==="reset"){
+        const {error} = await sb.auth.resetPasswordForEmail(v("a-email").trim(), {redirectTo:APP_URL});
+        if (error) throw error;
+        showAuth("login", ["info","Si un compte existe avec cette adresse, un e-mail de réinitialisation vient d'être envoyé."]);
+      } else if (mode==="newpass"){
+        const {data, error} = await sb.auth.updateUser({password:v("a-pass")});
+        if (error) throw error;
+        history.replaceState(null, "", APP_URL);
+        await enter(data.user);
+      }
+    } catch(err){
+      showAuth(mode, ["err", frErr(err)]);
+    }
+  });
+}
+
+function startApp(){
+  authBox.hidden = true;
+  document.getElementById("app").hidden = false;
+  const bar = document.getElementById("userbar");
+  bar.hidden = !sb;
+  document.getElementById("who").textContent = user ? "Connecté : " + user.name : "Sans compte";
+  document.getElementById("logout").textContent = user ? "Se déconnecter" : "Se connecter";
+  document.getElementById("storage-note").textContent = user
+    ? "Ta progression est enregistrée dans ton compte : tu la retrouves sur tous tes appareils."
+    : "Ta progression est enregistrée dans ce navigateur uniquement.";
+  const h = location.hash.slice(1);
+  refreshStats();
+  go(TABS[h]?h:"daily");
+}
+async function enter(u){
+  const meta = u.user_metadata || {};
+  user = {id:u.id, email:u.email, name: meta.name || (u.email||"").split("@")[0]};
+  await loadRemote();
+  startApp();
+}
+function enterGuest(){ user = null; loadLocal(); startApp(); }
+
+document.getElementById("logout").addEventListener("click", async ()=>{
+  if (user){
+    clearTimeout(pushTimer); await pushRemote();
+    try { await sb.auth.signOut(); } catch(e) {}
+    user = null; store = emptyStore(); setSync("");
+    showAuth("login", ["info","Tu es déconnecté."]);
+  } else showAuth("login");
+});
+
+async function boot(){
+  if (!sb){ enterGuest(); return; }
+  sb.auth.onAuthStateChange(ev=>{ if (ev==="PASSWORD_RECOVERY") setTimeout(()=>showAuth("newpass"),0); });
+  if (RECOVERING){ showAuth("newpass"); return; }
+  try {
+    const {data:{session}} = await sb.auth.getSession();
+    if (session) await enter(session.user); else showAuth("login");
+  } catch(e){ showAuth("login", ["err", frErr(e)]); }
+}
+boot();
 </script>
 
 </body>
