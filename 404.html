@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Examen civique CR</title>
+<script>
+/* GitHub Pages : une adresse comme /examen_civique/serie-du-jour n'existe pas en tant que fichier.
+   On revient sur la page principale en lui passant le chemin demandé ; elle affiche le bon onglet. */
+(function(){
+  var parts = location.pathname.split("/").filter(Boolean);
+  // Site de projet (utilisateur.github.io/depot/) : la base est le premier segment. Domaine perso : mettre segments = 0.
+  var segments = /\.github\.io$/.test(location.hostname) ? 1 : 0;
+  var base = "/" + parts.slice(0, segments).join("/") + (segments ? "/" : "");
+  var rest = parts.slice(segments).join("/");
+  location.replace(base + (rest ? "?p=" + encodeURIComponent(rest) : "") + location.hash);
+})();
+</script>
+</head>
+<body></body>
+</html>

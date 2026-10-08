@@ -369,7 +369,7 @@ window.EC_CONFIG = {
     <div><b>🇫🇷 Examen civique · carte de résident</b> — site d'entraînement non officiel.</div>
     <div>Questions : liste officielle du ministère de l'Intérieur (formation-civique.interieur.gouv.fr, licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées.</div>
     <div id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</div>
-    <nav class="footlinks" aria-label="Informations légales"><a href="#legal" data-tab="legal">Mentions légales</a><a href="#privacy" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 Mouhamadou Lamine NDAO · Tous droits réservés</span></nav>
+    <nav class="footlinks" aria-label="Informations légales"><a href="mentions-legales" data-tab="legal">Mentions légales</a><a href="confidentialite" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 Mouhamadou Lamine NDAO · Tous droits réservés</span></nav>
   </div>
 </footer>
 
@@ -385,7 +385,32 @@ const KEY = "ec-cr-v1";
 const CFG = window.EC_CONFIG || {};
 const RECOVERING = /type=recovery/.test(location.hash);
 const sb = (CFG.supabaseUrl && CFG.supabaseAnonKey && window.supabase) ? window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey) : null;
-const APP_URL = location.origin + location.pathname;
+/* ---------- Adresses propres : /serie-du-jour, /examen-blanc… ---------- */
+const SLUGS = {home:"", daily:"serie-du-jour", exam:"examen-blanc", themes:"themes", weak:"a-ameliorer", review:"revision", legal:"mentions-legales", privacy:"confidentialite", account:"mon-compte"};
+const SLUG2TAB = Object.fromEntries(Object.entries(SLUGS).map(([k,v])=>[v,k]));
+// Adresses propres seulement sur un vrai site web (GitHub Pages, domaine perso), pas en fichier local ni en aperçu
+const ROUTING = /^https?:$/.test(location.protocol) && !/claude\.ai|claudeusercontent|localhost-preview/.test(location.hostname) && window.top === window;
+let BASE = location.pathname.replace(/index\.html$/, "");
+let initialTab = null;
+(function initRoute(){
+  const q = new URLSearchParams(location.search);
+  if (q.has("p")){                       // retour depuis 404.html (GitHub Pages)
+    initialTab = SLUG2TAB[q.get("p").replace(/^\/+|\/+$/g, "")] || "home";
+    q.delete("p");
+  } else {
+    const last = BASE.replace(/\/+$/, "").split("/").pop();
+    if (ROUTING && last && SLUG2TAB[last] !== undefined && last !== ""){ initialTab = SLUG2TAB[last]; BASE = BASE.replace(new RegExp(last + "/?$"), ""); }
+  }
+  const legacy = location.hash.slice(1);     // anciens liens en #daily, #exam…
+  if (!initialTab && SLUGS[legacy] !== undefined) initialTab = legacy;
+  if (!BASE.endsWith("/")) BASE += "/";
+  if (ROUTING && !/access_token|type=recovery|error/.test(location.hash)){
+    const rest = q.toString();
+    history.replaceState(null, "", BASE + (initialTab ? SLUGS[initialTab] : "") + (rest ? "?" + rest : ""));
+  }
+})();
+const APP_URL = location.origin + BASE;
+function pathFor(tab){ return BASE + (SLUGS[tab] || ""); }
 let user = null;            // {id, email, name} quand connecté
 const emptyStore = () => ({stats:{}, days:{}, daily:null});
 let store = emptyStore();
@@ -827,7 +852,7 @@ function showAccount(){
     <div class="card legal">
       <h2>Mes informations</h2>
       <p><b>Nom :</b> ${esc(user.name)}<br><b>E-mail :</b> ${esc(user.email||"")}${user.gender?`<br><b>Genre :</b> ${esc(user.gender)}`:""}${user.occupation?`<br><b>Situation professionnelle :</b> ${esc(user.occupation)}`:""}</p>
-      <p class="note">Pour modifier ces informations, écris à ${mail}. Voir aussi la <a href="#privacy" data-tab="privacy">politique de confidentialité</a>.</p>
+      <p class="note">Pour modifier ces informations, écris à ${mail}. Voir aussi la <a href="confidentialite" data-tab="privacy">politique de confidentialité</a>.</p>
       <div class="row"><button class="btn" id="export">📥 Télécharger mes données</button></div>
     </div>
     <div class="danger" id="del-box">
@@ -874,12 +899,16 @@ function showAccount(){
 
 const TABS = {home:showHome, daily:showDaily, exam:showExam, themes:showThemes, weak:showWeak, review:showReview, legal:showLegal, privacy:showPrivacy, account:showAccount};
 let current = "home";
-function go(tab, render=true){
+function go(tab, render=true, pushUrl=true){
   if (!TABS[tab]) tab = "home";
   current = tab;
   document.querySelectorAll(".navlink, .tabbar button").forEach(b=>{ if (b.dataset.tab===tab) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current"); });
   if (render){ TABS[tab](); window.scrollTo({top:0,behavior:"instant"}); }
-  try { history.replaceState(null, "", "#"+tab); } catch(e) {}
+  if (ROUTING && pushUrl){
+    try { if (location.pathname !== pathFor(tab) || location.hash) history.pushState({tab}, "", pathFor(tab)); } catch(e) {}
+  } else if (!ROUTING && location.hash && SLUGS[location.hash.slice(1)] !== undefined){
+    try { history.replaceState(null, "", location.pathname + location.search); } catch(e) {}
+  }
 }
 /* Tout élément avec data-tab ouvre l'onglet correspondant */
 document.addEventListener("click", e=>{
@@ -893,6 +922,12 @@ document.addEventListener("click", e=>{
   }
   const m = document.getElementById("menu"); if (m) m.hidden = true;
   go(t.dataset.tab);
+});
+
+window.addEventListener("popstate", ()=>{
+  if (!ROUTING || !document.getElementById("auth").hidden) return;
+  const slug = location.pathname.slice(BASE.length).replace(/\/+$/, "");
+  go(SLUG2TAB[slug] || "home", true, false);
 });
 
 /* ---------- Écrans de connexion ---------- */
@@ -933,7 +968,7 @@ function showAuth(mode="login", msg=null){
     signup: F("a-name","Nom complet","text","name",'maxlength="80"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')
       + `<div class="two">` + SEL("a-gender","Genre <small>(facultatif)</small>",["Femme","Homme","Autre","Je préfère ne pas répondre"])
       + SEL("a-job","Situation pro. <small>(facultatif)</small>",["Salarié(e)","Indépendant(e) / entrepreneur","Fonctionnaire","Demandeur(se) d'emploi","Étudiant(e)","Retraité(e)","Sans activité professionnelle","Autre"]) + `</div>`
-      + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site. En créant un compte, tu acceptes la <a href="#privacy" data-tab="privacy" style="color:var(--accent);font-weight:700">politique de confidentialité</a>.</p>`,
+      + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site. En créant un compte, tu acceptes la <a href="confidentialite" data-tab="privacy" style="color:var(--accent);font-weight:700">politique de confidentialité</a>.</p>`,
     reset: F("a-email","E-mail","email","email"),
     newpass: F("a-pass","Nouveau mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')};
   const btn = {login:"Se connecter ➜", signup:"✨ Créer mon compte", reset:"📧 Envoyer le lien", newpass:"💾 Enregistrer"};
@@ -1015,9 +1050,10 @@ function startApp(){
   document.getElementById("storage-note").textContent = user
     ? "💾 Ta progression est enregistrée dans ton compte : tu la retrouves sur tous tes appareils."
     : "💾 Ta progression est enregistrée dans ce navigateur uniquement.";
-  const h = location.hash.slice(1);
   refreshStats();
-  go(TABS[h]?h:"home");
+  const t0 = initialTab && TABS[initialTab] ? initialTab : "home";
+  initialTab = null;
+  go(t0, true, true);
 }
 async function enter(u){
   const meta = u.user_metadata || {};
