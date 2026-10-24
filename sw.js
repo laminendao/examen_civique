@@ -2,7 +2,7 @@
    Stratégie « réseau d'abord » : on demande toujours la dernière version au serveur ;
    si le réseau est indisponible, on sert la copie enregistrée.
    VERSION et FILES sont mis à jour par tools/pages.py. */
-const VERSION = "bf7e84adcf";
+const VERSION = "0ff57831c7";
 const FILES = [
   "./",
   "assets/css/style.css",
