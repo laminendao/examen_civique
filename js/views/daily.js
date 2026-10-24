@@ -9,7 +9,7 @@ import { runQuiz, summary, bindTrain } from "./quiz.js";
 export function showDaily(){
   const d = dailyIds();
   if (d.pos >= d.ids.length) return finish(d);
-  runQuiz("Série du jour", "📅", d, finish, save);
+  runQuiz("Série du jour", "<i class='ic' data-i='calendar'></i>", d, finish, save);
 }
 
 function finish(run){
@@ -19,9 +19,9 @@ function finish(run){
     const x = new Date(); x.setDate(x.getDate() - i); const k = todayStr(x);
     cal.push(`<i class="${state.store.days[k] ? "done" : ""} ${i === 0 ? "today" : ""}" title="${k}"></i>`);
   }
-  render(page("✅", "Série du jour terminée", "Reviens demain : la prochaine série reprendra d'abord tes erreurs, puis des questions jamais vues.", summary(run,
-    `<div><div class="note" style="margin-bottom:8px">🔥 Tes 28 derniers jours</div><div class="calendar">${cal.join("")}</div></div>
-     <div class="row"><button class="btn" id="again">➕ Faire une série supplémentaire</button><button class="btn" data-tab="weak">🎯 Voir mes points à améliorer</button></div>`), true));
+  render(page("<i class='ic' data-i='check'></i>", "Série du jour terminée", "Reviens demain : la prochaine série reprendra d'abord tes erreurs, puis des questions jamais vues.", summary(run,
+    `<div><div class="note" style="margin-bottom:8px"><i class='ic' data-i='flame'></i> Tes 28 derniers jours</div><div class="calendar">${cal.join("")}</div></div>
+     <div class="row"><button class="btn" id="again"><i class='ic' data-i='plus'></i> Faire une série supplémentaire</button><button class="btn" data-tab="weak"><i class='ic' data-i='target'></i> Voir mes points à améliorer</button></div>`), true));
   bindTrain();
   document.getElementById("again").addEventListener("click", extraSeries);
 }
@@ -30,8 +30,8 @@ function extraSeries(){
   const r = rng(todayStr() + Date.now());
   const ids = Q.map(q => ({ id: q.id, k: (mastered(q.id) ? 2 : (missed(q.id) ? 0 : 1)) + r() }))
     .sort((a, b) => a.k - b.k).slice(0, DAILY_N).map(x => x.id);
-  runQuiz("Série supplémentaire", "➕", { ids, pos: 0, good: 0, wrong: [] }, run => {
-    render(page("➕", "Série supplémentaire", "", summary(run), true));
+  runQuiz("Série supplémentaire", "<i class='ic' data-i='plus'></i>", { ids, pos: 0, good: 0, wrong: [] }, run => {
+    render(page("<i class='ic' data-i='plus'></i>", "Série supplémentaire", "", summary(run), true));
     bindTrain();
   });
 }

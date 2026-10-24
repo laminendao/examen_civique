@@ -1,22 +1,22 @@
 {
  "P": {
   "label": "Principes et valeurs de la République",
-  "icon": "⚖️"
+  "icon": "scale"
  },
  "S": {
   "label": "Système institutionnel et politique",
-  "icon": "🏛️"
+  "icon": "institution"
  },
  "D": {
   "label": "Droits et devoirs",
-  "icon": "📜"
+  "icon": "scroll"
  },
  "H": {
   "label": "Histoire, géographie et culture",
-  "icon": "🗺️"
+  "icon": "map"
  },
  "V": {
   "label": "Vivre dans la société française",
-  "icon": "🏡"
+  "icon": "people"
  }
 }

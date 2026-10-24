@@ -23,10 +23,10 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}){
     const pick = opts[+b.dataset.v], ok = pick === q.a;
     view().querySelectorAll(".opt").forEach((x, i) => {
       x.disabled = true;
-      if (opts[i] === q.a){ x.classList.add("right"); x.querySelector(".k").textContent = "✓"; }
+      if (opts[i] === q.a){ x.classList.add("right"); x.querySelector(".k").innerHTML = "<i class='ic' data-i='check'></i>"; }
       else if (x !== b) x.classList.add("dim");
     });
-    if (!ok){ b.classList.add("wrong"); b.querySelector(".k").textContent = "✗"; }
+    if (!ok){ b.classList.add("wrong"); b.querySelector(".k").innerHTML = "<i class='ic' data-i='close'></i>"; }
     record(q.id, ok);
     if (ok) run.good++; else run.wrong.push(q.id);
     run.pos++; persist();
@@ -34,9 +34,9 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}){
     const after = document.getElementById("after");
     const last = run.pos >= run.ids.length;
     after.hidden = false;
-    after.innerHTML = `<div class="feedback ${ok ? "ok" : "ko"}">${ok ? "🎉 Bonne réponse !" : "❌ Raté. La bonne réponse : " + esc(q.a)}</div>
-      <div class="expl" style="margin-top:12px"><b>💡 Explication</b>${esc(q.x)}</div>
-      <div class="qfoot" style="margin-top:16px"><span class="note">Score : ${run.good}/${run.pos}</span><button class="btn primary" id="next">${last ? "🏁 Voir le résultat" : "Question suivante ➜"}</button></div>`;
+    after.innerHTML = `<div class="feedback ${ok ? "ok" : "ko"}">${ok ? "<i class='ic' data-i='trophy'></i> Bonne réponse !" : "<i class='ic' data-i='close'></i> Raté. La bonne réponse : " + esc(q.a)}</div>
+      <div class="expl" style="margin-top:12px"><b><i class='ic' data-i='bulb'></i> Explication</b>${esc(q.x)}</div>
+      <div class="qfoot" style="margin-top:16px"><span class="note">Score : ${run.good}/${run.pos}</span><button class="btn primary" id="next">${last ? "<i class='ic' data-i='flag'></i> Voir le résultat" : "Question suivante <i class='ic' data-i='arrow-right'></i>"}</button></div>`;
     const nx = document.getElementById("next");
     nx.focus({ preventScroll: true });
     after.scrollIntoView({ block: "nearest", behavior: "smooth" });
@@ -51,20 +51,20 @@ function sessionWeak(run){
   const by = {};
   for (const id of run.wrong){ const n = Q[id].n; (by[n] ||= []).push(id); }
   const items = Object.entries(by).sort((a, b) => b[1].length - a[1].length);
-  return `<div class="card"><h2 class="sec" style="margin:0 0 12px">🎯 Points à améliorer</h2>
-    <div class="mini">${items.map(([n, ids]) => `<div><b>${esc(NOTIONS[n].label)} · ${ids.length} erreur${ids.length > 1 ? "s" : ""}</b><span class="note">${esc(NOTIONS[n].retenir)}</span><button class="btn sm" data-train="${n}" style="align-self:flex-start;margin-top:4px">💪 S'entraîner sur ce point</button></div>`).join("")}</div></div>`;
+  return `<div class="card"><h2 class="sec" style="margin:0 0 12px"><i class='ic' data-i='target'></i> Points à améliorer</h2>
+    <div class="mini">${items.map(([n, ids]) => `<div><b>${esc(NOTIONS[n].label)} · ${ids.length} erreur${ids.length > 1 ? "s" : ""}</b><span class="note">${esc(NOTIONS[n].retenir)}</span><button class="btn sm" data-train="${n}" style="align-self:flex-start;margin-top:4px"><i class='ic' data-i='muscle'></i> S'entraîner sur ce point</button></div>`).join("")}</div></div>`;
 }
 
 export function summary(run, extra = ""){
   const n = run.ids.length, p = Math.round(run.good / n * 100), passed = run.good / n >= 0.8;
   return `<div class="card" style="display:flex;flex-direction:column;gap:16px">
-    <div class="result-top"><span class="score">${run.good}<span style="font-size:1.4rem;color:var(--muted)">/${n}</span></span><span class="pill ${passed ? "ok" : "ko"}">${passed ? "🏆" : "📉"} ${p} % · ${passed ? "au-dessus de 80 %" : "sous les 80 %"}</span></div>
+    <div class="result-top"><span class="score">${run.good}<span style="font-size:1.4rem;color:var(--muted)">/${n}</span></span><span class="pill ${passed ? "ok" : "ko"}">${passed ? "<i class='ic' data-i='trophy'></i>" : "<i class='ic' data-i='trend-down'></i>"} ${p} % · ${passed ? "au-dessus de 80 %" : "sous les 80 %"}</span></div>
     ${extra}
   </div>
   ${sessionWeak(run)}
   ${run.wrong.length
-    ? `<div class="card"><h2 class="sec" style="margin:0 0 12px">📌 Questions à revoir</h2><ul class="errs">${run.wrong.map(id => `<li><div style="font-weight:700">${esc(Q[id].q)}</div><div class="a">✓ ${esc(Q[id].a)}</div><div class="x">${esc(Q[id].x)}</div></li>`).join("")}</ul></div>`
-    : `<div class="card"><p style="margin:0">🎉 Aucune erreur ! Ces questions repasseront plus rarement.</p></div>`}`;
+    ? `<div class="card"><h2 class="sec" style="margin:0 0 12px"><i class='ic' data-i='pin'></i> Questions à revoir</h2><ul class="errs">${run.wrong.map(id => `<li><div style="font-weight:700">${esc(Q[id].q)}</div><div class="a"><i class='ic' data-i='check'></i> ${esc(Q[id].a)}</div><div class="x">${esc(Q[id].x)}</div></li>`).join("")}</ul></div>`
+    : `<div class="card"><p style="margin:0"><i class='ic' data-i='trophy'></i> Aucune erreur ! Ces questions repasseront plus rarement.</p></div>`}`;
 }
 
 /* Boutons « S'entraîner sur ce point » présents dans la vue. */
@@ -81,8 +81,8 @@ export function trainNotion(n){
     ...shuffle(qs.filter(q => !missed(q.id) && !mastered(q.id))),
     ...shuffle(qs.filter(q => mastered(q.id))),
   ].map(q => q.id).slice(0, 12);
-  runQuiz(NOTIONS[n].label, "💪", { ids, pos: 0, good: 0, wrong: [] }, run => {
-    render(page("💪", NOTIONS[n].label, "Résultat de l'entraînement ciblé", summary(run, `<div class="row"><button class="btn" data-tab="weak">⬅️ Retour aux points à améliorer</button></div>`), true));
+  runQuiz(NOTIONS[n].label, "<i class='ic' data-i='muscle'></i>", { ids, pos: 0, good: 0, wrong: [] }, run => {
+    render(page("<i class='ic' data-i='muscle'></i>", NOTIONS[n].label, "Résultat de l'entraînement ciblé", summary(run, `<div class="row"><button class="btn" data-tab="weak"><i class='ic' data-i='arrow-left'></i> Retour aux points à améliorer</button></div>`), true));
     bindTrain();
   });
 }

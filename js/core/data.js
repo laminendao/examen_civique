@@ -25,7 +25,7 @@ export async function loadData(){
     getJSON("notions.json"),
     getJSON("questions/" + CONFIG.exam + ".json"),
   ]);
-  Object.assign(THEMES, themes);
+  for (const [k, th] of Object.entries(themes)) THEMES[k] = { label: th.label, iconName: th.icon, icon: `<i class='ic' data-i='${th.icon}'></i>` };
   Object.assign(NOTIONS, notions);
   EXAM = { exam: exam.exam, label: exam.label };
   Q.length = 0;

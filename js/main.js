@@ -4,12 +4,13 @@
      config.js          réglages (clés publiques, éditeur, examen)
      core/              données, état, progression, navigation, Supabase
      auth/              connexion, inscription, anti-robots
-     ui/                mise en page commune, menu du compte
+     ui/                mise en page commune, menu du compte, icônes
      views/             un fichier par écran
    ============================================================ */
 import { loadData } from "./core/data.js";
 import { registerViews, setupNavigation } from "./core/router.js";
 import { setupAccountMenu } from "./ui/account-menu.js";
+import { setupIcons } from "./ui/icons.js";
 import { boot } from "./auth/auth.js";
 
 import { showHome } from "./views/home.js";
@@ -25,6 +26,7 @@ registerViews({
   home: showHome, daily: showDaily, exam: showExam, themes: showThemes, weak: showWeak,
   review: showReview, legal: showLegal, privacy: showPrivacy, account: showAccount,
 });
+setupIcons();
 setupNavigation();
 setupAccountMenu();
 
@@ -33,5 +35,5 @@ try {
   await boot();
 } catch(e){
   console.error(e);
-  document.getElementById("view").innerHTML = `<div class="page container"><div class="card"><p style="margin:0">⚠️ Le site n'a pas pu se charger. Vérifie ta connexion internet puis recharge la page.</p></div></div>`;
+  document.getElementById("view").innerHTML = `<div class="page container"><div class="card"><p style="margin:0"><i class='ic' data-i='warning'></i> Le site n'a pas pu se charger. Vérifie ta connexion internet puis recharge la page.</p></div></div>`;
 }

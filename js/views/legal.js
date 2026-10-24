@@ -12,14 +12,14 @@ export const mail = CONTACT ? `<a href="mailto:${esc(CONTACT)}">${esc(CONTACT)}<
 
 /* Bouton de retour : vers la connexion si la page a été ouverte depuis l'inscription. */
 function backBtn(){
-  return state.authReturn ? `<div class="row"><button class="btn" id="back-auth">⬅️ Retour à la connexion</button></div>` : `<div class="row"><button class="btn" data-tab="home">🏠 Retour à l'accueil</button></div>`;
+  return state.authReturn ? `<div class="row"><button class="btn" id="back-auth"><i class='ic' data-i='arrow-left'></i> Retour à la connexion</button></div>` : `<div class="row"><button class="btn" data-tab="home"><i class='ic' data-i='home'></i> Retour à l'accueil</button></div>`;
 }
 function bindBack(){
   const b = document.getElementById("back-auth");
   if (b) b.addEventListener("click", () => { state.authReturn = false; try { history.replaceState(null, "", APP_URL); } catch(e) {} showAuth("signup"); });
 }
 export function showLegal(){
-  render(page("📄", "Mentions légales", "Informations prévues par la loi pour la confiance dans l'économie numérique (LCEN).", `
+  render(page("<i class='ic' data-i='file'></i>", "Mentions légales", "Informations prévues par la loi pour la confiance dans l'économie numérique (LCEN).", `
     <div class="card legal">
       <h2>Éditeur du site</h2>
       <p>Ce site est édité à titre personnel et non commercial par ${esc(EDITOR)}.<br>Contact : ${mail}</p>
@@ -38,7 +38,7 @@ export function showLegal(){
   bindBack();
 }
 export function showPrivacy(){
-  render(page("🔒", "Politique de confidentialité", "Comment tes données sont utilisées, conformément au RGPD. Dernière mise à jour : octobre 2026.", `
+  render(page("<i class='ic' data-i='lock'></i>", "Politique de confidentialité", "Comment tes données sont utilisées, conformément au RGPD. Dernière mise à jour : octobre 2026.", `
     <div class="card legal">
       <h2>Responsable du traitement</h2>
       <p>${esc(EDITOR)}, joignable à ${mail}.</p>
@@ -62,7 +62,7 @@ export function showPrivacy(){
       <h2>Durée de conservation</h2>
       <p>Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, elles sont effacées immédiatement et définitivement.</p>
       <h2>Tes droits</h2>
-      <p>Tu peux à tout moment accéder à tes données, les corriger, les supprimer, t'opposer à leur traitement ou demander leur portabilité. Tu peux supprimer ton compte toi-même depuis <b>⚙️ Mon compte et mes données</b> (menu de ta pastille), ou écrire à ${mail}.</p>
+      <p>Tu peux à tout moment accéder à tes données, les corriger, les supprimer, t'opposer à leur traitement ou demander leur portabilité. Tu peux supprimer ton compte toi-même depuis <b><i class='ic' data-i='settings'></i> Mon compte et mes données</b> (menu de ta pastille), ou écrire à ${mail}.</p>
       <p>Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
     </div>
     ${backBtn()}`, true));

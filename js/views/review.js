@@ -5,9 +5,9 @@ import { missed } from "../core/progress.js";
 import { page, render } from "../ui/layout.js";
 
 export function showReview(){
-  render(page("🔎", "Révision", "Toutes les questions avec leur réponse et leur explication.", `
-    <div class="searchbox"><div class="inp"><span>🔍</span><input type="search" id="search" placeholder="Rechercher un mot (ex. : Sénat, 1905, laïcité)" aria-label="Rechercher"></div>
-      <label class="check"><input type="checkbox" id="only-miss"> ❌ Seulement mes erreurs</label></div>
+  render(page("<i class='ic' data-i='search'></i>", "Révision", "Toutes les questions avec leur réponse et leur explication.", `
+    <div class="searchbox"><div class="inp"><span><i class='ic' data-i='search'></i></span><input type="search" id="search" placeholder="Rechercher un mot (ex. : Sénat, 1905, laïcité)" aria-label="Rechercher"></div>
+      <label class="check"><input type="checkbox" id="only-miss"> <i class='ic' data-i='close'></i> Seulement mes erreurs</label></div>
     <div class="list" id="list"></div>`, true));
   document.getElementById("search").addEventListener("input", renderList);
   document.getElementById("only-miss").addEventListener("change", renderList);
@@ -21,7 +21,7 @@ function renderList(){
   for (const [k, th] of Object.entries(THEMES)){
     const qs = Q.filter(q => q.t === k && (!onlyMiss || missed(q.id)) && (!t || (q.q + " " + q.a + " " + q.x).toLowerCase().includes(t)));
     if (!qs.length) continue;
-    html += `<h3>${th.icon} ${esc(th.label)}</h3>` + qs.map(q => `<div class="item">${missed(q.id) ? `<span class="flag">❌ Ratée la dernière fois</span>` : ""}<p class="qq">${esc(q.q)}</p><p class="a">✓ ${esc(q.a)}</p><p class="x">${esc(q.x)}</p></div>`).join("");
+    html += `<h3>${th.icon} ${esc(th.label)}</h3>` + qs.map(q => `<div class="item">${missed(q.id) ? `<span class="flag"><i class='ic' data-i='close'></i> Ratée la dernière fois</span>` : ""}<p class="qq">${esc(q.q)}</p><p class="a"><i class='ic' data-i='check'></i> ${esc(q.a)}</p><p class="x">${esc(q.x)}</p></div>`).join("");
   }
   document.getElementById("list").innerHTML = html || `<p class="note">${onlyMiss && !t ? "Aucune erreur enregistrée pour l'instant." : "Aucune question ne correspond à « " + esc(term) + " »."}</p>`;
 }

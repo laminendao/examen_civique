@@ -45,7 +45,7 @@ export function showAuth(mode = "login", msg = null){
   window.scrollTo({top:0,behavior:"instant"});
   const F = (id,label,type,ac,extra="") => `<label class="field" for="${id}">${label}<input id="${id}" type="${type}" autocomplete="${ac}" required ${extra} ${id==="a-email"&&lastEmail?`value="${esc(lastEmail)}"`:""}></label>`;
   const SEL = (id,label,opts) => `<label class="field" for="${id}"><span>${label}</span><select id="${id}"><option value="">—</option>${opts.map(o=>`<option>${esc(o)}</option>`).join("")}</select></label>`;
-  const titles = {login:"👋 Se connecter", signup:"✨ Créer un compte", reset:"🔑 Mot de passe oublié", newpass:"🔒 Nouveau mot de passe"};
+  const titles = {login:"<i class='ic' data-i='hand'></i> Se connecter", signup:"<i class='ic' data-i='user'></i> Créer un compte", reset:"<i class='ic' data-i='key'></i> Mot de passe oublié", newpass:"<i class='ic' data-i='lock'></i> Nouveau mot de passe"};
   const intro = {
     login:"Connecte-toi pour retrouver ta progression sur tous tes appareils.",
     signup:"Un compte par personne : chaque compte a sa propre progression et ses propres points à améliorer.",
@@ -60,21 +60,21 @@ export function showAuth(mode = "login", msg = null){
     reset: F("a-email","E-mail","email","email"),
     newpass: F("a-pass","Nouveau mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')};
   const useCaptcha = captchaEnabled() && mode !== "newpass";
-  const btn = {login:"Se connecter ➜", signup:"✨ Créer mon compte", reset:"📧 Envoyer le lien", newpass:"💾 Enregistrer"};
+  const btn = {login:"Se connecter <i class='ic' data-i='arrow-right'></i>", signup:"<i class='ic' data-i='user'></i> Créer mon compte", reset:"<i class='ic' data-i='mail'></i> Envoyer le lien", newpass:"<i class='ic' data-i='save'></i> Enregistrer"};
   const links = {
     login:`<button type="button" class="link" data-m="signup">Pas encore de compte ? Inscris-toi</button><button type="button" class="link" data-m="reset">Mot de passe oublié ?</button>`,
     signup:`<button type="button" class="link" data-m="login">J'ai déjà un compte</button>`,
-    reset:`<button type="button" class="link" data-m="login">⬅️ Retour à la connexion</button>`,
+    reset:`<button type="button" class="link" data-m="login"><i class='ic' data-i='arrow-left'></i> Retour à la connexion</button>`,
     newpass:``};
   authBox().innerHTML = `<div class="authgrid">
     <div class="authside">
-      <span class="pill-tag" style="align-self:flex-start">🎓 Page d'entraînement</span>
+      <span class="pill-tag" style="align-self:flex-start"><i class='ic' data-i='cap'></i> Page d'entraînement</span>
       <h2>Prépare l'examen civique de la carte de résident</h2>
       <ul>
-        <li><span>📚</span>Les 209 questions officielles du ministère</li>
-        <li><span>💡</span>Une explication pour chaque réponse</li>
-        <li><span>🎯</span>Tes points faibles repérés automatiquement</li>
-        <li><span>📱</span>Ta progression sur tous tes appareils</li>
+        <li><span><i class='ic' data-i='book'></i></span>Les 209 questions officielles du ministère</li>
+        <li><span><i class='ic' data-i='bulb'></i></span>Une explication pour chaque réponse</li>
+        <li><span><i class='ic' data-i='target'></i></span>Tes points faibles repérés automatiquement</li>
+        <li><span><i class='ic' data-i='phone'></i></span>Ta progression sur tous tes appareils</li>
       </ul>
     </div>
     <div class="authform">
@@ -96,7 +96,7 @@ export function showAuth(mode = "login", msg = null){
     const cap = useCaptcha ? { captchaToken: getCaptchaToken() } : {};
     const v = id => (document.getElementById(id)||{}).value || "";
     if (v("a-email")) lastEmail = v("a-email").trim();
-    const sub = form.querySelector("button[type=submit]"); sub.disabled = true; sub.textContent = "⏳ Patiente…";
+    const sub = form.querySelector("button[type=submit]"); sub.disabled = true; sub.innerHTML = "<i class='ic' data-i='hourglass'></i> Patiente…";
     try {
       if (mode==="login"){
         const {data, error} = await sb.auth.signInWithPassword({email:v("a-email").trim(), password:v("a-pass"), options:cap});
@@ -140,9 +140,9 @@ function startApp(){
     document.getElementById("who").textContent = u.name;
     document.getElementById("who-mail").textContent = u.email || "";
   }
-  document.getElementById("storage-note").textContent = u
-    ? "💾 Ta progression est enregistrée dans ton compte : tu la retrouves sur tous tes appareils."
-    : "💾 Ta progression est enregistrée dans ce navigateur uniquement.";
+  document.getElementById("storage-note").innerHTML = u
+    ? "<i class='ic' data-i='save'></i> Ta progression est enregistrée dans ton compte : tu la retrouves sur tous tes appareils."
+    : "<i class='ic' data-i='save'></i> Ta progression est enregistrée dans ce navigateur uniquement.";
   refreshStats();
   const t0 = takeInitialTab();
   go(t0 && hasView(t0) ? t0 : "home", true, true);
@@ -162,7 +162,7 @@ export async function logout(){
     cancelPendingSave(); await pushRemote();
     try { await sb.auth.signOut(); } catch(err) {}
     state.user = null; state.store = emptyStore(); setSync("");
-    showAuth("login", ["info", "Tu es déconnecté. À bientôt 👋"]);
+    showAuth("login", ["info", "Tu es déconnecté. À bientôt <i class='ic' data-i='hand'></i>"]);
   } else showAuth("login");
 }
 
