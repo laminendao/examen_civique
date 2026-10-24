@@ -27,7 +27,7 @@ export function showHome(){
       <div class="hero-card">
         <h3>${hello}</h3>
         <div class="ring">
-          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#f1e6e9" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Plus Jakarta Sans, sans-serif">${Math.round(frac*100)}%</text></svg>
+          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Plus Jakarta Sans, sans-serif">${Math.round(frac*100)}%</text></svg>
           <div><b>${m} / ${Q.length}</b><span>questions maîtrisées</span></div>
         </div>
         <div class="minibar"><div><span><i class='ic' data-i='calendar'></i> Série du jour</span><b>${Math.min(dl.pos,DAILY_N)}/${DAILY_N}</b></div><div class="bar"><i style="width:${Math.min(dl.pos,DAILY_N)/DAILY_N*100}%"></i></div></div>

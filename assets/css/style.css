@@ -1,10 +1,10 @@
 /* Site d'entraînement — palette inspirée du Cnam (rouge, anthracite, blanc) */
 :root{
   color-scheme:light;
-  --bg:#faf6f7; --surface:#ffffff; --ink:#1d1d1b; --muted:#62615e; --line:#ecdfe2; --line-strong:#dccbd0;
+  --bg:#f6f6f8; --surface:#ffffff; --ink:#1d1d1b; --muted:#5e6068; --line:#e6e6eb; --line-strong:#d4d5dc;
   --accent:#c1002a; --accent-dark:#9a0022; --accent-soft:#fdecef; --accent-ink:#ffffff;
   --dark:#1d1d1b;
-  --ok:#17803d; --ok-soft:#e5f5ea; --ko:#b42318; --ko-soft:#fdecea; --warn:#b76e00;
+  --ok:#17803d; --ok-soft:#e7f6ec; --ko:#c2410c; --ko-soft:#fff1e9; --warn:#b76e00;
   --tip:#fff8e8; --tip-line:#f3e2b5;
   --radius:16px; --shadow:0 1px 2px rgba(29,29,27,.05), 0 6px 20px rgba(29,29,27,.06);
   --font:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -293,7 +293,7 @@ footer b{color:#fff}
 footer .ic{color:#fff}
 /* Navigation */
 .navlink .e{font-size:1.1rem;color:var(--accent);display:inline-grid}
-.navlink:not([aria-current="page"]) .e{color:#b98a95}
+.navlink:not([aria-current="page"]) .e{color:#9a9ca6}
 .navlink:hover .e{color:var(--accent)}
 .tabbar button .e{filter:none!important;opacity:1!important;font-size:1.35rem;color:#a3989b;display:inline-grid}
 .tabbar button[aria-current="page"] .e{color:var(--accent)}
@@ -328,7 +328,7 @@ h2.sec .ic,.useful h2 .ic,.wk .retain .ic,.expl b .ic{color:var(--accent)}
 .exam-tab{display:flex;align-items:center;gap:10px;min-width:0;padding:8px 12px;border:1.5px solid transparent;border-radius:10px;background:none;cursor:pointer;color:var(--muted);text-align:left}
 .exam-tab:hover{color:var(--ink);background:rgba(255,255,255,.7)}
 .exam-tab.on{background:var(--surface);border-color:var(--accent);color:var(--ink);box-shadow:0 2px 8px rgba(193,0,42,.12)}
-.exam-tab .e{font-size:1.15rem;display:inline-grid;color:#b98a95}
+.exam-tab .e{font-size:1.15rem;display:inline-grid;color:#9a9ca6}
 .exam-tab.on .e{color:var(--accent)}
 .exam-tab .lbl{display:flex;flex-direction:column;min-width:0}
 .exam-tab b{font-size:.9rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -343,3 +343,25 @@ h2.sec .ic,.useful h2 .ic,.wk .retain .ic,.expl b .ic{color:var(--accent)}
   .exam-tab .long{display:none}.exam-tab .tiny{display:inline}
   .exam-tab b{font-size:.84rem}.exam-tab small{font-size:.68rem}
 }
+
+/* ---- Palette apaisée : le rouge CNAM sert d'accent, plus de grands aplats ---- */
+.hero{background:linear-gradient(180deg,#ffffff 0%,#f9f9fb 100%);color:var(--ink);border-bottom:1px solid var(--line)}
+.hero::before{background:radial-gradient(circle,rgba(193,0,42,.07),rgba(193,0,42,0) 70%)}
+.hero::after{background:radial-gradient(circle,rgba(193,0,42,.04),rgba(193,0,42,0) 70%)}
+.hero p{color:var(--muted);opacity:1}
+.hero h1{color:var(--ink)}
+.pill-tag{background:var(--accent-soft);border-color:#f6c9d3;color:var(--accent)}
+.hero .pill-tag .ic,.authside .pill-tag .ic{color:var(--accent)}
+.hero .btn.light{background:var(--accent);border-color:var(--accent);color:#fff}
+.hero .btn.light:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
+.hero .btn.ghost-light{background:#fff;color:var(--accent);border-color:var(--accent)}
+.hero .btn.ghost-light:hover{background:var(--accent-soft)}
+.hero-card{border:1px solid var(--line);box-shadow:0 10px 30px rgba(29,29,27,.08)}
+.authside{background:linear-gradient(170deg,#fff6f8 0%,#fbeef1 100%);color:var(--ink);border-right:1px solid var(--line)}
+.authside h2{color:var(--ink)}
+.authside li{color:#3d3f45}
+@media (max-width:820px){.authside{border-right:0;border-bottom:1px solid var(--line)}}
+.exam-tabs{background:#f1f1f4}
+/* Explications et « à retenir » : encadré neutre avec un filet rouge CNAM */
+.expl,.retain{background:#f7f8fa;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px}
+.expl b{color:var(--accent)}
