@@ -50,11 +50,17 @@ const VIEWS = {};
 export function registerViews(map){ Object.assign(VIEWS, map); }
 export const hasView = tab => !!VIEWS[tab];
 
+/* Garde de sortie : pendant un examen blanc, on demande confirmation avant de quitter la page.
+   leaveGuard() renvoie une promesse : true = on peut partir. */
+let leaveGuard = null;
+export function setLeaveGuard(fn){ leaveGuard = fn; }
+export async function canLeave(){ return !leaveGuard || await leaveGuard(); }
+
 export let current = "home";
 export function go(tab, render = true, pushUrl = true){
   if (!VIEWS[tab]) tab = "home";
   current = tab;
-  document.body.dataset.tab = tab;   // le choix de l'examen est masqué sur les pages générales (voir style.css)
+  document.body.dataset.page = tab;   // le choix de l'examen est masqué sur les pages générales (voir style.css)
   document.querySelectorAll(".navlink, .tabbar button").forEach(b => {
     if (b.dataset.tab === tab) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });
@@ -79,7 +85,8 @@ export function setupNavigation(){
       auth.hidden = true; document.getElementById("view").hidden = false;
     }
     const m = document.getElementById("menu"); if (m) m.hidden = true;
-    go(t.dataset.tab);
+    const tab = t.dataset.tab;
+    canLeave().then(ok => { if (ok) go(tab); });
   });
   window.addEventListener("popstate", () => {
     if (!ROUTING || !document.getElementById("auth").hidden) return;

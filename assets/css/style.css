@@ -461,7 +461,7 @@ body.big .expl{font-size:1.08rem}
 .hist td{border-bottom:1px solid var(--line);padding:8px 6px;font-variant-numeric:tabular-nums}
 .pill.sm{font-size:.76rem;padding:3px 8px}
 /* Pages communes aux trois examens : pas de barre de choix de l'examen */
-body[data-tab="info"] .exambar,body[data-tab="legal"] .exambar,body[data-tab="privacy"] .exambar,body[data-tab="account"] .exambar{display:none}
+body[data-page="info"] .exambar,body[data-page="legal"] .exambar,body[data-page="privacy"] .exambar,body[data-page="account"] .exambar{display:none}
 
 /* ---- Liens utiles : l'examen en bref + groupes de liens ---- */
 .useful-page{gap:28px}
@@ -495,3 +495,51 @@ footer .ic{color:var(--accent)}
 /* Avertissements : fond blanc, simple filet rouge à gauche */
 .warnbox{background:#fff;border:0;border-left:2px solid var(--accent);border-radius:0;padding:4px 0 4px 14px;color:var(--muted)}
 .warnbox .ic{color:var(--accent)}
+
+/* ---- Ergonomie ---- */
+/* Accueil */
+.hero-cta{align-items:center;gap:14px}
+.hero-cta .note{color:var(--muted)}
+.done-note{color:var(--ok)!important;display:inline-flex;align-items:center;gap:6px}
+.mini3{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mini3 div{padding:10px 0;text-align:center}
+.mini3 div+div{border-left:1px solid var(--line)}
+.mini3 b{display:block;font-size:1.25rem;font-weight:700;font-variant-numeric:tabular-nums}
+.mini3 span{font-size:.78rem;color:var(--muted)}
+.nudge{margin:0;font-size:.86rem;color:var(--muted);display:flex;gap:6px;align-items:flex-start}
+.nudge .ic{color:var(--accent);margin-top:2px}
+.nudge .link{font-size:inherit}
+.home-grid{align-items:start}
+.lrows{list-style:none;margin:0;padding:0}
+.lrows li+li{border-top:1px solid var(--line)}
+button.lrow{width:100%;background:none;border:0;font:inherit;text-align:left;cursor:pointer}
+.lrows .lrow{padding:12px 0}
+.lrows .lrow>.ic:first-child{color:var(--accent);font-size:1.15rem}
+.lrows .badge{vertical-align:1px;margin-left:4px}
+.lrows .pill{margin-left:6px;vertical-align:1px}
+.theme-review{border-style:dashed}
+/* Quiz : bouton « Question suivante » toujours visible */
+.quiz .qfoot{position:sticky;bottom:0;background:#fff;padding:12px 0;margin-bottom:-12px;z-index:5;border-top:1px solid var(--line)}
+@media (max-width:1279px){.quiz .qfoot{bottom:calc(64px + env(safe-area-inset-bottom))}}
+.kbd-hint{margin:0;text-align:center;font-size:.8rem}
+@media (hover:none),(max-width:760px){.kbd-hint{display:none}}
+/* Fenêtre de confirmation */
+.modal-wrap{position:fixed;inset:0;z-index:100;background:rgba(29,29,27,.45);display:grid;place-items:center;padding:16px}
+.modal{background:#fff;border-radius:10px;max-width:440px;width:100%;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.modal h2{margin:0 0 8px;font-size:1.25rem}
+.modal p{margin:0 0 18px;color:var(--muted)}
+.modal .row{justify-content:flex-end;flex-wrap:wrap}
+/* Barre mobile : 5 onglets */
+@media (max-width:1279px){
+  .tabbar{grid-template-columns:repeat(5,1fr)}
+  .tabbar button{font-size:.7rem}
+}
+/* Choix de l'examen sur mobile : une seule ligne compacte */
+@media (max-width:760px){
+  .exambar .container{padding-block:6px}
+  .exam-tab{flex-direction:row;justify-content:center;gap:6px;padding:7px 4px}
+  .exam-tab small{display:none}
+  .exam-tab .e{font-size:1rem}
+}
+.nudge{display:block}
+.nudge .ic{margin:0 4px 0 0;vertical-align:-.2em}

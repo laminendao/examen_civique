@@ -3,7 +3,8 @@
 import { Q, QI, THEMES, NOTIONS } from "../core/data.js";
 import { esc, shuffle } from "../core/utils.js";
 import { record, refreshStats, missed, mastered } from "../core/progress.js";
-import { go } from "../core/router.js";
+import { go, setLeaveGuard } from "../core/router.js";
+import { confirmBox } from "../ui/confirm.js";
 import { page, render, view } from "../ui/layout.js";
 import { reportLink, bindReports } from "../ui/report.js";
 import { readingTools, bindReadingTools, stopSpeaking } from "../ui/reading.js";
@@ -13,12 +14,37 @@ const fmt = s => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
 
 let tick = null;
 const stopTimer = () => { clearInterval(tick); tick = null; };
+const unload = e => { e.preventDefault(); e.returnValue = ""; };
+
+/* Pendant un examen blanc : confirmation avant de quitter (onglet, changement d'examen, fermeture de la page). */
+function guardExam(on){
+  if (on){
+    setLeaveGuard(async () => {
+      const ok = await confirmBox({ title: "Quitter l'examen blanc ?", text: "Tes réponses à cet examen seront perdues et il ne comptera pas dans ton historique.", ok: "Quitter l'examen", cancel: "Continuer l'examen" });
+      if (ok){ stopTimer(); guardExam(false); }
+      return ok;
+    });
+    window.addEventListener("beforeunload", unload);
+  } else {
+    setLeaveGuard(null);
+    window.removeEventListener("beforeunload", unload);
+  }
+}
+
+/* Clavier : A, B, C, D (ou 1 à 4) pour répondre, Entrée pour la question suivante. */
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey || e.metaKey || e.altKey || /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName) || document.querySelector(".modal-wrap")) return;
+  const k = e.key.toLowerCase(), i = "abcd".indexOf(k) >= 0 ? "abcd".indexOf(k) : "1234".indexOf(k);
+  const opt = i >= 0 && document.getElementById("opt-" + i);
+  if (opt && !opt.disabled){ e.preventDefault(); opt.click(); return; }
+  if (e.key === "Enter" && document.activeElement?.id !== "next"){ const nx = document.getElementById("next"); if (nx){ e.preventDefault(); nx.click(); } }
+});
 
 /* run = {ids, pos, good, wrong[]} ; onDone(run) en fin de série ; persist() après chaque réponse.
    opts.exam = true : pas de correction immédiate, run.deadline (ms) = fin du temps imparti. */
 export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}){
   stopSpeaking();
-  if (run.pos >= run.ids.length){ stopTimer(); return onDone(run); }
+  if (run.pos >= run.ids.length){ stopTimer(); guardExam(false); return onDone(run); }
   const q = QI[run.ids[run.pos]];
   const opts4 = shuffle([q.a, ...q.d]);
   const exam = !!opts.exam;
@@ -32,24 +58,26 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}
       <div class="opts">${opts4.map((o, i) => `<button class="opt" id="opt-${i}" data-v="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
       <div id="after" hidden></div>
       ${exam ? `<p class="note exam-hint">Comme le jour J, la correction s'affiche à la fin de l'examen.</p>` : ""}
+      <p class="note kbd-hint">Astuce : réponds avec les touches A, B, C, D${exam ? "" : " et passe à la suite avec Entrée"}.</p>
     </div>`, true));
   bindReadingTools(view(), () => q.q + ". " + opts4.map((o, i) => "Réponse " + "ABCD"[i] + " : " + o).join(". "));
 
   if (exam){
     const el = document.getElementById("timer");
     const upd = () => {
-      if (!document.getElementById("timer")){ stopTimer(); return; }   // l'utilisateur a quitté la page
+      if (!document.getElementById("timer")){ stopTimer(); guardExam(false); return; }   // l'utilisateur a quitté la page
       const left = Math.max(0, Math.round((run.deadline - Date.now()) / 1000));
       el.querySelector("b").textContent = fmt(left);
       el.classList.toggle("low", left <= 300);
       if (left <= 0){
-        stopTimer();
+        stopTimer(); guardExam(false);
         run.timeout = true;
         for (const id of run.ids.slice(run.pos)) run.wrong.push(id);
         run.pos = run.ids.length;
         onDone(run);
       }
     };
+    guardExam(true);
     stopTimer(); upd(); tick = setInterval(upd, 1000);
   }
 

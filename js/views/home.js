@@ -1,70 +1,70 @@
-/* Page d'accueil : présentation, progression et choix du mode d'entraînement. */
-import { Q, THEMES, DAILY_N, EXAMS } from "../core/data.js";
+/* Page d'accueil : une action principale (la série du jour), la progression et les autres entraînements. */
+import { Q, THEMES, DAILY_N, EXAMS, PASS } from "../core/data.js";
 import { state } from "../core/state.js";
+import { sb } from "../core/supabase.js";
 import { esc } from "../core/utils.js";
-import { dailyIds, mastered, weakList, streak, seenCount } from "../core/progress.js";
+import { dailyIds, mastered, weakList, streak, seenCount, mocks } from "../core/progress.js";
 import { render } from "../ui/layout.js";
+
+const row = (tab, icon, title, desc, extra = "") => `<li><button type="button" class="lrow" data-tab="${tab}">
+  <i class='ic' data-i='${icon}'></i><span><b>${title}${extra}</b><small>${desc}</small></span><i class='ic' data-i='arrow-right'></i></button></li>`;
 
 export function showHome(){
   const dl = dailyIds();
-  const m = Q.filter(q=>mastered(q.id)).length, seen = seenCount();
+  const m = Q.filter(q => mastered(q.id)).length, seen = seenCount();
   const weakN = weakList().length, st = streak();
-  const R = 34, C = 2*Math.PI*R, frac = m/Q.length;
-  const dailyDone = dl.pos >= dl.ids.length;
-  const hello = state.user ? `Bonjour ${esc(state.user.name.split(" ")[0])} <i class='ic' data-i='hand'></i>` : "Bienvenue <i class='ic' data-i='hand'></i>";
+  const R = 34, C = 2 * Math.PI * R, frac = m / Q.length;
+  const dailyDone = dl.pos >= dl.ids.length, started = dl.pos > 0 && !dailyDone;
+  const last = mocks().slice(-1)[0];
+  const hello = state.user ? `Bonjour ${esc(state.user.name.split(" ")[0])}` : "Bienvenue";
+  const nKnow = Q.filter(q => !q.s).length, nSit = Q.length - nKnow;
+
+  const main = dailyDone
+    ? `<button class="btn primary" data-tab="exam"><i class='ic' data-i='exam'></i> Passer un examen blanc</button><span class="note done-note"><i class='ic' data-i='check'></i> Série du jour terminée, bravo !</span>`
+    : `<button class="btn primary" data-tab="daily"><i class='ic' data-i='play'></i> ${started ? `Continuer ma série du jour (${dl.pos}/${DAILY_N})` : "Commencer ma série du jour"}</button><span class="note">${DAILY_N} questions, environ 5 minutes</span>`;
+
   render(`
   <section class="hero">
     <div class="container">
       <div>
-        <span class="pill-tag"><i class='ic' data-i='cap'></i> Page d'entraînement</span>
+        <span class="pill-tag"><i class='ic' data-i='cap'></i> Entraînement gratuit</span>
         <h1>Prépare l'examen civique ${EXAMS[state.exam].of}</h1>
-        <p>Entraîne-toi sur les ${Q.filter(q => !q.s).length} questions officielles publiées par le ministère de l'Intérieur et sur ${Q.filter(q => q.s).length} mises en situation. Chaque réponse est corrigée et expliquée, et le site repère tes points faibles. Le jour J : 40 questions en 45 minutes, 32 bonnes réponses pour réussir.</p>
-        <div class="row">
-          <button class="btn light" data-tab="daily">${dailyDone?"<i class='ic' data-i='check'></i> Série du jour terminée":"<i class='ic' data-i='play'></i> Commencer la série du jour"}</button>
-          <button class="btn ghost-light" data-tab="exam"><i class='ic' data-i='exam'></i> Passer un examen blanc</button>
-        </div>
+        <p>${nKnow} questions officielles et ${nSit} mises en situation, chacune corrigée et expliquée. Le site repère tes points faibles et te les fait retravailler.</p>
+        <div class="row hero-cta">${main}</div>
       </div>
       <div class="hero-card">
         <h3>${hello}</h3>
         <div class="ring">
-          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Source Sans 3, sans-serif">${Math.round(frac*100)}%</text></svg>
-          <div><b>${m} / ${Q.length}</b><span>questions maîtrisées</span></div>
+          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Source Sans 3, sans-serif">${Math.round(frac * 100)}%</text></svg>
+          <div><b>${m} / ${Q.length}</b><span title="Une question est maîtrisée quand tu l'as réussie au moins deux fois, dont la dernière.">questions maîtrisées</span></div>
         </div>
-        <div class="minibar"><div><span><i class='ic' data-i='calendar'></i> Série du jour</span><b>${Math.min(dl.pos,DAILY_N)}/${DAILY_N}</b></div><div class="bar"><i style="width:${Math.min(dl.pos,DAILY_N)/DAILY_N*100}%"></i></div></div>
+        <div class="mini3">
+          <div><b>${st}</b><span>jour${st > 1 ? "s" : ""} d'affilée</span></div>
+          <div><b>${seen}</b><span>déjà vue${seen > 1 ? "s" : ""}</span></div>
+          <div><b>${weakN}</b><span>à améliorer</span></div>
+        </div>
+        <div class="minibar"><div><span><i class='ic' data-i='calendar'></i> Série du jour</span><b>${Math.min(dl.pos, DAILY_N)}/${DAILY_N}</b></div><div class="bar"><i style="width:${Math.min(dl.pos, DAILY_N) / DAILY_N * 100}%"></i></div></div>
+        ${!state.user && sb ? `<p class="nudge"><i class='ic' data-i='save'></i> Ta progression reste dans ce navigateur. <button type="button" class="link" data-signup>Crée un compte gratuit</button> pour la retrouver sur tous tes appareils.</p>` : ""}
       </div>
     </div>
   </section>
   <div class="page container">
-    <div class="grid g4">
-      <div class="stat"><div class="ico"><i class='ic' data-i='flame'></i></div><div><b>${st}</b><span>jour${st>1?"s":""} d'affilée</span></div></div>
-      <div class="stat"><div class="ico"><i class='ic' data-i='check'></i></div><div><b>${m}</b><span>maîtrisées sur ${Q.length}</span></div></div>
-      <div class="stat"><div class="ico"><i class='ic' data-i='eye'></i></div><div><b>${seen}</b><span>questions déjà vues</span></div></div>
-      <div class="stat"><div class="ico"><i class='ic' data-i='target'></i></div><div><b>${weakN}</b><span>point${weakN>1?"s":""} à améliorer</span></div></div>
-    </div>
-
-    <h2 class="sec"><i class='ic' data-i='rocket'></i> Choisis ton entraînement</h2>
-    <div class="grid g3">
-      <div class="mode"><div class="ico"><i class='ic' data-i='calendar'></i></div><h3>Série du jour</h3><p>15 questions par jour : d'abord tes erreurs, puis des questions nouvelles. L'idéal pour progresser chaque jour.</p><button class="btn primary sm" data-tab="daily"><i class='ic' data-i='play'></i> Commencer</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='exam'></i></div><h3>Examen blanc</h3><p>40 questions en 45 minutes avec chronomètre, corrigées à la fin comme le jour J. Ton historique de notes est conservé.</p><button class="btn sm" data-tab="exam"><i class='ic' data-i='timer'></i> Passer l'examen</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='book'></i></div><h3>Par thème</h3><p>Travaille un des 5 thèmes officiels : valeurs, institutions, droits, histoire, vie en société.</p><button class="btn sm" data-tab="themes"><i class='ic' data-i='folder'></i> Voir les thèmes</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='target'></i></div><h3>À améliorer</h3><p>Ton bilan automatique : les notions où tu te trompes, l'essentiel à retenir et un entraînement ciblé.</p><button class="btn sm" data-tab="weak"><i class='ic' data-i='chart'></i> Voir mon bilan</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='search'></i></div><h3>Révision</h3><p>Toutes les questions avec la réponse et l'explication. Recherche par mot-clé ou affiche seulement tes erreurs.</p><button class="btn sm" data-tab="review"><i class='ic' data-i='book'></i> Réviser</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='bulb'></i></div><h3>Comment ça marche ?</h3><p>Une question est « maîtrisée » quand tu l'as réussie au moins deux fois, dont la dernière. Reviens chaque jour pour garder ta série <i class='ic' data-i='flame'></i>.</p></div>
-    </div>
-
-    <div class="grid g2">
+    <div class="grid g2 home-grid">
       <div class="card"><h2 class="sec" style="margin:0 0 6px"><i class='ic' data-i='trend-up'></i> Ta progression par thème</h2>
-        ${Object.entries(THEMES).map(([k,name])=>{ const qs=Q.filter(q=>q.t===k), mm=qs.filter(q=>mastered(q.id)).length;
-          return `<div class="themerow"><div><span>${THEMES[k].icon} ${esc(name.label)}</span><small>${mm}/${qs.length}</small></div><div class="bar"><i style="width:${mm/qs.length*100}%"></i></div></div>`; }).join("")}
+        ${Object.entries(THEMES).map(([k, th]) => { const qs = Q.filter(q => q.t === k), mm = qs.filter(q => mastered(q.id)).length;
+          return `<div class="themerow"><div><span>${th.icon} ${esc(th.label)}</span><small>${mm}/${qs.length}</small></div><div class="bar"><i style="width:${qs.length ? mm / qs.length * 100 : 0}%"></i></div></div>`; }).join("")}
       </div>
-      <div class="card"><h2 class="sec" style="margin:0 0 14px"><i class='ic' data-i='compass'></i> L'examen en bref</h2>
-        <div class="steps" style="display:flex;flex-direction:column;gap:16px">
-          <div class="step"><span class="n">1</span><div><b>40 questions en QCM, 45 minutes</b><span>28 questions de connaissance et 12 mises en situation, 4 choix et une seule bonne réponse.</span></div></div>
-          <div class="step"><span class="n">2</span><div><b>32 bonnes réponses minimum</b><span>Soit 80 % de réussite pour obtenir l'attestation.</span></div></div>
-          <div class="step"><span class="n">3</span><div><b>Connaissances + mises en situation</b><span>Le ministère ne publie pas les mises en situation : celles du site sont des exemples rédigés pour s'entraîner.</span></div></div>
-        </div>
+      <div class="card"><h2 class="sec" style="margin:0 0 6px"><i class='ic' data-i='rocket'></i> Autres entraînements</h2>
+        <ul class="lrows">
+          ${row("exam", "exam", "Examen blanc", "40 questions en 45 minutes, corrigées à la fin comme le jour J", last ? ` <span class="pill ${last.g >= PASS ? "ok" : "ko"} sm">dernier : ${last.g}/${last.n}</span>` : "")}
+          ${row("themes", "book", "Par thème", "Les 5 thèmes officiels, un par un")}
+          ${row("weak", "target", "À améliorer", "Tes notions fragiles et un entraînement ciblé", weakN ? ` <span class="badge">${weakN}</span>` : "")}
+          ${row("review", "search", "Révision", "Toutes les questions avec réponse et explication")}
+          ${row("info", "link", "Liens utiles", "Inscription à l'examen, centres agréés, textes officiels")}
+        </ul>
       </div>
     </div>
     <div id="install-slot"></div>
   </div>`);
+  document.querySelector("[data-signup]")?.addEventListener("click", () => import("../auth/auth.js").then(a => a.showAuth("signup")));
 }

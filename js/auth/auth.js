@@ -175,6 +175,7 @@ export async function boot(){
   if (RECOVERING){ showAuth("newpass"); return; }
   try {
     const { data: { session } } = await sb.auth.getSession();
-    if (session) await enter(session.user); else showAuth("login");
-  } catch(e){ showAuth("login", ["err", frErr(e)]); }
+    // Sans session : on arrive directement sur le site, sans écran de connexion (le compte est proposé ensuite).
+    if (session) await enter(session.user); else await enterGuest();
+  } catch(e){ await enterGuest(); }
 }

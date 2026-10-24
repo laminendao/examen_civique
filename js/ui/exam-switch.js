@@ -3,7 +3,7 @@
 import { state } from "../core/state.js";
 import { EXAMS, EXAM_ORDER, isExam, loadExam, Q } from "../core/data.js";
 import { rememberExam, refreshStats, examSummary, save } from "../core/progress.js";
-import { go, current, replaceUrl } from "../core/router.js";
+import { go, current, replaceUrl, canLeave } from "../core/router.js";
 
 const bar = () => document.getElementById("exambar");
 
@@ -38,6 +38,7 @@ export function showExamBar(show){ bar().hidden = !show; }
 /* Change d'examen : charge ses questions, garde le choix, rafraîchit l'écran en cours. */
 export async function switchExam(slug){
   if (!isExam(slug) || slug === state.exam) return;
+  if (!(await canLeave())) return;
   const tabs = bar().querySelectorAll(".exam-tab");
   tabs.forEach(t => t.disabled = true);
   try {
