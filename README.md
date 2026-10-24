@@ -20,6 +20,10 @@ Après chaque réponse, le site affiche la bonne réponse et une explication. En
 
 Le site compte vos jours d'entraînement consécutifs et les questions que vous maîtrisez (réussies au moins deux fois, dont la dernière). Avec un compte, cette progression est enregistrée en ligne et vous la retrouvez sur tous vos appareils. Sans compte, elle reste dans votre navigateur : utilisez alors le même appareil et le même navigateur.
 
+## Mise en ligne
+
+La liste complète des réglages pour la production (nom de domaine, e-mails Brevo, e-mails en français, anti-robots, mise en veille) est dans `MISE_EN_LIGNE.md`.
+
 ## Comptes utilisateurs (Supabase)
 
 Le site propose un espace de connexion : chaque personne crée son compte (prénom, e-mail, mot de passe) et retrouve sa progression et ses points à améliorer sur tous ses appareils. Sans configuration, le site fonctionne en mode « sans compte » (progression gardée dans le navigateur).
@@ -42,6 +46,17 @@ Mise en place, une seule fois :
 5. Facultatif : dans **Authentication > Sign In / Providers > Email**, désactiver **Confirm email** pour que les comptes soient actifs sans passer par l'e-mail de confirmation.
 
 Chaque compte a sa propre progression, indépendante de celle faite sans compte. À l'inscription, le site demande le nom complet, puis, de façon facultative, le genre et la situation professionnelle. Ces informations sont visibles dans Supabase, dans **Authentication > Users**, champ *raw user meta data*. Un bouton en bas de l'onglet **À améliorer** permet de remettre sa progression à zéro.
+
+## Mentions légales, confidentialité et suppression de compte
+
+- Le pied de page donne accès aux **mentions légales** et à la **politique de confidentialité** (RGPD). Le nom de l'éditeur et l'adresse de contact se règlent en haut de `index.html`, dans `editorName` et `contactEmail`.
+- Le menu de la pastille ouvre **Mon compte et mes données** : on peut y télécharger ses données (fichier JSON) et supprimer son compte.
+- Pour que la suppression de compte fonctionne, exécuter à nouveau `supabase_setup.sql` dans **SQL Editor** : le script ajoute la fonction `delete_my_account`. On peut le relancer sans risque.
+- Vérifier dans Supabase (**Project Settings > General**) que le projet est hébergé dans une région de l'Union européenne.
+
+## Licence
+
+Code, design, réponses et explications : tous droits réservés (voir `LICENSE`). Les questions officielles restent sous licence ouverte Etalab 2.0.
 
 ## Bon à savoir
 

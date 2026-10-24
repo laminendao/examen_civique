@@ -231,6 +231,7 @@ input[type=search]:focus{border-color:var(--accent);outline:none}
 .field small{font-weight:500;color:var(--muted)}
 .field input,.field select{font:inherit;font-weight:500;padding:12px 14px;border-radius:12px;border:2px solid var(--line-strong);background:#fff;color:var(--ink)}
 .field input:focus,.field select:focus{border-color:var(--accent);outline:none}
+.captcha{min-height:65px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .msg{font-size:.92rem;border-radius:10px;padding:10px 12px;margin:0}
 .msg.err{background:var(--ko-soft);color:var(--ko)}
@@ -285,6 +286,8 @@ window.EC_CONFIG = {
   supabaseUrl: "https://rqxohlirhgyxzokzqaha.supabase.co",
   supabaseAnonKey: "sb_publishable_F4N_k5e8o0lGebWe0kdB5A_zT1CuffJ",
   // Mentions légales : éditeur du site et adresse de contact (RGPD)
+  // Anti-robots (Cloudflare Turnstile) : clé de site publique. Vide = pas de CAPTCHA. Voir MISE_EN_LIGNE.md.
+  turnstileSiteKey: "0x4AAAAAAFj_zOlN0ze72X4p",
   editorName: "Mouhamadou Lamine NDAO",
   contactEmail: "ndao.lamine0404@gmail.com"
 };
@@ -940,6 +943,7 @@ const ERRORS = [
   [/password should be at least|weak password/i, "Le mot de passe doit contenir au moins 8 caractères."],
   [/invalid email|unable to validate email/i, "Cette adresse e-mail n'est pas valide."],
   [/rate limit|too many/i, "Trop de tentatives. Réessaie dans quelques minutes."],
+  [/captcha/i, "La vérification anti-robot a échoué ou a expiré. Recommence."],
   [/fetch|network/i, "Connexion au serveur impossible. Vérifie ta connexion internet."],
 ];
 const frErr = e => { const m = (e && e.message) || String(e); for (const [r,t] of ERRORS) if (r.test(m)) return t; return "Une erreur est survenue : " + m; };
@@ -947,6 +951,35 @@ const frErr = e => { const m = (e && e.message) || String(e); for (const [r,t] o
 function setChrome(showNav){
   document.getElementById("navlinks").hidden = !showNav;
   document.getElementById("tabbar").hidden = !showNav;
+}
+
+/* ---------- Anti-robots Cloudflare Turnstile ---------- */
+let captchaToken = null, turnstileLoading = null;
+function loadTurnstile(){
+  if (window.turnstile) return Promise.resolve();
+  if (!turnstileLoading) turnstileLoading = new Promise((ok, ko)=>{
+    const sc = document.createElement("script");
+    sc.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    sc.async = true; sc.onload = ok; sc.onerror = ko;
+    document.head.appendChild(sc);
+  });
+  return turnstileLoading;
+}
+function renderCaptcha(){
+  loadTurnstile().then(()=>{
+    const el = document.getElementById("cf-captcha"); if (!el) return;
+    window.turnstile.render(el, {
+      sitekey: CFG.turnstileSiteKey, language: "fr", theme: "light",
+      callback: t => { captchaToken = t; },
+      "expired-callback": () => { captchaToken = null; },
+      "error-callback": () => { captchaToken = null; }
+    });
+  }).catch(()=> showAuthError("La vérification anti-robot n'a pas pu se charger. Vérifie ta connexion puis recharge la page."));
+}
+function showAuthError(t){
+  let el = document.getElementById("auth-inline-err");
+  if (!el){ el = document.createElement("p"); el.id = "auth-inline-err"; el.className = "msg err"; el.setAttribute("role","alert"); document.getElementById("auth-form").before(el); }
+  el.textContent = t;
 }
 
 function showAuth(mode="login", msg=null){
@@ -971,6 +1004,8 @@ function showAuth(mode="login", msg=null){
       + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site. En créant un compte, tu acceptes la <a href="confidentialite" data-tab="privacy" style="color:var(--accent);font-weight:700">politique de confidentialité</a>.</p>`,
     reset: F("a-email","E-mail","email","email"),
     newpass: F("a-pass","Nouveau mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')};
+  const useCaptcha = !!CFG.turnstileSiteKey && mode !== "newpass";
+  captchaToken = null;
   const btn = {login:"Se connecter ➜", signup:"✨ Créer mon compte", reset:"📧 Envoyer le lien", newpass:"💾 Enregistrer"};
   const links = {
     login:`<button type="button" class="link" data-m="signup">Pas encore de compte ? Inscris-toi</button><button type="button" class="link" data-m="reset">Mot de passe oublié ?</button>`,
@@ -991,7 +1026,7 @@ function showAuth(mode="login", msg=null){
     <div class="authform">
       <h2>${titles[mode]}</h2><p class="note" style="margin:0">${intro[mode]}</p>
       ${msg?`<p class="msg ${msg[0]}" role="status">${esc(msg[1])}</p>`:""}
-      <form id="auth-form" novalidate>${fields[mode]}<button class="btn primary block" type="submit">${btn[mode]}</button></form>
+      <form id="auth-form" novalidate>${fields[mode]}${useCaptcha?`<div id="cf-captcha" class="captcha"></div>`:""}<button class="btn primary block" type="submit">${btn[mode]}</button></form>
       <div class="links">${links[mode]}</div>
       ${mode!=="newpass"?`<div class="sep">Tu peux aussi <button type="button" class="link" id="guest">continuer sans compte</button> : ta progression restera alors seulement dans ce navigateur.</div>`:""}
     </div></div>`;
@@ -999,24 +1034,27 @@ function showAuth(mode="login", msg=null){
   const g = document.getElementById("guest"); if (g) g.addEventListener("click", enterGuest);
   const form = document.getElementById("auth-form");
   form.querySelector("input").focus({preventScroll:true});
+  if (useCaptcha) renderCaptcha();
   form.addEventListener("submit", async e=>{
     e.preventDefault();
     if (!form.reportValidity()) return;
+    if (useCaptcha && !captchaToken){ showAuthError("Merci de valider la vérification anti-robot avant de continuer."); return; }
+    const cap = useCaptcha ? {captchaToken} : {};
     const v = id => (document.getElementById(id)||{}).value || "";
     if (v("a-email")) lastEmail = v("a-email").trim();
     const sub = form.querySelector("button[type=submit]"); sub.disabled = true; sub.textContent = "⏳ Patiente…";
     try {
       if (mode==="login"){
-        const {data, error} = await sb.auth.signInWithPassword({email:v("a-email").trim(), password:v("a-pass")});
+        const {data, error} = await sb.auth.signInWithPassword({email:v("a-email").trim(), password:v("a-pass"), options:cap});
         if (error) throw error;
         await enter(data.user);
       } else if (mode==="signup"){
-        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{full_name:v("a-name").trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL}});
+        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{full_name:v("a-name").trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL, ...cap}});
         if (error) throw error;
         if (data.session) await enter(data.user);
         else showAuth("login", ["info","Compte créé. Ouvre le lien reçu par e-mail pour l'activer, puis connecte-toi ici."]);
       } else if (mode==="reset"){
-        const {error} = await sb.auth.resetPasswordForEmail(v("a-email").trim(), {redirectTo:APP_URL});
+        const {error} = await sb.auth.resetPasswordForEmail(v("a-email").trim(), {redirectTo:APP_URL, ...cap});
         if (error) throw error;
         showAuth("login", ["info","Si un compte existe avec cette adresse, un e-mail de réinitialisation vient d'être envoyé."]);
       } else if (mode==="newpass"){
