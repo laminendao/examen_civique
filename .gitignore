@@ -1,4 +1,13 @@
+# Système et éditeurs
 .DS_Store
 .vscode/
 *.log
 node_modules/
+
+# Fichiers de travail : gardés sur l'ordinateur, pas publiés sur GitHub
+README.md
+MISE_EN_LIGNE.md
+docs/
+deploy/
+supabase/
+tools/

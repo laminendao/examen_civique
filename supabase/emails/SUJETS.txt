@@ -1,6 +1,0 @@
-Objets des e-mails à mettre dans Supabase (champ « Subject ») :
-
-Confirm signup      : Active ton compte et prépare ton examen civique ✅
-Reset password      : Réinitialise ton mot de passe 🔑
-Change email address: Confirme ta nouvelle adresse e-mail
-Magic link          : Ton lien de connexion à Examen civique
