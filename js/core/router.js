@@ -54,6 +54,7 @@ export let current = "home";
 export function go(tab, render = true, pushUrl = true){
   if (!VIEWS[tab]) tab = "home";
   current = tab;
+  document.body.dataset.tab = tab;   // le choix de l'examen est masqué sur les pages générales (voir style.css)
   document.querySelectorAll(".navlink, .tabbar button").forEach(b => {
     if (b.dataset.tab === tab) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
   });

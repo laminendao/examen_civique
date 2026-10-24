@@ -460,3 +460,5 @@ body.big .expl{font-size:1.08rem}
 .hist th{text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding:8px 6px}
 .hist td{border-bottom:1px solid var(--line);padding:8px 6px;font-variant-numeric:tabular-nums}
 .pill.sm{font-size:.76rem;padding:3px 8px}
+/* Pages communes aux trois examens : pas de barre de choix de l'examen */
+body[data-tab="info"] .exambar,body[data-tab="legal"] .exambar,body[data-tab="privacy"] .exambar,body[data-tab="account"] .exambar{display:none}
