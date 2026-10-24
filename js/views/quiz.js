@@ -60,7 +60,7 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}
       ${exam ? `<p class="note exam-hint">Comme le jour J, la correction s'affiche à la fin de l'examen.</p>` : ""}
       <p class="note kbd-hint">Astuce : réponds avec les touches A, B, C, D${exam ? "" : " et passe à la suite avec Entrée"}.</p>
     </div>`, true));
-  bindReadingTools(view(), () => q.q + ". " + opts4.map((o, i) => "Réponse " + "ABCD"[i] + " : " + o).join(". "));
+  bindReadingTools(view(), () => [q.q, ...opts4.map((o, i) => "Réponse " + "ABCD"[i] + ". " + o + ".")]);
 
   if (exam){
     const el = document.getElementById("timer");
@@ -82,6 +82,7 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}
   }
 
   view().querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => {
+    stopSpeaking();
     const pick = opts4[+b.dataset.v], ok = pick === q.a;
     view().querySelectorAll(".opt").forEach(x => x.disabled = true);
     record(q.id, ok);

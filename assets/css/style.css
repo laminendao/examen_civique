@@ -547,3 +547,4 @@ button.lrow{width:100%;background:none;border:0;font:inherit;text-align:left;cur
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;background:var(--ink);color:#fff;padding:12px 18px;border-radius:8px;font-size:.95rem;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:opacity .4s;max-width:calc(100% - 32px)}
 .toast.out{opacity:0}
 @media (max-width:1279px){.toast{bottom:calc(84px + env(safe-area-inset-bottom))}}
+.tool.on[data-speak]{color:#fff;background:var(--accent);border-color:var(--accent)}
