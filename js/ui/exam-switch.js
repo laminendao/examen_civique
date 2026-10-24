@@ -3,7 +3,7 @@
 import { state } from "../core/state.js";
 import { EXAMS, EXAM_ORDER, isExam, loadExam, Q } from "../core/data.js";
 import { rememberExam, refreshStats, examSummary, save } from "../core/progress.js";
-import { go, current } from "../core/router.js";
+import { go, current, replaceUrl } from "../core/router.js";
 
 const bar = () => document.getElementById("exambar");
 
@@ -15,7 +15,8 @@ export async function useExam(slug){
   const e = EXAMS[slug];
   document.getElementById("brand-sub").textContent = "Entraînement · " + e.label.toLowerCase();
   document.getElementById("foot-exam").textContent = "Examen civique · " + e.label.toLowerCase();
-  document.title = "Examen civique " + e.of.replace(/^de (la )?/, "") + " : entraînement gratuit";
+  document.title = e.title;
+  document.querySelector('meta[name="description"]')?.setAttribute("content", e.desc);
   paintBar();
 }
 
@@ -34,23 +35,30 @@ export function paintBar(){
 
 export function showExamBar(show){ bar().hidden = !show; }
 
+/* Change d'examen : charge ses questions, garde le choix, rafraîchit l'écran en cours. */
+export async function switchExam(slug){
+  if (!isExam(slug) || slug === state.exam) return;
+  const tabs = bar().querySelectorAll(".exam-tab");
+  tabs.forEach(t => t.disabled = true);
+  try {
+    await useExam(slug);
+    rememberExam(state.exam);
+    save();
+    refreshStats();
+    const t = current || "home";
+    go(t, true, false);
+    if (t === "home") replaceUrl("home");
+  } catch(e){
+    console.error(e);
+  }
+  paintBar();
+}
+
 export function setupExamSwitch(){
   document.addEventListener("ec-stats", paintBar);
-  bar().addEventListener("click", async ev => {
+  document.addEventListener("ec-exam-url", e => switchExam(e.detail));
+  bar().addEventListener("click", ev => {
     const b = ev.target.closest("[data-exam]");
-    if (!b || b.dataset.exam === state.exam) return;
-    const tabs = bar().querySelectorAll(".exam-tab");
-    tabs.forEach(t => t.disabled = true);
-    try {
-      await useExam(b.dataset.exam);
-      rememberExam(state.exam);
-      save();
-      refreshStats();
-      paintBar();
-      go(current || "home", true, false);
-    } catch(e){
-      console.error(e);
-      tabs.forEach(t => t.disabled = false);
-    }
+    if (b) switchExam(b.dataset.exam);
   });
 }

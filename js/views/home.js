@@ -18,7 +18,7 @@ export function showHome(){
       <div>
         <span class="pill-tag"><i class='ic' data-i='cap'></i> Page d'entraînement</span>
         <h1>Prépare l'examen civique ${EXAMS[state.exam].of}</h1>
-        <p>Entraîne-toi sur les ${Q.length} questions publiées par le ministère de l'Intérieur. Chaque réponse est corrigée et expliquée, et le site repère tes points faibles. Le jour J : 40 questions en 45 minutes, 32 bonnes réponses pour réussir.</p>
+        <p>Entraîne-toi sur les ${Q.filter(q => !q.s).length} questions officielles publiées par le ministère de l'Intérieur et sur ${Q.filter(q => q.s).length} mises en situation. Chaque réponse est corrigée et expliquée, et le site repère tes points faibles. Le jour J : 40 questions en 45 minutes, 32 bonnes réponses pour réussir.</p>
         <div class="row">
           <button class="btn light" data-tab="daily">${dailyDone?"<i class='ic' data-i='check'></i> Série du jour terminée":"<i class='ic' data-i='play'></i> Commencer la série du jour"}</button>
           <button class="btn ghost-light" data-tab="exam"><i class='ic' data-i='exam'></i> Passer un examen blanc</button>
@@ -27,7 +27,7 @@ export function showHome(){
       <div class="hero-card">
         <h3>${hello}</h3>
         <div class="ring">
-          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Plus Jakarta Sans, sans-serif">${Math.round(frac*100)}%</text></svg>
+          <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#c1002a" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Source Sans 3, sans-serif">${Math.round(frac*100)}%</text></svg>
           <div><b>${m} / ${Q.length}</b><span>questions maîtrisées</span></div>
         </div>
         <div class="minibar"><div><span><i class='ic' data-i='calendar'></i> Série du jour</span><b>${Math.min(dl.pos,DAILY_N)}/${DAILY_N}</b></div><div class="bar"><i style="width:${Math.min(dl.pos,DAILY_N)/DAILY_N*100}%"></i></div></div>
@@ -45,7 +45,7 @@ export function showHome(){
     <h2 class="sec"><i class='ic' data-i='rocket'></i> Choisis ton entraînement</h2>
     <div class="grid g3">
       <div class="mode"><div class="ico"><i class='ic' data-i='calendar'></i></div><h3>Série du jour</h3><p>15 questions par jour : d'abord tes erreurs, puis des questions nouvelles. L'idéal pour progresser chaque jour.</p><button class="btn primary sm" data-tab="daily"><i class='ic' data-i='play'></i> Commencer</button></div>
-      <div class="mode"><div class="ico"><i class='ic' data-i='exam'></i></div><h3>Examen blanc</h3><p>40 questions tirées au hasard, comme le jour J. Il faut 32 bonnes réponses (80 %) pour réussir.</p><button class="btn sm" data-tab="exam"><i class='ic' data-i='timer'></i> Passer l'examen</button></div>
+      <div class="mode"><div class="ico"><i class='ic' data-i='exam'></i></div><h3>Examen blanc</h3><p>40 questions en 45 minutes avec chronomètre, corrigées à la fin comme le jour J. Ton historique de notes est conservé.</p><button class="btn sm" data-tab="exam"><i class='ic' data-i='timer'></i> Passer l'examen</button></div>
       <div class="mode"><div class="ico"><i class='ic' data-i='book'></i></div><h3>Par thème</h3><p>Travaille un des 5 thèmes officiels : valeurs, institutions, droits, histoire, vie en société.</p><button class="btn sm" data-tab="themes"><i class='ic' data-i='folder'></i> Voir les thèmes</button></div>
       <div class="mode"><div class="ico"><i class='ic' data-i='target'></i></div><h3>À améliorer</h3><p>Ton bilan automatique : les notions où tu te trompes, l'essentiel à retenir et un entraînement ciblé.</p><button class="btn sm" data-tab="weak"><i class='ic' data-i='chart'></i> Voir mon bilan</button></div>
       <div class="mode"><div class="ico"><i class='ic' data-i='search'></i></div><h3>Révision</h3><p>Toutes les questions avec la réponse et l'explication. Recherche par mot-clé ou affiche seulement tes erreurs.</p><button class="btn sm" data-tab="review"><i class='ic' data-i='book'></i> Réviser</button></div>
@@ -61,9 +61,10 @@ export function showHome(){
         <div class="steps" style="display:flex;flex-direction:column;gap:16px">
           <div class="step"><span class="n">1</span><div><b>40 questions en QCM, 45 minutes</b><span>28 questions de connaissance et 12 mises en situation, 4 choix et une seule bonne réponse.</span></div></div>
           <div class="step"><span class="n">2</span><div><b>32 bonnes réponses minimum</b><span>Soit 80 % de réussite pour obtenir l'attestation.</span></div></div>
-          <div class="step"><span class="n">3</span><div><b>Connaissances + mises en situation</b><span>Les questions de mise en situation ne sont pas publiées : elles ne figurent pas ici.</span></div></div>
+          <div class="step"><span class="n">3</span><div><b>Connaissances + mises en situation</b><span>Le ministère ne publie pas les mises en situation : celles du site sont des exemples rédigés pour s'entraîner.</span></div></div>
         </div>
       </div>
     </div>
+    <div id="install-slot"></div>
   </div>`);
 }

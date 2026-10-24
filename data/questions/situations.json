@@ -1,0 +1,657 @@
+{
+ "label": "Mises en situation",
+ "source": "Exemples rédigés pour l'entraînement, à partir du programme officiel. Le ministère ne publie pas les mises en situation de l'examen.",
+ "official": false,
+ "questions": [
+  {
+   "id": "s1",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Dans votre entreprise privée, un collègue porte un signe religieux discret. Que faites-vous ?",
+   "answer": "Vous le respectez : c'est en principe permis dans le privé",
+   "distractors": [
+    "Vous lui demandez de le retirer car la France est un pays laïque",
+    "Vous le signalez à la mairie pour non-respect de la laïcité",
+    "Vous refusez de travailler avec lui tant qu'il le porte"
+   ],
+   "explanation": "La neutralité religieuse s'impose aux agents publics. Dans le privé, les salariés peuvent manifester leur religion, sauf restriction justifiée prévue par le règlement intérieur."
+  },
+  {
+   "id": "s2",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Votre fille de 12 ans veut aller au collège public avec un voile. Que se passe-t-il ?",
+   "answer": "C'est interdit pour les élèves des établissements publics",
+   "distractors": [
+    "C'est autorisé si les parents signent une autorisation écrite",
+    "C'est autorisé uniquement pendant les récréations et à la cantine",
+    "C'est le professeur principal qui décide seul chaque année"
+   ],
+   "explanation": "La loi du 15 mars 2004 interdit aux élèves des écoles, collèges et lycées publics de porter des signes ou tenues manifestant ostensiblement une appartenance religieuse."
+  },
+  {
+   "id": "s3",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Vous travaillez à l'accueil d'une mairie. Pouvez-vous porter un signe religieux visible ?",
+   "answer": "Non, les agents publics sont tenus à la neutralité",
+   "distractors": [
+    "Oui, si les usagers ne s'en plaignent pas au guichet",
+    "Oui, si votre chef de service vous l'autorise par écrit",
+    "Oui, à condition que le signe soit de petite taille"
+   ],
+   "explanation": "Tout agent du service public, quel que soit son poste, doit rester neutre : il ne peut pas manifester ses convictions religieuses dans l'exercice de ses fonctions."
+  },
+  {
+   "id": "s4",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Vous allez à la mairie avec un foulard religieux pour faire une démarche. Peut-on refuser de vous recevoir ?",
+   "answer": "Non : la neutralité s'impose aux agents, pas aux usagers",
+   "distractors": [
+    "Oui : la laïcité interdit tout signe religieux en mairie",
+    "Oui, sauf si vous venez accompagné d'un avocat",
+    "Oui, si l'agent d'accueil n'est pas de la même religion"
+   ],
+   "explanation": "Les usagers des services publics peuvent manifester leur religion, dans le respect de l'ordre public. Seule la dissimulation du visage est interdite dans l'espace public."
+  },
+  {
+   "id": "s5",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Une personne veut se promener dans la rue avec le visage entièrement caché. Est-ce permis ?",
+   "answer": "Non, c'est interdit dans l'espace public depuis 2010",
+   "distractors": [
+    "Oui, si c'est pour des raisons religieuses ou culturelles",
+    "Oui, sauf dans les bus, les trains et le métro",
+    "Oui, à condition d'être accompagné d'un proche majeur"
+   ],
+   "explanation": "La loi du 11 octobre 2010 interdit de dissimuler son visage dans l'espace public (rue, commerces, transports, administrations), sauf exceptions comme les raisons de santé."
+  },
+  {
+   "id": "s6",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Votre enfant ne mange pas de porc et déjeune à la cantine de l'école publique. Que pouvez-vous faire ?",
+   "answer": "En parler à la mairie : un menu de remplacement est possible",
+   "distractors": [
+    "Exiger un menu religieux : c'est un droit garanti par la loi",
+    "Porter plainte contre l'école pour discrimination religieuse",
+    "Retirer votre enfant de l'école publique, c'est obligatoire"
+   ],
+   "explanation": "Chaque commune décide d'offrir ou non des menus de substitution. La laïcité n'oblige ni à en proposer ni à les interdire."
+  },
+  {
+   "id": "s7",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Un ami veut quitter sa religion, mais sa famille s'y oppose. Que dit la loi ?",
+   "answer": "Il est libre de changer de religion ou de ne plus en avoir",
+   "distractors": [
+    "Il doit obtenir l'accord écrit de ses deux parents",
+    "Il doit déclarer son choix à la mairie de sa commune",
+    "Il ne peut le faire qu'à partir de l'âge de 25 ans révolus"
+   ],
+   "explanation": "La liberté de conscience permet de croire, de ne pas croire ou de changer de religion. Personne ne peut être contraint dans ce choix."
+  },
+  {
+   "id": "s8",
+   "theme": "P",
+   "notion": "laic",
+   "question": "Un enseignant d'école publique parle de sa religion en classe pour convaincre ses élèves. Que penser ?",
+   "answer": "Il manque à son devoir de neutralité d'agent public",
+   "distractors": [
+    "Il exerce normalement sa liberté d'expression d'enseignant",
+    "Il a raison si les parents d'élèves ne s'y opposent pas",
+    "Il peut le faire, mais seulement en dehors des cours"
+   ],
+   "explanation": "Les enseignants du public sont tenus à la neutralité. L'école publique enseigne le fait religieux de façon objective, sans jamais chercher à convaincre."
+  },
+  {
+   "id": "s9",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Un employeur refuse votre candidature à cause de votre origine. Que pouvez-vous faire ?",
+   "answer": "Saisir le Défenseur des droits ou porter plainte",
+   "distractors": [
+    "Rien : un employeur choisit toujours librement qui il embauche",
+    "Demander au maire d'obliger l'employeur à vous embaucher",
+    "Vous adresser à votre consulat, qui jugera l'affaire"
+   ],
+   "explanation": "Refuser une embauche en raison de l'origine est une discrimination punie par le Code pénal. Le Défenseur des droits peut être saisi gratuitement."
+  },
+  {
+   "id": "s10",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Un propriétaire refuse de vous louer son appartement parce que vous êtes étranger. Que dit la loi ?",
+   "answer": "C'est une discrimination interdite, que vous pouvez signaler",
+   "distractors": [
+    "C'est permis : chaque propriétaire choisit librement son locataire",
+    "C'est permis si le logement est loué déjà meublé",
+    "C'est permis tant que vous n'êtes pas naturalisé"
+   ],
+   "explanation": "Un bailleur peut demander des garanties, mais il ne peut pas refuser un locataire en raison de son origine ou de sa nationalité. Le Défenseur des droits peut vous aider."
+  },
+  {
+   "id": "s11",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Une collègue est moins payée qu'un collègue homme pour exactement le même travail. Est-ce légal ?",
+   "answer": "Non : à travail égal, le salaire doit être égal",
+   "distractors": [
+    "Oui, si l'homme a des enfants à charge",
+    "Oui, dans les entreprises de moins de 50 salariés",
+    "Oui, si la salariée l'a accepté à l'embauche"
+   ],
+   "explanation": "Le Code du travail impose l'égalité de rémunération entre les femmes et les hommes pour un même travail ou un travail de valeur égale."
+  },
+  {
+   "id": "s12",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Votre voisin affirme que sa femme ne peut pas travailler sans son autorisation. A-t-il raison ?",
+   "answer": "Non, une femme mariée n'a pas besoin de l'accord de son mari",
+   "distractors": [
+    "Oui, l'accord du mari est obligatoire dans le mariage",
+    "Oui, si le couple a des enfants de moins de 3 ans à charge",
+    "Non, mais seulement si elle est elle-même de nationalité française"
+   ],
+   "explanation": "Depuis 1965, une femme mariée peut exercer une profession et ouvrir un compte bancaire sans l'autorisation de son mari. Les époux sont égaux en droits."
+  },
+  {
+   "id": "s13",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Vous êtes victime d'une insulte raciste dans la rue. Que pouvez-vous faire ?",
+   "answer": "Porter plainte : l'injure raciste est punie par la loi",
+   "distractors": [
+    "Rien, si vous ne connaissez pas le nom de la personne",
+    "Répondre par une insulte, c'est de la légitime défense",
+    "Prévenir d'abord votre ambassade, qui décidera de la suite"
+   ],
+   "explanation": "L'injure raciste est un délit. On peut porter plainte même contre une personne inconnue (plainte contre X), au commissariat ou à la gendarmerie."
+  },
+  {
+   "id": "s14",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Un restaurant refuse l'entrée à une personne aveugle accompagnée de son chien guide. Est-ce permis ?",
+   "answer": "Non, les chiens guides doivent être acceptés",
+   "distractors": [
+    "Oui, car les animaux sont souvent interdits en salle",
+    "Oui, si le chien ne porte pas de muselière",
+    "Oui, si le gérant du restaurant a peur des chiens"
+   ],
+   "explanation": "La loi garantit l'accès des chiens guides et d'assistance aux transports, commerces et lieux ouverts au public. Refuser l'accès est sanctionné."
+  },
+  {
+   "id": "s15",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Deux hommes souhaitent se marier à la mairie. Est-ce possible ?",
+   "answer": "Oui, c'est possible en France depuis la loi de 2013",
+   "distractors": [
+    "Non, le mariage n'est possible qu'entre un homme et une femme",
+    "Oui, mais seulement s'ils sont tous les deux français",
+    "Non, ils peuvent seulement se marier à l'étranger"
+   ],
+   "explanation": "La loi du 17 mai 2013 a ouvert le mariage et l'adoption aux couples de personnes de même sexe."
+  },
+  {
+   "id": "s16",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Vous voulez organiser une manifestation dans la rue. Que devez-vous faire ?",
+   "answer": "La déclarer à l'avance à la mairie ou à la préfecture",
+   "distractors": [
+    "Obtenir l'autorisation écrite de votre employeur",
+    "Rien : aucune démarche n'est jamais nécessaire",
+    "Laisser un syndicat l'organiser, c'est obligatoire"
+   ],
+   "explanation": "Le droit de manifester est une liberté, mais toute manifestation sur la voie publique doit être déclarée à l'avance (au moins trois jours francs) aux autorités."
+  },
+  {
+   "id": "s17",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Vos collègues font grève pour leurs salaires. Avez-vous le droit d'y participer ?",
+   "answer": "Oui, le droit de grève est reconnu par la Constitution",
+   "distractors": [
+    "Non, seuls les salariés de nationalité française peuvent faire grève",
+    "Oui, mais seulement avec l'accord de votre employeur",
+    "Non, sauf si vous êtes adhérent d'un syndicat"
+   ],
+   "explanation": "Le droit de grève figure dans le préambule de la Constitution de 1946. Tout salarié, quelle que soit sa nationalité, peut l'exercer ; la journée n'est alors pas payée."
+  },
+  {
+   "id": "s18",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Vous voulez critiquer publiquement une décision du gouvernement. Est-ce permis ?",
+   "answer": "Oui, sans injure, diffamation ni appel à la haine",
+   "distractors": [
+    "Non, c'est interdit aux personnes de nationalité étrangère",
+    "Oui, mais seulement pendant les campagnes électorales",
+    "Non, il faut d'abord une autorisation de la préfecture"
+   ],
+   "explanation": "La liberté d'expression permet de critiquer les responsables politiques. Ses seules limites sont fixées par la loi : injure, diffamation, incitation à la haine ou à la violence."
+  },
+  {
+   "id": "s19",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Votre colocataire ouvre votre courrier sans votre accord. Que dit la loi ?",
+   "answer": "C'est interdit : le secret des correspondances est protégé",
+   "distractors": [
+    "C'est permis puisqu'il vit à la même adresse que vous",
+    "C'est permis si la lettre vient d'une administration",
+    "C'est permis s'il vous rend la lettre juste après l'avoir lue"
+   ],
+   "explanation": "Ouvrir ou détourner le courrier d'autrui de mauvaise foi est puni par le Code pénal. Le secret des correspondances protège la vie privée."
+  },
+  {
+   "id": "s20",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Vous voulez créer une association avec des amis. Comment faire ?",
+   "answer": "C'est libre ; on peut la déclarer à la préfecture",
+   "distractors": [
+    "Il faut être de nationalité française depuis au moins dix ans",
+    "Il faut obtenir l'autorisation du maire de la commune",
+    "Il faut réunir au moins cinquante membres fondateurs"
+   ],
+   "explanation": "La loi de 1901 garantit la liberté d'association. Deux personnes suffisent ; la déclaration en préfecture permet à l'association d'avoir la capacité juridique."
+  },
+  {
+   "id": "s21",
+   "theme": "P",
+   "notion": "lib",
+   "question": "Votre voisin vous demande pour qui vous avez voté. Êtes-vous obligé de répondre ?",
+   "answer": "Non, le vote est secret : vous n'avez pas à le dire",
+   "distractors": [
+    "Oui, si c'est un élu de votre commune qui vous le demande",
+    "Oui, la loi oblige à déclarer son vote à ses voisins",
+    "Non, mais vous devez le déclarer ensuite à la mairie"
+   ],
+   "explanation": "Le secret du vote est un principe de la démocratie : chacun vote seul, dans l'isoloir, et n'a jamais à révéler son choix."
+  },
+  {
+   "id": "s22",
+   "theme": "P",
+   "notion": "sym",
+   "question": "Lors d'une cérémonie officielle, La Marseillaise est jouée. Comment vous comportez-vous ?",
+   "answer": "Vous vous levez et restez respectueux pendant l'hymne",
+   "distractors": [
+    "Vous continuez à discuter, cela n'a pas d'importance",
+    "Vous applaudissez pendant toute la durée de l'hymne",
+    "Vous quittez la salle si vous n'êtes pas français"
+   ],
+   "explanation": "La Marseillaise est l'hymne national, symbole de la République. Lors d'une cérémonie, on l'écoute debout et en silence, ou on la chante."
+  },
+  {
+   "id": "s23",
+   "theme": "P",
+   "notion": "sym",
+   "question": "Pendant une cérémonie publique, quelqu'un veut brûler un drapeau français. Que dit la loi ?",
+   "answer": "C'est interdit : l'outrage au drapeau est sanctionné",
+   "distractors": [
+    "C'est permis au nom de la liberté d'expression de chacun",
+    "C'est permis si le drapeau lui appartient personnellement",
+    "C'est permis en dehors des jours de fête nationale"
+   ],
+   "explanation": "Outrager le drapeau tricolore en public, par exemple en le détruisant, est sanctionné par la loi. Le drapeau bleu, blanc, rouge est l'emblème national."
+  },
+  {
+   "id": "s24",
+   "theme": "P",
+   "notion": "ega",
+   "question": "Votre fils refuse d'être soigné aux urgences par une infirmière parce que c'est une femme. Que lui dire ?",
+   "answer": "Qu'on ne choisit pas un soignant selon son sexe",
+   "distractors": [
+    "Qu'il peut exiger un infirmier homme, c'est un droit",
+    "Qu'il doit aller dans un autre hôpital du même quartier",
+    "Que l'hôpital doit le soigner en dernier par punition"
+   ],
+   "explanation": "L'égalité entre les femmes et les hommes s'applique à l'hôpital. Le fonctionnement du service public ne peut pas être remis en cause pour ce motif."
+  },
+  {
+   "id": "s25",
+   "theme": "D",
+   "notion": "just",
+   "question": "Votre voisin fait beaucoup de bruit toutes les nuits. Que faites-vous ?",
+   "answer": "Vous lui en parlez, puis vous faites appel à un conciliateur",
+   "distractors": [
+    "Vous coupez vous-même l'électricité de son logement la nuit",
+    "Vous faites encore plus de bruit pour vous venger de lui",
+    "Rien : la loi ne protège pas contre le bruit des voisins"
+   ],
+   "explanation": "Le tapage nocturne est une infraction. Il vaut mieux d'abord dialoguer ; un conciliateur de justice (gratuit) peut aider, et la police peut intervenir."
+  },
+  {
+   "id": "s26",
+   "theme": "D",
+   "notion": "fam",
+   "question": "Une voisine vous confie que son mari la frappe. Que faites-vous ?",
+   "answer": "Vous l'orientez vers le 3919 ou le 17 en cas de danger",
+   "distractors": [
+    "Rien : c'est une affaire privée qui ne concerne que le couple",
+    "Vous allez frapper son mari pour la défendre",
+    "Vous lui conseillez d'attendre que cela s'arrête seul"
+   ],
+   "explanation": "Les violences conjugales sont des délits graves. Le 3919 est gratuit et anonyme ; en urgence, on appelle le 17 ou on envoie un SMS au 114."
+  },
+  {
+   "id": "s27",
+   "theme": "D",
+   "notion": "ecole",
+   "question": "Votre enfant a 4 ans. Doit-il aller à l'école ?",
+   "answer": "Oui, l'instruction est obligatoire dès 3 ans",
+   "distractors": [
+    "Non, l'école ne devient obligatoire qu'à partir de 6 ans",
+    "Non, seulement si ses deux parents travaillent",
+    "Oui, mais uniquement le matin jusqu'à ses 5 ans"
+   ],
+   "explanation": "Depuis 2019, l'instruction est obligatoire pour tous les enfants de 3 à 16 ans, français ou étrangers. Elle se fait en principe à l'école."
+  },
+  {
+   "id": "s28",
+   "theme": "D",
+   "notion": "ecole",
+   "question": "Votre fils de 15 ans veut arrêter l'école pour travailler. Est-ce possible ?",
+   "answer": "Non, l'instruction est obligatoire jusqu'à 16 ans",
+   "distractors": [
+    "Oui, s'il a trouvé un employeur qui accepte",
+    "Oui, avec l'accord écrit de ses deux parents",
+    "Oui, à condition de travailler à temps partiel"
+   ],
+   "explanation": "L'instruction est obligatoire jusqu'à 16 ans, puis une obligation de formation s'applique jusqu'à 18 ans (études, apprentissage, emploi ou service civique)."
+  },
+  {
+   "id": "s29",
+   "theme": "D",
+   "notion": "trav",
+   "question": "Votre employeur vous propose de travailler sans contrat ni fiche de paie. Que faites-vous ?",
+   "answer": "Vous refusez : le travail non déclaré est illégal",
+   "distractors": [
+    "Vous acceptez, c'est permis pendant la période d'essai",
+    "Vous acceptez si le salaire versé en espèces est plus élevé",
+    "Vous acceptez, l'employeur pourra déclarer plus tard"
+   ],
+   "explanation": "Le travail dissimulé est interdit. Sans déclaration, vous n'avez ni protection en cas d'accident, ni droits au chômage ou à la retraite."
+  },
+  {
+   "id": "s30",
+   "theme": "D",
+   "notion": "trav",
+   "question": "Vous venez de perdre votre emploi. À quel organisme vous adressez-vous pour être accompagné ?",
+   "answer": "À France Travail, l'ancien Pôle emploi",
+   "distractors": [
+    "À la caisse d'allocations familiales (CAF)",
+    "Au centre des finances publiques",
+    "Au commissariat de police de votre quartier"
+   ],
+   "explanation": "France Travail inscrit les demandeurs d'emploi, les accompagne dans leur recherche et verse les allocations chômage lorsqu'ils y ont droit."
+  },
+  {
+   "id": "s31",
+   "theme": "D",
+   "notion": "vie",
+   "question": "Vous percevez pour la première fois des revenus en France. Que devez-vous faire ?",
+   "answer": "Les déclarer chaque année, même si vous ne payez pas d'impôt",
+   "distractors": [
+    "Rien, tant que vous n'avez pas la nationalité française",
+    "Les déclarer seulement si vous êtes propriétaire d'un logement",
+    "Rien, votre employeur s'occupe de tout à votre place"
+   ],
+   "explanation": "Toute personne qui réside en France doit déclarer ses revenus chaque année. Même sans impôt à payer, l'avis d'imposition sert pour de nombreuses démarches."
+  },
+  {
+   "id": "s32",
+   "theme": "D",
+   "notion": "just",
+   "question": "Vous achetez une voiture. Pouvez-vous rouler sans l'assurer ?",
+   "answer": "Non, l'assurance est obligatoire pour circuler",
+   "distractors": [
+    "Oui, pendant les trois premiers mois d'utilisation",
+    "Oui, si vous ne roulez que dans votre commune",
+    "Oui, si la voiture a plus de dix ans d'ancienneté"
+   ],
+   "explanation": "Tout véhicule qui circule doit être assuré au minimum en responsabilité civile. Rouler sans assurance est un délit lourdement sanctionné."
+  },
+  {
+   "id": "s33",
+   "theme": "D",
+   "notion": "just",
+   "question": "Vous trouvez un portefeuille contenant de l'argent dans la rue. Que faites-vous ?",
+   "answer": "Vous le déposez au commissariat ou aux objets trouvés",
+   "distractors": [
+    "Vous gardez l'argent et jetez le portefeuille à la poubelle",
+    "Vous le gardez : la loi dit « trouvé, gardé »",
+    "Vous le laissez par terre pour ne pas être accusé de vol"
+   ],
+   "explanation": "Garder un objet trouvé en sachant qu'il appartient à quelqu'un est assimilé à un vol. On le remet à la police, à la gendarmerie ou au service des objets trouvés de la mairie."
+  },
+  {
+   "id": "s34",
+   "theme": "D",
+   "notion": "just",
+   "question": "Lors d'un contrôle, un policier vous demande votre titre de séjour. Que faites-vous ?",
+   "answer": "Vous le présentez, comme la loi l'exige",
+   "distractors": [
+    "Vous refusez : seuls les juges peuvent vous le demander",
+    "Vous demandez d'abord l'accord de votre consulat",
+    "Vous présentez seulement votre carte bancaire à la place"
+   ],
+   "explanation": "Un étranger doit être en mesure de présenter les documents qui l'autorisent à séjourner en France lors d'un contrôle par la police ou la gendarmerie."
+  },
+  {
+   "id": "s35",
+   "theme": "D",
+   "notion": "env",
+   "question": "Vous devez vous débarrasser d'un vieux réfrigérateur. Que faites-vous ?",
+   "answer": "Vous l'apportez en déchetterie ou au magasin",
+   "distractors": [
+    "Vous le déposez sur le trottoir n'importe quel jour de la semaine",
+    "Vous le jetez dans la poubelle des emballages",
+    "Vous le laissez dans un bois à l'écart de la ville"
+   ],
+   "explanation": "Les appareils électriques se recyclent : déchetterie, reprise par le magasin lors d'un achat, ou collecte des encombrants selon les règles de la commune."
+  },
+  {
+   "id": "s36",
+   "theme": "D",
+   "notion": "env",
+   "question": "Vous voyez quelqu'un jeter des sacs de déchets dans la forêt. Que dit la loi ?",
+   "answer": "C'est un dépôt sauvage interdit, puni d'une amende",
+   "distractors": [
+    "C'est permis si les déchets sont biodégradables",
+    "C'est permis en dehors des parcs nationaux protégés",
+    "C'est permis s'il s'agit de petites quantités"
+   ],
+   "explanation": "Abandonner des déchets dans la nature est sanctionné par une amende, voire plus. On peut le signaler à la mairie ou à la gendarmerie."
+  },
+  {
+   "id": "s37",
+   "theme": "D",
+   "notion": "fam",
+   "question": "Pour punir votre enfant, un proche vous conseille de lui donner une fessée. Que dit la loi ?",
+   "answer": "Les violences éducatives sont interdites, même légères",
+   "distractors": [
+    "La fessée est permise si l'enfant a moins de 10 ans",
+    "La fessée est permise si elle reste exceptionnelle",
+    "La fessée est permise seulement à la maison"
+   ],
+   "explanation": "Depuis la loi du 10 juillet 2019, l'autorité parentale s'exerce sans violences physiques ou psychologiques, y compris les fessées et les gifles."
+  },
+  {
+   "id": "s38",
+   "theme": "D",
+   "notion": "fam",
+   "question": "Une famille veut marier sa fille de 16 ans. Est-ce possible en France ?",
+   "answer": "Non, l'âge légal du mariage est de 18 ans",
+   "distractors": [
+    "Oui, si les deux familles sont d'accord sur le mariage",
+    "Oui, si le mariage a lieu à l'étranger",
+    "Oui, si le futur mari est majeur"
+   ],
+   "explanation": "En France, on ne peut se marier qu'à partir de 18 ans, et avec son libre consentement. Le mariage forcé est puni par la loi."
+  },
+  {
+   "id": "s39",
+   "theme": "D",
+   "notion": "fam",
+   "question": "Un couple veut se marier seulement à la mosquée ou à l'église. Que dit la loi ?",
+   "answer": "Le mariage à la mairie doit avoir lieu en premier",
+   "distractors": [
+    "Le mariage religieux suffit pour être marié devant la loi",
+    "Le mariage religieux doit obligatoirement avoir lieu avant",
+    "Le mariage civil n'est utile que pour les couples français"
+   ],
+   "explanation": "Seul le mariage célébré par le maire a une valeur légale. Un ministre du culte ne peut pas célébrer un mariage religieux avant le mariage civil."
+  },
+  {
+   "id": "s40",
+   "theme": "D",
+   "notion": "fam",
+   "question": "Votre enfant a une forte fièvre la nuit et vous êtes inquiet. Qui appelez-vous ?",
+   "answer": "Le 15 (SAMU) ou le 116 117 pour un avis médical",
+   "distractors": [
+    "Le 17, le numéro de la police nationale",
+    "Le 3919, le numéro d'écoute des familles en difficulté",
+    "Le standard de la mairie, ouvert toute la nuit"
+   ],
+   "explanation": "Le 15 répond aux urgences médicales. Le 116 117 permet de joindre un médecin de garde la nuit et le week-end quand ce n'est pas une urgence vitale."
+  },
+  {
+   "id": "s41",
+   "theme": "D",
+   "notion": "vie",
+   "question": "Vous déménagez dans une autre ville. Que devez-vous faire ?",
+   "answer": "Signaler votre nouvelle adresse, y compris à la préfecture",
+   "distractors": [
+    "Rien, les administrations sont prévenues automatiquement",
+    "Prévenir seulement votre employeur et vos voisins",
+    "Attendre le renouvellement de votre titre pour le signaler"
+   ],
+   "explanation": "Il faut déclarer son changement d'adresse (impôts, CAF, Assurance maladie…). Un étranger doit aussi signaler sa nouvelle adresse à la préfecture dans les trois mois."
+  },
+  {
+   "id": "s42",
+   "theme": "D",
+   "notion": "vote",
+   "question": "Un ressortissant italien qui vit en France veut voter. À quelles élections le peut-il ?",
+   "answer": "Aux municipales et aux européennes, après inscription",
+   "distractors": [
+    "À aucune élection tant qu'il n'est pas devenu français",
+    "À toutes les élections, y compris la présidentielle",
+    "Seulement aux élections législatives et régionales"
+   ],
+   "explanation": "Les citoyens de l'Union européenne résidant en France peuvent voter aux élections municipales et européennes, en s'inscrivant sur les listes complémentaires."
+  },
+  {
+   "id": "s43",
+   "theme": "D",
+   "notion": "just",
+   "question": "Vous êtes témoin d'une agression dans la rue. Que faites-vous ?",
+   "answer": "Vous appelez le 17 ou le 112, puis témoignez",
+   "distractors": [
+    "Vous filmez la scène et la publiez ensuite sur internet",
+    "Vous passez votre chemin, cela ne vous regarde pas",
+    "Vous attendez le lendemain pour en parler à vos proches"
+   ],
+   "explanation": "Ne pas porter secours ou ne pas alerter alors qu'on le peut sans danger est puni par la loi (non-assistance à personne en danger)."
+  },
+  {
+   "id": "s44",
+   "theme": "D",
+   "notion": "just",
+   "question": "Vous voyez une personne inconsciente sur le trottoir. Que faites-vous ?",
+   "answer": "Vous appelez les secours et restez près d'elle",
+   "distractors": [
+    "Vous passez votre chemin si vous ne la connaissez pas",
+    "Vous attendez qu'un policier passe par hasard dans la rue",
+    "Vous lui donnez à boire pour la réveiller"
+   ],
+   "explanation": "Porter assistance à une personne en danger est un devoir. Alerter les secours suffit si on ne sait pas faire les gestes de premiers secours."
+  },
+  {
+   "id": "s45",
+   "theme": "D",
+   "notion": "trav",
+   "question": "Votre chef vous fait des remarques à caractère sexuel de manière répétée. Que pouvez-vous faire ?",
+   "answer": "Alerter les RH ou l'inspection du travail",
+   "distractors": [
+    "Rien : c'est votre supérieur, il a le droit de le faire",
+    "Démissionner, c'est la seule solution prévue par la loi",
+    "En parler seulement à vos collègues de bureau"
+   ],
+   "explanation": "Le harcèlement sexuel est un délit. L'employeur doit protéger ses salariés ; on peut aussi saisir l'inspection du travail, le Défenseur des droits ou porter plainte."
+  },
+  {
+   "id": "s46",
+   "theme": "D",
+   "notion": "just",
+   "question": "Vous recevez une amende que vous jugez injustifiée. Que pouvez-vous faire ?",
+   "answer": "La contester selon la procédure indiquée sur l'avis",
+   "distractors": [
+    "Ne pas la payer : elle sera annulée automatiquement",
+    "Aller discuter directement avec le policier qui l'a donnée",
+    "Écrire au président de la République pour l'annuler"
+   ],
+   "explanation": "On peut contester une amende dans les délais, selon la procédure indiquée (souvent en ligne sur le site de l'ANTAI). Ne rien faire entraîne une majoration."
+  },
+  {
+   "id": "s47",
+   "theme": "D",
+   "notion": "droit",
+   "question": "Vous estimez qu'un service public ne respecte pas vos droits. À qui pouvez-vous vous adresser ?",
+   "answer": "Au Défenseur des droits, gratuitement",
+   "distractors": [
+    "Au Président du Sénat, par courrier recommandé",
+    "À votre ambassade, qui jugera le service public",
+    "Au maire de votre commune de naissance"
+   ],
+   "explanation": "Le Défenseur des droits est une autorité indépendante. Il aide gratuitement les personnes face aux administrations et aux discriminations."
+  },
+  {
+   "id": "s48",
+   "theme": "D",
+   "notion": "trav",
+   "question": "Vous êtes malade et ne pouvez pas aller travailler. Que devez-vous faire ?",
+   "answer": "Consulter un médecin et envoyer vite l'arrêt de travail",
+   "distractors": [
+    "Rester chez vous sans prévenir votre employeur",
+    "Envoyer un collègue faire votre travail à votre place",
+    "Prévenir seulement la mairie de votre commune"
+   ],
+   "explanation": "L'arrêt de travail doit être envoyé sous 48 heures à l'Assurance maladie et à l'employeur, pour être couvert et éventuellement indemnisé."
+  },
+  {
+   "id": "s49",
+   "theme": "D",
+   "notion": "ecole",
+   "question": "Le professeur de votre enfant demande à vous rencontrer. Que faites-vous ?",
+   "answer": "Vous allez au rendez-vous pour suivre sa scolarité",
+   "distractors": [
+    "Vous refusez : seule l'école est responsable de sa scolarité",
+    "Vous envoyez votre enfant y aller à votre place",
+    "Vous attendez la fin de l'année pour répondre"
+   ],
+   "explanation": "Les parents sont membres de la communauté éducative. Ils sont les premiers responsables de la scolarité de leur enfant et dialoguent avec les enseignants."
+  },
+  {
+   "id": "s50",
+   "theme": "D",
+   "notion": "just",
+   "question": "Après une soirée où vous avez bu de l'alcool, vous devez rentrer chez vous. Que faites-vous ?",
+   "answer": "Vous ne conduisez pas et rentrez autrement",
+   "distractors": [
+    "Vous conduisez lentement, c'est autorisé",
+    "Vous conduisez si le trajet est court",
+    "Vous conduisez en évitant les grands axes"
+   ],
+   "explanation": "Conduire avec 0,5 g d'alcool par litre de sang ou plus est interdit (0,2 g pour les jeunes conducteurs). C'est une cause majeure d'accidents mortels."
+  }
+ ]
+}

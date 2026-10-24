@@ -58,6 +58,9 @@ function mergeExam(a, b){
     m.stats[id] = !x ? y : !y ? x : (y.seen > x.seen ? y : x);
   }
   m.days = Object.assign({}, a.days, b.days);
+  const mk = new Map();
+  for (const x of [...(a.mocks || []), ...(b.mocks || [])]) mk.set(x.t, x);
+  m.mocks = [...mk.values()].sort((x, y) => x.t - y.t).slice(-60);
   const da = a.daily, db = b.daily;
   m.daily = !da ? db : !db ? da : (da.date !== db.date ? (da.date > db.date ? da : db) : (db.pos > da.pos ? db : da));
   return m;
@@ -89,6 +92,7 @@ export async function resetProgress(){
 /* ---------- Examen choisi ---------- */
 const EXAM_KEY = "ec-exam";
 export function initialExam(){
+  if (isExam(state.urlExam)) return state.urlExam;
   const local = lsGet(EXAM_KEY);
   if (isExam(local)) return local;
   if (isExam(state.store.current)) return state.store.current;
@@ -121,6 +125,10 @@ export function dailyIds(){
   save();
   return st.daily;
 }
+
+/* Historique des examens blancs de l'examen choisi : {t: date (ms), g: bonnes réponses, n: questions, sec: durée}. */
+export function addMock(m){ const c = cur(); (c.mocks ||= []).push(m); c.mocks = c.mocks.slice(-60); save(); }
+export const mocks = () => cur().mocks || [];
 
 export function markDayDone(score){ cur().days[todayStr()] = { score }; save(); }
 export const dayDone = k => !!cur().days[k];

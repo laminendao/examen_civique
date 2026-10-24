@@ -12,7 +12,11 @@ import { registerViews, setupNavigation } from "./core/router.js";
 import { setupAccountMenu } from "./ui/account-menu.js";
 import { setupIcons } from "./ui/icons.js";
 import { setupExamSwitch, useExam } from "./ui/exam-switch.js";
-import { initialExam } from "./core/progress.js";
+import { applyReading } from "./ui/reading.js";
+import { setupAnalytics } from "./ui/analytics.js";
+import { setupPwa } from "./ui/pwa.js";
+import { initialExam, rememberExam } from "./core/progress.js";
+import { state } from "./core/state.js";
 import { boot } from "./auth/auth.js";
 
 import { showHome } from "./views/home.js";
@@ -33,10 +37,14 @@ setupIcons();
 setupNavigation();
 setupAccountMenu();
 setupExamSwitch();
+applyReading();
+setupAnalytics();
+setupPwa();
 
 try {
   await loadData();
   await useExam(initialExam());   // questions disponibles dès l'écran de connexion
+  if (state.urlExam) rememberExam(state.urlExam);   // arrivée par /naturalisation/, /carte-de-resident/…
   await boot();
 } catch(e){
   console.error(e);

@@ -15,6 +15,7 @@ export const CONFIG = {
   editorName: "Mouhamadou Lamine NDAO",
   contactEmail: "ndao.lamine0404@gmail.com",
 
-  // Examen proposé (fichier dans data/questions/)
-  exam: "carte-resident",
+  // Mesure d'audience GoatCounter (sans cookies). Mettre le code du compte, ex. "examen-civique".
+  // Vide = aucune mesure d'audience.
+  goatcounter: "",
 };

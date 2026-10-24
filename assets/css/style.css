@@ -365,3 +365,98 @@ h2.sec .ic,.useful h2 .ic,.wk .retain .ic,.expl b .ic{color:var(--accent)}
 /* Explications et « à retenir » : encadré neutre avec un filet rouge CNAM */
 .expl,.retain{background:#f7f8fa;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px}
 .expl b{color:var(--accent)}
+
+/* ---- Style sobre ---- */
+:root{--font:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;--bg:#ffffff;--line:#e4e4e7;--line-strong:#cfcfd4;--radius:8px;--shadow:none;--muted:#5b5d64}
+body{font-size:17px}
+.topbar{background:#fff}
+.brand .logo{border-radius:6px;box-shadow:none;width:36px;height:36px}
+/* icônes sans pastille */
+.stat .ico,.mode .ico,.theme .ico,.pagehead h1>span,.ulink .e,.authside li>span{background:none;border:0;border-radius:0;width:auto;height:auto;color:var(--accent)}
+.stat .ico{font-size:1.25rem}.mode .ico,.theme .ico{font-size:1.5rem;justify-content:start}
+.pagehead h1>span{font-size:1.3rem}
+.ulink .e{font-size:1.2rem}.authside li>span{font-size:1.05rem;margin-top:2px}
+/* bandeau d'accueil : pas de halo ni de pastille */
+.hero{background:#fff;border-bottom:1px solid var(--line)}
+.hero::before,.hero::after{display:none}
+.hero .container{padding-block:40px}
+.pill-tag{background:none;border:0;padding:0;color:var(--accent);letter-spacing:.08em;font-size:.8rem}
+.hero h1{font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.025em;font-weight:700}
+.hero-card{box-shadow:none;border:1px solid var(--line);border-radius:8px}
+/* cartes : plates, filets fins */
+.card,.stat,.mode,.theme,.item,.wk,.ulink{box-shadow:none!important;border-radius:8px}
+.mode:hover,.theme:hover{transform:none;border-color:var(--ink)}
+.stat{padding:16px 18px}
+.stat b{font-size:1.7rem;font-weight:700}
+.btn{border-radius:6px;font-weight:600}
+.exam-tabs{background:#fff;border-radius:8px;padding:0;gap:0;overflow:hidden}
+.exam-tab{border-radius:0;border:0;border-right:1px solid var(--line)}
+.exam-tab:last-child{border-right:0}
+.exam-tab.on{background:#fff;box-shadow:inset 0 -3px 0 var(--accent);border-color:var(--line)}
+.exambar{background:#fafafa}
+/* quiz */
+.opt{border-width:1px;border-radius:8px}
+.opt .k{border-width:1px}
+.opt:hover:not(:disabled){background:#fafafa}
+.opt.right,.opt.wrong{border-width:2px}
+.pill{border-radius:4px;font-weight:700}
+.expl,.retain{background:#fafafa;border-radius:6px}
+.bar{height:6px;background:#ececef}
+.authgrid{box-shadow:none;border-radius:10px}
+.authside{background:#fafafa}
+.pagehead h1{font-weight:700}
+h2.sec{font-weight:700}
+.chip{background:none;border:1px solid var(--line-strong);color:var(--muted);border-radius:4px;padding:4px 10px}
+.chip .ic{color:var(--accent)}
+.fig{border-width:1px!important;border-radius:8px!important;box-shadow:none!important}
+.field input,.field select,input[type=search],.check{border-width:1px;border-radius:6px}
+.danger{border-width:1px;border-radius:8px}
+.warnbox{border-radius:6px}
+
+/* ---- Outils de question : lecture, mise en situation, signalement ---- */
+.qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:2px}
+.qhead:has(.rtools:only-child){justify-content:flex-end}
+.chip.sit{border-style:dashed;color:var(--ink)}
+.rtools{display:inline-flex;gap:6px;margin-left:auto}
+.tool{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:.85rem;font-weight:600;color:var(--muted);background:#fff;border:1px solid var(--line-strong);border-radius:6px;padding:5px 10px;cursor:pointer}
+.tool:hover{color:var(--ink);border-color:var(--ink)}
+.tool.on{color:var(--accent);border-color:var(--accent)}
+.tool .aa{font-weight:800;letter-spacing:-.02em}
+body.big{font-size:19px}
+body.big .q{font-size:clamp(1.35rem,3vw,1.7rem)}
+body.big .opt{font-size:1.15rem;padding:16px 18px}
+body.big .expl{font-size:1.08rem}
+.report-row{margin-top:10px}
+.report-link{font-size:.85rem;color:var(--muted);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.report-link:hover{color:var(--accent)}
+.report-box{display:flex;flex-direction:column;gap:8px;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:6px;background:#fafafa}
+.report-box textarea{font:inherit;font-size:.95rem;border:1px solid var(--line-strong);border-radius:6px;padding:10px;resize:vertical;width:100%}
+.report-box .ok-msg{color:var(--ok);margin:0}
+.errs .yours{color:var(--ko);font-weight:600}
+.errs .report-link{align-self:flex-start;margin-top:4px}
+.item .report-link{margin-top:6px}
+
+/* ---- Examen blanc ---- */
+.timer{display:inline-flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums;font-size:1rem;border:1px solid var(--line-strong);border-radius:6px;padding:4px 10px}
+.timer.low{color:var(--ko);border-color:var(--ko)}
+.opt.picked{border-color:var(--ink);background:#f4f4f6}
+.exam-hint{margin:0;text-align:center}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:8px;margin-bottom:16px}
+.kpis div{padding:12px 14px;border-right:1px solid var(--line)}
+.kpis div:last-child{border-right:0}
+.kpis b{display:block;font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums}
+.kpis span{font-size:.82rem;color:var(--muted)}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpis div:nth-child(2){border-right:0}.kpis div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.chart{margin:0 0 14px}
+.chart svg{width:100%;height:auto;display:block}
+.chart text{font-size:11px;fill:var(--muted);font-family:var(--font)}
+.chart .g{stroke:#eeeef1}
+.chart .pass{stroke:var(--ok);stroke-dasharray:5 4}
+.chart .passlbl{fill:var(--ok);font-weight:600}
+.chart .ln{fill:none;stroke:var(--ink);stroke-width:2}
+.chart circle{stroke:#fff;stroke-width:2}
+.chart circle.ok{fill:var(--ok)} .chart circle.ko{fill:var(--accent)}
+.hist{width:100%;border-collapse:collapse;font-size:.92rem}
+.hist th{text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line);padding:8px 6px}
+.hist td{border-bottom:1px solid var(--line);padding:8px 6px;font-variant-numeric:tabular-nums}
+.pill.sm{font-size:.76rem;padding:3px 8px}

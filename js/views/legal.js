@@ -48,19 +48,21 @@ export function showPrivacy(){
         <li><b>Facultatif :</b> genre et situation professionnelle, uniquement si tu les indiques.</li>
         <li><b>Progression :</b> tes réponses aux questions, tes jours d'entraînement et ta série du jour.</li>
         <li><b>Sans compte :</b> ta progression reste dans ton navigateur et n'est envoyée nulle part.</li>
+        <li><b>Signalement d'erreur :</b> le texte que tu écris, la question concernée et, si tu es connecté, l'identifiant de ton compte.</li>
       </ul>
       <h2>Pourquoi ces données</h2>
       <ul>
         <li>Créer ton compte et te permettre de te connecter (exécution du service).</li>
         <li>Sauvegarder ta progression et calculer tes points à améliorer (exécution du service).</li>
+        <li>Signalements : corriger les questions et les explications (intérêt légitime).</li>
         <li>Genre et situation professionnelle : statistiques globales sur les utilisateurs du site (consentement, champs facultatifs).</li>
       </ul>
-      <p>Tes données ne sont ni vendues, ni louées, ni utilisées pour de la publicité. Aucun cookie de suivi ou de mesure d'audience n'est utilisé.</p>
+      <p>Tes données ne sont ni vendues, ni louées, ni utilisées pour de la publicité. Aucun cookie de suivi ni de publicité n'est utilisé.${CONFIG.goatcounter ? " Le nombre de visites est mesuré avec GoatCounter, un outil sans cookies qui ne collecte aucune donnée personnelle : seuls des totaux anonymes (pages vues, type d'appareil, pays) sont conservés." : ""}</p>
       <h2>Où sont les données</h2>
       <p>Les comptes et la progression sont hébergés par Supabase, Inc., sous-traitant technique. Le site charge aussi des polices depuis Google Fonts et une bibliothèque depuis jsDelivr : ces services reçoivent l'adresse IP de ton appareil lors du chargement de la page.</p>
       <p>Le navigateur garde une copie locale de ta session et de ta progression (stockage local), nécessaire au fonctionnement du site.</p>
       <h2>Durée de conservation</h2>
-      <p>Tes données sont conservées tant que ton compte existe. Quand tu supprimes ton compte, elles sont effacées immédiatement et définitivement.</p>
+      <p>Tes données sont conservées tant que ton compte existe. Les signalements sont conservés le temps de traiter la correction, au plus un an. Quand tu supprimes ton compte, elles sont effacées immédiatement et définitivement.</p>
       <h2>Tes droits</h2>
       <p>Tu peux à tout moment accéder à tes données, les corriger, les supprimer, t'opposer à leur traitement ou demander leur portabilité. Tu peux supprimer ton compte toi-même depuis <b><i class='ic' data-i='settings'></i> Mon compte et mes données</b> (menu de ta pastille), ou écrire à ${mail}.</p>
       <p>Si tu estimes que tes droits ne sont pas respectés, tu peux adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>

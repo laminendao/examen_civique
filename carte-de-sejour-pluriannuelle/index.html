@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Page générée par tools/pages.py à partir de index.html : ne pas modifier à la main. -->
+<base href="../">
+<title>Examen civique carte de séjour pluriannuelle : entraînement gratuit</title>
+<meta name="description" content="Prépare gratuitement l'examen civique de la carte de séjour pluriannuelle : questions officielles, réponses expliquées, examens blancs chronométrés et suivi de tes points faibles.">
+<link rel="canonical" href="https://examen-civique.mlndao.fr/carte-de-sejour-pluriannuelle/">
+<meta property="og:url" content="https://examen-civique.mlndao.fr/carte-de-sejour-pluriannuelle/">
+<meta property="og:title" content="Examen civique carte de séjour pluriannuelle : entraînement gratuit">
+<meta property="og:description" content="Prépare gratuitement l'examen civique de la carte de séjour pluriannuelle : questions officielles, réponses expliquées, examens blancs chronométrés et suivi de tes points faibles.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Examen civique · entraînement">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://examen-civique.mlndao.fr/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Examen civique : entraînement gratuit pour les trois examens">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-title" content="Examen civique">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<!-- Bibliothèque Supabase (comptes et sauvegarde en ligne) -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+<!-- Application : point d'entrée -->
+<script type="module" src="js/main.js"></script>
+</head>
+<body>
+<noscript><p style="padding:16px">Ce site a besoin de JavaScript pour fonctionner.</p></noscript>
+
+
+<header class="topbar">
+  <div class="container">
+    <button class="brand" type="button" data-tab="home" aria-label="Accueil">
+      <span class="logo" aria-hidden="true"><i class='ic' data-i='logo'></i></span>
+      <span><b>Examen civique</b><small id="brand-sub">Entraînement · examen civique</small></span>
+    </button>
+    <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
+      <button class="navlink" data-tab="home"><span class="e"><i class='ic' data-i='home'></i></span>Accueil</button>
+      <button class="navlink" data-tab="daily"><span class="e"><i class='ic' data-i='calendar'></i></span>Série du jour</button>
+      <button class="navlink" data-tab="exam"><span class="e"><i class='ic' data-i='exam'></i></span>Examen blanc</button>
+      <button class="navlink" data-tab="themes"><span class="e"><i class='ic' data-i='book'></i></span>Thèmes</button>
+      <button class="navlink" data-tab="weak"><span class="e"><i class='ic' data-i='target'></i></span>À améliorer<span class="badge weak-count" hidden></span></button>
+      <button class="navlink" data-tab="review"><span class="e"><i class='ic' data-i='search'></i></span>Révision</button>
+      <button class="navlink" data-tab="info"><span class="e"><i class='ic' data-i='link'></i></span>Liens utiles</button>
+    </nav>
+    <div class="acct" id="acct" hidden>
+      <button type="button" class="avatar" id="avatar" aria-haspopup="true" aria-expanded="false" hidden></button>
+      <button type="button" class="btn sm" id="signin" hidden><i class='ic' data-i='user'></i> Se connecter</button>
+      <div class="menu" id="menu" hidden>
+        <div class="menu-head"><b id="who"></b><span id="who-mail"></span></div>
+        <button type="button" data-tab="weak"><i class='ic' data-i='target'></i> Mes points à améliorer</button>
+        <button type="button" data-tab="account"><i class='ic' data-i='settings'></i> Mon compte et mes données</button>
+        <button type="button" id="logout"><i class='ic' data-i='logout'></i> Se déconnecter</button>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="exambar" id="exambar" hidden>
+  <div class="container">
+    <span class="exambar-lbl">Je m'entraîne pour</span>
+    <div class="exam-tabs" role="tablist" aria-label="Choix de l'examen"></div>
+  </div>
+</div>
+<p class="sync" id="sync" hidden></p>
+
+<main>
+  <section id="auth" class="authwrap container" hidden></section>
+  <div id="view"></div>
+</main>
+
+<nav class="tabbar" id="tabbar" aria-label="Navigation">
+  <button data-tab="home"><span class="e"><i class='ic' data-i='home'></i></span>Accueil</button>
+  <button data-tab="daily"><span class="e"><i class='ic' data-i='calendar'></i></span>Série</button>
+  <button data-tab="exam"><span class="e"><i class='ic' data-i='exam'></i></span>Examen</button>
+  <button data-tab="themes"><span class="e"><i class='ic' data-i='book'></i></span>Thèmes</button>
+  <button data-tab="weak"><span class="e"><i class='ic' data-i='target'></i></span>À revoir<span class="badge weak-count" hidden></span></button>
+  <button data-tab="review"><span class="e"><i class='ic' data-i='search'></i></span>Révision</button>
+  <button data-tab="info"><span class="e"><i class='ic' data-i='link'></i></span>Liens</button>
+</nav>
+
+<footer>
+  <div class="container">
+    <div><b><i class='ic' data-i='logo'></i> <span id="foot-exam">Examen civique</span></b> — site d'entraînement non officiel.</div>
+    <div>Questions : listes officielles du ministère de l'Intérieur pour les trois examens (licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Le ministère ne publie pas les mises en situation : celles du site sont des exemples rédigés pour s'entraîner.</div>
+    <div id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</div>
+    <nav class="footlinks" aria-label="Informations légales"><a href="infos-utiles" data-tab="info">Liens utiles</a><a href="mentions-legales" data-tab="legal">Mentions légales</a><a href="confidentialite" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 Mouhamadou Lamine NDAO · Tous droits réservés</span></nav>
+  </div>
+</footer>
+
+</body>
+</html>

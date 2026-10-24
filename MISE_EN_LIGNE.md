@@ -84,3 +84,32 @@ Sur l'offre gratuite, Supabase met le projet en pause après environ 7 jours san
 ---
 
 ✅ **Quand tout est fait :** inscris-toi avec une adresse Gmail et une adresse Outlook différentes de la tienne, puis vérifie que l'e-mail arrive bien dans la boîte de réception et pas dans les spams, que le lien ramène sur ton site et que la connexion fonctionne.
+
+## 7. Signalements d'erreurs (table `reports`)
+
+1. Supabase > **SQL Editor** > **New query** : colle le contenu de `supabase/reports.sql`, puis **Run**.
+2. Les signalements s'affichent dans **Table Editor** > `reports`. Change la colonne `status` à la main (`vu`, `corrigé`, `rejeté`) pour t'y retrouver.
+3. Tant que la table n'existe pas, le bouton propose d'envoyer le signalement par e-mail à l'adresse de contact.
+
+## 8. Mesure d'audience (GoatCounter, gratuit, sans cookies) — facultatif
+
+1. Crée un compte sur https://www.goatcounter.com/signup et choisis un code, par exemple `examen-civique` (ton tableau de bord sera https://examen-civique.goatcounter.com).
+2. Dans `js/config.js`, mets ce code : `goatcounter: "examen-civique",`.
+3. La politique de confidentialité le mentionne automatiquement. Aucun bandeau de cookies n'est nécessaire.
+
+## 9. Google (référencement)
+
+1. Va sur https://search.google.com/search-console, ajoute la propriété « Domaine » `mlndao.fr` (vérification par un enregistrement TXT chez Hostinger, comme pour GitHub).
+2. Dans **Sitemaps**, envoie `https://examen-civique.mlndao.fr/sitemap.xml`.
+3. Les pages de chaque examen (`/carte-de-sejour-pluriannuelle/`, `/carte-de-resident/`, `/naturalisation/`) ont leur propre titre et description.
+
+## 10. Avant chaque mise en ligne
+
+```bash
+python3 tools/pages.py      # pages des examens, sitemap, version du service worker
+git add -A
+git commit -m "…"
+git push
+```
+
+Grâce au service worker, les visiteurs qui ont déjà ouvert le site reçoivent la nouvelle version dès leur visite suivante, sans attendre les 10 minutes de cache de GitHub.

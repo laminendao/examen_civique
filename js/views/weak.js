@@ -1,5 +1,5 @@
 /* « À améliorer » : bilan automatique par notion et remise à zéro. */
-import { Q, NOTIONS } from "../core/data.js";
+import { Q, QI, NOTIONS } from "../core/data.js";
 import { state } from "../core/state.js";
 import { esc, pct } from "../core/utils.js";
 import { notionStats, weakList, resetProgress, refreshStats, seenCount } from "../core/progress.js";
@@ -32,7 +32,7 @@ function card(o){
     <h3>${esc(NOTIONS[o.k].label)}<span>${o.rate === null ? "–" : pct(o.rate)} de réussite · ${o.seen}/${o.total} vues</span></h3>
     <div class="bar"><i style="width:${(o.rate || 0) * 100}%;background:${o.rate >= 0.6 ? "var(--warn)" : "var(--ko)"}"></i></div>
     <div class="retain"><b><i class='ic' data-i='bulb'></i> À retenir.</b> ${esc(NOTIONS[o.k].retenir)}</div>
-    ${n ? `<details><summary>${n} question${n > 1 ? "s" : ""} ratée${n > 1 ? "s" : ""} la dernière fois</summary><ul>${o.miss.map(id => `<li>${esc(Q[id].q)}<span><i class='ic' data-i='check'></i> ${esc(Q[id].a)}</span><div class="note">${esc(Q[id].x)}</div></li>`).join("")}</ul></details>` : ""}
+    ${n ? `<details><summary>${n} question${n > 1 ? "s" : ""} ratée${n > 1 ? "s" : ""} la dernière fois</summary><ul>${o.miss.map(id => `<li>${esc(QI[id].q)}<span><i class='ic' data-i='check'></i> ${esc(QI[id].a)}</span><div class="note">${esc(QI[id].x)}</div></li>`).join("")}</ul></details>` : ""}
     <div class="row"><button class="btn sm primary" data-train="${o.k}"><i class='ic' data-i='muscle'></i> S'entraîner sur ce point</button></div>
   </div>`;
 }
