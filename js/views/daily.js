@@ -1,8 +1,7 @@
 /* Série du jour (15 questions) et série supplémentaire. */
 import { Q, DAILY_N } from "../core/data.js";
-import { state } from "../core/state.js";
 import { todayStr, rng } from "../core/utils.js";
-import { dailyIds, save, refreshStats, mastered, missed } from "../core/progress.js";
+import { dailyIds, save, refreshStats, mastered, missed, markDayDone, dayDone } from "../core/progress.js";
 import { page, render } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
 
@@ -13,11 +12,11 @@ export function showDaily(){
 }
 
 function finish(run){
-  state.store.days[todayStr()] = { score: run.good }; save(); refreshStats();
+  markDayDone(run.good); refreshStats();
   const cal = [];
   for (let i = 27; i >= 0; i--){
     const x = new Date(); x.setDate(x.getDate() - i); const k = todayStr(x);
-    cal.push(`<i class="${state.store.days[k] ? "done" : ""} ${i === 0 ? "today" : ""}" title="${k}"></i>`);
+    cal.push(`<i class="${dayDone(k) ? "done" : ""} ${i === 0 ? "today" : ""}" title="${k}"></i>`);
   }
   render(page("<i class='ic' data-i='check'></i>", "Série du jour terminée", "Reviens demain : la prochaine série reprendra d'abord tes erreurs, puis des questions jamais vues.", summary(run,
     `<div><div class="note" style="margin-bottom:8px"><i class='ic' data-i='flame'></i> Tes 28 derniers jours</div><div class="calendar">${cal.join("")}</div></div>

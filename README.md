@@ -37,7 +37,9 @@ js/auth/                connexion, inscription, mot de passe oublié, anti-robot
 js/ui/                  mise en page commune, menu du compte
 js/views/               un fichier par écran (accueil, quiz, série du jour, examen…)
 
-data/questions/carte-resident.json   les 209 questions, réponses et explications
+data/questions/carte-sejour-pluriannuelle.json   191 questions (CSP)
+data/questions/carte-resident.json               209 questions (carte de résident)
+data/questions/naturalisation.json               244 questions (naturalisation)
 data/themes.json                     les 5 thèmes officiels
 data/notions.json                    les notions et leurs fiches « À retenir »
 
@@ -47,8 +49,8 @@ deploy/                 tâche GitHub qui empêche la mise en veille de Supabase
 docs/                   documents de travail
 ```
 
-**Modifier une question ou une explication :** édite `data/questions/carte-resident.json`.
-**Ajouter un examen** (carte de séjour pluriannuelle, naturalisation) : ajoute un fichier dans `data/questions/`.
+**Modifier une question ou une explication :** édite le fichier de l'examen dans `data/questions/`.
+**Les trois examens** sont déclarés dans `EXAMS` (`js/core/data.js`). Chaque examen a sa propre progression (`exams.<examen>` dans les données enregistrées) ; les anciennes progressions sont rattachées automatiquement à la carte de résident.
 
 ## Tester sur son ordinateur
 

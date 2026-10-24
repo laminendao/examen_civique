@@ -3,7 +3,8 @@ import { sb, RECOVERING } from "../core/supabase.js";
 import { state, emptyStore } from "../core/state.js";
 import { esc, initials } from "../core/utils.js";
 import { APP_URL, go, hasView, takeInitialTab } from "../core/router.js";
-import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats } from "../core/progress.js";
+import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats, initialExam } from "../core/progress.js";
+import { useExam } from "../ui/exam-switch.js";
 import { view, setChrome } from "../ui/layout.js";
 import { captchaEnabled, renderCaptcha, getCaptchaToken } from "./captcha.js";
 
@@ -69,9 +70,9 @@ export function showAuth(mode = "login", msg = null){
   authBox().innerHTML = `<div class="authgrid">
     <div class="authside">
       <span class="pill-tag" style="align-self:flex-start"><i class='ic' data-i='cap'></i> Page d'entraînement</span>
-      <h2>Prépare l'examen civique de la carte de résident</h2>
+      <h2>Prépare ton examen civique : titre de séjour ou naturalisation</h2>
       <ul>
-        <li><span><i class='ic' data-i='book'></i></span>Les 209 questions officielles du ministère</li>
+        <li><span><i class='ic' data-i='book'></i></span>Les questions officielles des 3 examens : carte de séjour pluriannuelle, carte de résident, naturalisation</li>
         <li><span><i class='ic' data-i='bulb'></i></span>Une explication pour chaque réponse</li>
         <li><span><i class='ic' data-i='target'></i></span>Tes points faibles repérés automatiquement</li>
         <li><span><i class='ic' data-i='phone'></i></span>Ta progression sur tous tes appareils</li>
@@ -152,10 +153,11 @@ async function enter(u){
   const meta = u.user_metadata || {};
   state.user = { id: u.id, email: u.email, name: meta.full_name || meta.name || (u.email || "").split("@")[0], gender: meta.gender || null, occupation: meta.occupation || null };
   await loadRemote();
+  await useExam(initialExam());
   startApp();
 }
 
-function enterGuest(){ state.user = null; loadLocal(); startApp(); }
+async function enterGuest(){ state.user = null; loadLocal(); await useExam(initialExam()); startApp(); }
 
 export async function logout(){
   if (state.user){
@@ -168,7 +170,7 @@ export async function logout(){
 
 /* Point de départ : session existante, lien « mot de passe oublié », ou écran de connexion. */
 export async function boot(){
-  if (!sb){ enterGuest(); return; }
+  if (!sb){ await enterGuest(); return; }
   sb.auth.onAuthStateChange(ev => { if (ev === "PASSWORD_RECOVERY") setTimeout(() => showAuth("newpass"), 0); });
   if (RECOVERING){ showAuth("newpass"); return; }
   try {

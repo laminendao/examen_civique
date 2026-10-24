@@ -2,13 +2,14 @@
 import { Q, NOTIONS } from "../core/data.js";
 import { state } from "../core/state.js";
 import { esc, pct } from "../core/utils.js";
-import { notionStats, weakList, resetProgress, refreshStats } from "../core/progress.js";
+import { notionStats, weakList, resetProgress, refreshStats, seenCount } from "../core/progress.js";
+import { EXAMS } from "../core/data.js";
 import { go } from "../core/router.js";
 import { page, render } from "../ui/layout.js";
 import { bindTrain } from "./quiz.js";
 
 export function showWeak(){
-  const answered = Object.keys(state.store.stats).length;
+  const answered = seenCount();
   if (!answered){
     render(page("<i class='ic' data-i='target'></i>", "Mes points à améliorer", "", `<div class="card" style="display:flex;flex-direction:column;gap:14px"><p style="margin:0">Pas encore de bilan. Réponds à quelques questions (série du jour, examen blanc ou thème) : cette page listera automatiquement les notions où tu te trompes, avec l'essentiel à retenir et un entraînement ciblé.</p><div class="row"><button class="btn primary" data-tab="daily"><i class='ic' data-i='play'></i> Commencer la série du jour</button></div></div>`, true));
     return;
@@ -20,7 +21,7 @@ export function showWeak(){
   render(page("<i class='ic' data-i='target'></i>", "Mes points à améliorer", `Bilan calculé automatiquement à partir de tes ${answered} questions déjà travaillées. Une notion apparaît ici dès qu'une de ses questions a été ratée à la dernière tentative, ou si ton taux de réussite y est sous 80 %.`, `
     <div class="grid g2">${weak.length ? weak.map(card).join("") : `<div class="card"><p style="margin:0"><i class='ic' data-i='trophy'></i> Aucun point faible pour l'instant sur les notions travaillées. Continue la série du jour pour couvrir les autres questions.</p></div>`}</div>
     ${good.length ? `<div class="card"><h2 class="sec" style="margin:0 0 12px"><i class='ic' data-i='heart'></i> Notions solides</h2><div class="solid">${good.map(o => `<span><i class='ic' data-i='check'></i> ${esc(NOTIONS[o.k].label)} · ${pct(o.rate)}</span>`).join("")}</div></div>` : ""}
-    <div id="reset-box"><button type="button" class="link" id="reset"><i class='ic' data-i='trash'></i> Remettre ma progression à zéro</button></div>`));
+    <div id="reset-box"><button type="button" class="link" id="reset"><i class='ic' data-i='trash'></i> Remettre à zéro ma progression pour cet examen</button></div>`));
   bindTrain(); bindReset();
 }
 
@@ -41,7 +42,7 @@ function bindReset(){
   b.addEventListener("click", () => {
     const box = document.getElementById("reset-box");
     box.className = "card";
-    box.innerHTML = `<p style="margin:0 0 12px"><i class='ic' data-i='warning'></i> Effacer toute ta progression${state.user ? " dans ce compte" : " sur cet appareil"} (réponses, jours d'affilée, points à améliorer) ? C'est définitif.</p>
+    box.innerHTML = `<p style="margin:0 0 12px"><i class='ic' data-i='warning'></i> Effacer ta progression « ${EXAMS[state.exam].label} »${state.user ? " dans ce compte" : " sur cet appareil"} (réponses, jours d'affilée, points à améliorer) ? Les autres examens ne sont pas touchés. C'est définitif.</p>
       <div class="row"><button class="btn primary sm" id="reset-yes"><i class='ic' data-i='trash'></i> Oui, tout effacer</button><button class="btn sm" id="reset-no">Annuler</button></div>`;
     document.getElementById("reset-no").addEventListener("click", () => go("weak"));
     document.getElementById("reset-yes").addEventListener("click", async () => {

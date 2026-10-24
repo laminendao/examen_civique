@@ -1,13 +1,13 @@
 /* Page d'accueil : présentation, progression et choix du mode d'entraînement. */
-import { Q, THEMES, DAILY_N } from "../core/data.js";
+import { Q, THEMES, DAILY_N, EXAMS } from "../core/data.js";
 import { state } from "../core/state.js";
 import { esc } from "../core/utils.js";
-import { dailyIds, mastered, weakList, streak } from "../core/progress.js";
+import { dailyIds, mastered, weakList, streak, seenCount } from "../core/progress.js";
 import { render } from "../ui/layout.js";
 
 export function showHome(){
   const dl = dailyIds();
-  const m = Q.filter(q=>mastered(q.id)).length, seen = Object.keys(state.store.stats).length;
+  const m = Q.filter(q=>mastered(q.id)).length, seen = seenCount();
   const weakN = weakList().length, st = streak();
   const R = 34, C = 2*Math.PI*R, frac = m/Q.length;
   const dailyDone = dl.pos >= dl.ids.length;
@@ -17,8 +17,8 @@ export function showHome(){
     <div class="container">
       <div>
         <span class="pill-tag"><i class='ic' data-i='cap'></i> Page d'entraînement</span>
-        <h1>Prépare l'examen civique de la carte de résident</h1>
-        <p>Entraîne-toi sur les 209 questions publiées par le ministère de l'Intérieur. Chaque réponse est corrigée et expliquée, et le site repère tes points faibles. Le jour J : 40 questions en 45 minutes, 32 bonnes réponses pour réussir.</p>
+        <h1>Prépare l'examen civique ${EXAMS[state.exam].of}</h1>
+        <p>Entraîne-toi sur les ${Q.length} questions publiées par le ministère de l'Intérieur. Chaque réponse est corrigée et expliquée, et le site repère tes points faibles. Le jour J : 40 questions en 45 minutes, 32 bonnes réponses pour réussir.</p>
         <div class="row">
           <button class="btn light" data-tab="daily">${dailyDone?"<i class='ic' data-i='check'></i> Série du jour terminée":"<i class='ic' data-i='play'></i> Commencer la série du jour"}</button>
           <button class="btn ghost-light" data-tab="exam"><i class='ic' data-i='exam'></i> Passer un examen blanc</button>

@@ -11,6 +11,8 @@ import { loadData } from "./core/data.js";
 import { registerViews, setupNavigation } from "./core/router.js";
 import { setupAccountMenu } from "./ui/account-menu.js";
 import { setupIcons } from "./ui/icons.js";
+import { setupExamSwitch, useExam } from "./ui/exam-switch.js";
+import { initialExam } from "./core/progress.js";
 import { boot } from "./auth/auth.js";
 
 import { showHome } from "./views/home.js";
@@ -30,9 +32,11 @@ registerViews({
 setupIcons();
 setupNavigation();
 setupAccountMenu();
+setupExamSwitch();
 
 try {
   await loadData();
+  await useExam(initialExam());   // questions disponibles dès l'écran de connexion
   await boot();
 } catch(e){
   console.error(e);

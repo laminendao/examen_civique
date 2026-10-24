@@ -16,4 +16,5 @@ export function render(html){ view().innerHTML = html; }
 export function setChrome(showNav){
   document.getElementById("navlinks").hidden = !showNav;
   document.getElementById("tabbar").hidden = !showNav;
+  document.getElementById("exambar").hidden = !showNav;
 }

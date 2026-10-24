@@ -21,7 +21,7 @@
   <div class="container">
     <button class="brand" type="button" data-tab="home" aria-label="Accueil">
       <span class="logo" aria-hidden="true"><i class='ic' data-i='logo'></i></span>
-      <span><b>Examen civique</b><small>Entraînement · carte de résident</small></span>
+      <span><b>Examen civique</b><small id="brand-sub">Entraînement · examen civique</small></span>
     </button>
     <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
       <button class="navlink" data-tab="home"><span class="e"><i class='ic' data-i='home'></i></span>Accueil</button>
@@ -44,6 +44,12 @@
     </div>
   </div>
 </header>
+<div class="exambar" id="exambar" hidden>
+  <div class="container">
+    <span class="exambar-lbl">Je m'entraîne pour</span>
+    <div class="exam-tabs" role="tablist" aria-label="Choix de l'examen"></div>
+  </div>
+</div>
 <p class="sync" id="sync" hidden></p>
 
 <main>
@@ -63,8 +69,8 @@
 
 <footer>
   <div class="container">
-    <div><b><i class='ic' data-i='logo'></i> Examen civique · carte de résident</b> — site d'entraînement non officiel.</div>
-    <div>Questions : liste officielle du ministère de l'Intérieur (formation-civique.interieur.gouv.fr, licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées.</div>
+    <div><b><i class='ic' data-i='logo'></i> <span id="foot-exam">Examen civique</span></b> — site d'entraînement non officiel.</div>
+    <div>Questions : listes officielles du ministère de l'Intérieur pour les trois examens (licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Les questions de mise en situation ne sont pas publiées.</div>
     <div id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</div>
     <nav class="footlinks" aria-label="Informations légales"><a href="infos-utiles" data-tab="info">Liens utiles</a><a href="mentions-legales" data-tab="legal">Mentions légales</a><a href="confidentialite" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 Mouhamadou Lamine NDAO · Tous droits réservés</span></nav>
   </div>

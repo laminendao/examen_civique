@@ -1,8 +1,13 @@
 /* État partagé de l'application. */
-export const emptyStore = () => ({ stats: {}, days: {}, daily: null });
+
+/* Progression par examen : { stats, days, daily } */
+export const emptyExam = () => ({ stats: {}, days: {}, daily: null });
+/* Progression complète (format v2) : un historique séparé pour chaque examen. */
+export const emptyStore = () => ({ v: 2, exams: {} });
 
 export const state = {
   user: null,            // {id, email, name, gender, occupation} quand connecté
-  store: emptyStore(),   // progression : {stats, days, daily}
+  store: emptyStore(),   // progression de tous les examens
+  exam: "carte-resident",// examen choisi (voir EXAMS dans data.js)
   authReturn: false,     // vrai si une page légale a été ouverte depuis l'écran de connexion
 };

@@ -319,3 +319,27 @@ h2.sec .ic,.useful h2 .ic,.wk .retain .ic,.expl b .ic{color:var(--accent)}
 .topbar .container{max-width:1360px;gap:14px}
 .navlink{padding:0 7px;font-size:.88rem}
 .brand small{white-space:nowrap}
+
+/* ---- Choix de l'examen ---- */
+.exambar{background:var(--surface);border-bottom:1px solid var(--line)}
+.exambar .container{display:flex;align-items:center;gap:14px;padding-block:10px}
+.exambar-lbl{font-size:.82rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.exam-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;flex:1;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:4px}
+.exam-tab{display:flex;align-items:center;gap:10px;min-width:0;padding:8px 12px;border:1.5px solid transparent;border-radius:10px;background:none;cursor:pointer;color:var(--muted);text-align:left}
+.exam-tab:hover{color:var(--ink);background:rgba(255,255,255,.7)}
+.exam-tab.on{background:var(--surface);border-color:var(--accent);color:var(--ink);box-shadow:0 2px 8px rgba(193,0,42,.12)}
+.exam-tab .e{font-size:1.15rem;display:inline-grid;color:#b98a95}
+.exam-tab.on .e{color:var(--accent)}
+.exam-tab .lbl{display:flex;flex-direction:column;min-width:0}
+.exam-tab b{font-size:.9rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exam-tab small{font-size:.74rem;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.exam-tab .tiny{display:none}
+.exam-tab:disabled{cursor:wait;opacity:.7}
+@media (max-width:760px){
+  .exambar-lbl{display:none}
+  .exambar .container{padding-block:8px}
+  .exam-tab{flex-direction:column;align-items:center;text-align:center;gap:2px;padding:6px 4px}
+  .exam-tab .lbl{align-items:center}
+  .exam-tab .long{display:none}.exam-tab .tiny{display:inline}
+  .exam-tab b{font-size:.84rem}.exam-tab small{font-size:.68rem}
+}
