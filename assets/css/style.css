@@ -44,10 +44,10 @@ button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{ou
 
 /* ---- Barre d'onglets mobile ---- */
 .tabbar{display:none}
-@media (max-width:1120px){
+@media (max-width:1279px){
   .navlinks{display:none}
   .acct{margin-left:auto}
-  .tabbar{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;bottom:0;left:0;right:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.05)}
+  .tabbar{display:grid;grid-template-columns:repeat(7,1fr);position:fixed;bottom:0;left:0;right:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(0,0,0,.05)}
   .tabbar button{position:relative;display:flex;flex-direction:column;align-items:center;gap:1px;background:none;border:0;padding:4px 0;cursor:pointer;color:var(--muted);font-size:.66rem;font-weight:700}
   .tabbar button .e{font-size:1.25rem;line-height:1.2;filter:grayscale(.6);opacity:.8}
   .tabbar button[aria-current="page"]{color:var(--accent)}
@@ -236,6 +236,7 @@ input[type=search]:focus{border-color:var(--accent);outline:none}
 /* ---- Liens utiles ---- */
 .useful{background:#fff;border-top:1px solid var(--line)}
 .useful .container{padding-block:40px;display:flex;flex-direction:column;gap:22px}
+.useful-page{display:flex;flex-direction:column;gap:22px}
 .useful h2{margin:0;font-size:1.35rem;font-weight:800}
 .useful .sub{margin:-12px 0 0;color:var(--muted);font-size:.92rem}
 .figs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
@@ -305,3 +306,16 @@ h2.sec .ic,.useful h2 .ic,.wk .retain .ic,.expl b .ic{color:var(--accent)}
 .ulink .ext{display:inline-grid}
 .ulink .ext .ic{width:18px;height:18px}
 .hero .pill-tag .ic,.authside .pill-tag .ic{color:#fff}
+
+/* Petits écrans : en-tête compact */
+@media (max-width:480px){
+  .topbar .container{gap:10px}
+  .brand small{display:none}
+  .brand .logo{width:36px;height:36px}
+  #signin{padding:6px 10px;font-size:.8rem}
+}
+
+/* Barre de navigation : plus large que le contenu pour loger les 7 onglets */
+.topbar .container{max-width:1360px;gap:14px}
+.navlink{padding:0 7px;font-size:.88rem}
+.brand small{white-space:nowrap}

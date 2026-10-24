@@ -21,10 +21,11 @@ import { showWeak } from "./views/weak.js";
 import { showReview } from "./views/review.js";
 import { showLegal, showPrivacy } from "./views/legal.js";
 import { showAccount } from "./views/account.js";
+import { showInfo } from "./views/info.js";
 
 registerViews({
   home: showHome, daily: showDaily, exam: showExam, themes: showThemes, weak: showWeak,
-  review: showReview, legal: showLegal, privacy: showPrivacy, account: showAccount,
+  review: showReview, info: showInfo, legal: showLegal, privacy: showPrivacy, account: showAccount,
 });
 setupIcons();
 setupNavigation();
