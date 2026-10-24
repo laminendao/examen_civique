@@ -17,5 +17,5 @@ export const CONFIG = {
 
   // Mesure d'audience GoatCounter (sans cookies). Mettre le code du compte, ex. "examen-civique".
   // Vide = aucune mesure d'audience.
-  goatcounter: "",
+  goatcounter: "examencivique",
 };
