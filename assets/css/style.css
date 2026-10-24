@@ -492,3 +492,6 @@ footer .ic{color:var(--accent)}
 .footlinks a{color:var(--ink)}
 .footlinks a:hover{color:var(--accent)}
 .footlinks span{color:var(--muted)}
+/* Avertissements : fond blanc, simple filet rouge à gauche */
+.warnbox{background:#fff;border:0;border-left:2px solid var(--accent);border-radius:0;padding:4px 0 4px 14px;color:var(--muted)}
+.warnbox .ic{color:var(--accent)}
