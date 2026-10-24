@@ -1,0 +1,2725 @@
+{
+ "exam": "carte-resident",
+ "label": "Carte de résident",
+ "source": "https://formation-civique.interieur.gouv.fr/examen-civique/liste-officielle-des-questions-de-connaissance-cr/",
+ "licence": "Questions : Etalab 2.0 (ministère de l'Intérieur). Réponses et explications : © Mouhamadou Lamine NDAO.",
+ "questions": [
+  {
+   "id": 0,
+   "theme": "P",
+   "notion": "lib",
+   "question": "Parmi les propositions suivantes, laquelle constitue une participation citoyenne ?",
+   "answer": "Voter aux élections",
+   "distractors": [
+    "Signer une pétition anonyme",
+    "Payer une amende",
+    "Regarder les débats télévisés"
+   ],
+   "explanation": "Voter est la forme principale de participation citoyenne : c'est par le vote que les citoyens choisissent leurs représentants."
+  },
+  {
+   "id": 1,
+   "theme": "P",
+   "notion": "lib",
+   "question": "Que garantit la liberté d'expression ?",
+   "answer": "Le droit de dire ses opinions, dans les limites de la loi",
+   "distractors": [
+    "Le droit de tout dire, sans aucune limite fixée par la loi",
+    "Le droit de dire ses opinions, sauf pour critiquer l'État",
+    "Le droit de s'exprimer librement, mais seulement par écrit"
+   ],
+   "explanation": "La liberté d'expression (article 11 de la DDHC de 1789) est large, mais la loi sanctionne ses abus : injure, diffamation, incitation à la haine."
+  },
+  {
+   "id": 2,
+   "theme": "P",
+   "notion": "lib",
+   "question": "À quoi sert un titre de séjour ?",
+   "answer": "À prouver qu'on réside régulièrement en France",
+   "distractors": [
+    "À obtenir à terme la nationalité française",
+    "À pouvoir voter aux élections municipales",
+    "À voyager dans le monde sans passeport"
+   ],
+   "explanation": "Le titre de séjour atteste du droit d'un étranger à résider en France. Il ne donne ni la nationalité ni le droit de vote."
+  },
+  {
+   "id": 3,
+   "theme": "P",
+   "notion": "lib",
+   "question": "La liberté de circulation permet à toute personne de :",
+   "answer": "Se déplacer librement en France et d'en sortir",
+   "distractors": [
+    "Entrer librement dans tout lieu privé",
+    "Circuler sans document d'identité à l'étranger",
+    "Se déplacer partout sans aucune règle"
+   ],
+   "explanation": "Chacun peut aller et venir librement sur le territoire et le quitter. Cette liberté ne permet pas d'entrer chez autrui ni d'ignorer les règles (code de la route, frontières)."
+  },
+  {
+   "id": 4,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Sur quel site internet peut-on retrouver le symbole de la République française ?",
+   "answer": "Sur les sites officiels de l'État (.gouv.fr)",
+   "distractors": [
+    "Sur les sites des partis politiques français",
+    "Sur les sites des grandes entreprises publiques",
+    "Sur tous les sites hébergés en France"
+   ],
+   "explanation": "Le logo « Marianne » (bloc-marque de l'État) identifie les sites et documents officiels, par exemple service-public.fr ou les sites en .gouv.fr."
+  },
+  {
+   "id": 5,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Complétez ces paroles de la Marseillaise : « Aux armes […] ! Formez vos bataillons »",
+   "answer": "citoyens",
+   "distractors": [
+    "enfants",
+    "soldats",
+    "Français"
+   ],
+   "explanation": "Le refrain dit : « Aux armes, citoyens ! Formez vos bataillons ! Marchons, marchons… ». Écrite en 1792 par Rouget de Lisle, la Marseillaise est l'hymne national."
+  },
+  {
+   "id": 6,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Complétez les paroles de la Marseillaise : « Allons enfants de la patrie […] »",
+   "answer": "le jour de gloire est arrivé",
+   "distractors": [
+    "la liberté nous appelle",
+    "l'heure du combat a sonné",
+    "le jour de victoire est venu"
+   ],
+   "explanation": "Le premier couplet commence par : « Allons enfants de la Patrie, le jour de gloire est arrivé ! »"
+  },
+  {
+   "id": 7,
+   "theme": "P",
+   "notion": "lib",
+   "question": "En application de la liberté individuelle, quelle proposition est correcte ? Une personne peut :",
+   "answer": "Choisir librement la personne qu'elle épouse",
+   "distractors": [
+    "Être mariée par décision de sa famille",
+    "Être retenue chez elle par son conjoint",
+    "Être détenue sans décision d'un juge"
+   ],
+   "explanation": "Le mariage exige le libre consentement des deux époux. Un mariage forcé est nul et puni par la loi ; nul ne peut être détenu arbitrairement."
+  },
+  {
+   "id": 8,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Concernant la pratique de la religion, quelle proposition est correcte ?",
+   "answer": "Chacun pratique librement, dans le respect de l'ordre public",
+   "distractors": [
+    "Chacun pratique librement, mais seulement dans un lieu privé",
+    "Chaque culte doit d'abord être autorisé par le préfet",
+    "L'État reconnaît et finance une religion officielle"
+   ],
+   "explanation": "La liberté de culte est garantie par la loi de 1905. Elle s'exerce aussi en public (lieux de culte, processions), dans la limite de l'ordre public."
+  },
+  {
+   "id": 9,
+   "theme": "P",
+   "notion": "ecole",
+   "question": "En tant que parent, peut-on refuser que son enfant participe aux cours de sport à l'école car ils sont mixtes ?",
+   "answer": "Non, l'EPS est obligatoire pour tous",
+   "distractors": [
+    "Oui, avec une lettre écrite au directeur",
+    "Oui, si l'enfant a plus de dix ans",
+    "Oui, pour des raisons religieuses sérieuses"
+   ],
+   "explanation": "Les cours sont mixtes et obligatoires. Seul un certificat médical peut dispenser un élève d'éducation physique et sportive."
+  },
+  {
+   "id": 10,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Quelle est la devise de la France ?",
+   "answer": "Liberté, Égalité, Fraternité",
+   "distractors": [
+    "Travail, Famille, Patrie",
+    "Unité, Travail, Progrès",
+    "Liberté, Justice, Solidarité"
+   ],
+   "explanation": "La devise « Liberté, Égalité, Fraternité » est inscrite à l'article 2 de la Constitution. « Travail, Famille, Patrie » était celle du régime de Vichy (1940-1944)."
+  },
+  {
+   "id": 11,
+   "theme": "P",
+   "notion": "ega",
+   "question": "La répudiation de sa femme est :",
+   "answer": "Interdite et sans valeur en France",
+   "distractors": [
+    "Autorisée si elle est faite par écrit",
+    "Possible devant un religieux",
+    "Valable si elle a eu lieu à l'étranger"
+   ],
+   "explanation": "Seul un juge peut prononcer un divorce. La répudiation, décision unilatérale du mari, est contraire à l'égalité entre les époux et n'a aucune valeur en France."
+  },
+  {
+   "id": 12,
+   "theme": "P",
+   "notion": "ega",
+   "question": "Les impôts permettent de financer les dépenses publiques. Quelle proposition est correcte ?",
+   "answer": "Chacun contribue selon ses moyens",
+   "distractors": [
+    "Chacun paie le même montant",
+    "Seuls les salariés paient des impôts",
+    "Seuls les Français paient des impôts"
+   ],
+   "explanation": "L'article 13 de la DDHC prévoit que la contribution commune est « également répartie entre tous les citoyens, en raison de leurs facultés »."
+  },
+  {
+   "id": 13,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Peut-on brûler publiquement un drapeau français ?",
+   "answer": "Non, c'est un outrage puni par la loi",
+   "distractors": [
+    "Oui, lors d'une manifestation déclarée",
+    "Oui, au nom de la liberté d'expression",
+    "Oui, si le drapeau nous appartient"
+   ],
+   "explanation": "Détruire ou dégrader le drapeau tricolore en public est sanctionné : c'est un outrage à un symbole de la République."
+  },
+  {
+   "id": 14,
+   "theme": "P",
+   "notion": "ega",
+   "question": "Que fait l'État pour lutter contre les discriminations ?",
+   "answer": "Il les interdit et les sanctionne par la loi",
+   "distractors": [
+    "Il les tolère dans les entreprises privées",
+    "Il laisse chaque employeur en décider",
+    "Il les interdit seulement dans l'administration"
+   ],
+   "explanation": "Les discriminations (origine, sexe, religion, handicap…) sont des délits. On peut saisir le Défenseur des droits ou porter plainte."
+  },
+  {
+   "id": 15,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Que représente Marianne ?",
+   "answer": "La République française",
+   "distractors": [
+    "La première reine de France",
+    "La patronne de la ville de Paris",
+    "L'Union européenne"
+   ],
+   "explanation": "Marianne, femme coiffée d'un bonnet phrygien, symbolise la République. Son buste est présent dans les mairies."
+  },
+  {
+   "id": 16,
+   "theme": "P",
+   "notion": "lib",
+   "question": "Qu'est-ce que la liberté d'association ?",
+   "answer": "Le droit de créer une association ou d'y adhérer",
+   "distractors": [
+    "L'obligation d'adhérer à une association de quartier",
+    "Le droit de créer une association sans aucune règle",
+    "Le droit, réservé aux Français, de s'associer"
+   ],
+   "explanation": "Garantie par la loi de 1901, elle permet de créer une association, d'y adhérer ou de la quitter librement. Les étrangers peuvent aussi en créer."
+  },
+  {
+   "id": 17,
+   "theme": "P",
+   "notion": "lib",
+   "question": "Qu'est-ce que la liberté ?",
+   "answer": "Pouvoir faire tout ce qui ne nuit pas à autrui",
+   "distractors": [
+    "Pouvoir faire tout ce que l'on veut, sans limite",
+    "Pouvoir faire tout ce que permet sa famille",
+    "Pouvoir refuser d'obéir aux lois jugées injustes"
+   ],
+   "explanation": "C'est la définition de l'article 4 de la Déclaration des droits de l'homme et du citoyen de 1789."
+  },
+  {
+   "id": 18,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Qu'est-ce que la Marseillaise ?",
+   "answer": "L'hymne national de la France",
+   "distractors": [
+    "La devise de la République",
+    "Un chant de la ville de Marseille",
+    "L'hymne de l'Union européenne"
+   ],
+   "explanation": "Composée en 1792, la Marseillaise est l'hymne national (article 2 de la Constitution). L'hymne européen est l'Ode à la joie."
+  },
+  {
+   "id": 19,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Sur quel document peut-on voir Marianne ?",
+   "answer": "Sur les timbres-poste",
+   "distractors": [
+    "Sur les billets en euros",
+    "Sur le drapeau tricolore",
+    "Sur le passeport européen"
+   ],
+   "explanation": "Marianne figure sur les timbres, les pièces françaises de centimes et les documents officiels. Les billets en euros sont communs à l'Europe."
+  },
+  {
+   "id": 20,
+   "theme": "P",
+   "notion": "ega",
+   "question": "Un employeur refuse d'embaucher des femmes dans son entreprise. Que dit la loi ?",
+   "answer": "C'est une discrimination punie par la loi",
+   "distractors": [
+    "C'est permis dans une petite entreprise",
+    "C'est permis pour les métiers physiques",
+    "C'est permis s'il le justifie par écrit"
+   ],
+   "explanation": "Refuser d'embaucher en raison du sexe est une discrimination, punie jusqu'à 3 ans de prison et 45 000 € d'amende."
+  },
+  {
+   "id": 21,
+   "theme": "P",
+   "notion": "ega",
+   "question": "Une des valeurs de la devise républicaine est l'égalité. Qu'est-ce que cela signifie ?",
+   "answer": "Tous sont égaux devant la loi, sans distinction",
+   "distractors": [
+    "Tous doivent gagner le même salaire",
+    "Tous ont les mêmes droits selon leur origine",
+    "Tous doivent avoir le même niveau de vie"
+   ],
+   "explanation": "L'égalité signifie que la loi est la même pour tous, sans distinction d'origine, de sexe ou de religion (article 1er de la Constitution)."
+  },
+  {
+   "id": 22,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Quelle est la place de la langue française dans la République ?",
+   "answer": "C'est la langue de la République (Constitution)",
+   "distractors": [
+    "Elle partage ce statut avec les langues régionales",
+    "C'est une langue sans statut juridique",
+    "Elle est l'une des deux langues officielles"
+   ],
+   "explanation": "L'article 2 de la Constitution dispose : « La langue de la République est le français ». Les langues régionales font partie du patrimoine (article 75-1)."
+  },
+  {
+   "id": 23,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Quels sont des symboles officiels de la République française ?",
+   "answer": "Le drapeau tricolore, la Marseillaise et la devise",
+   "distractors": [
+    "La fleur de lys, le coq gaulois et la couronne",
+    "La tour Eiffel, le coq gaulois et la baguette",
+    "L'aigle impérial, l'abeille et le drapeau blanc"
+   ],
+   "explanation": "L'article 2 de la Constitution cite le drapeau bleu-blanc-rouge, l'hymne (la Marseillaise) et la devise. Marianne et le 14 juillet sont aussi des symboles."
+  },
+  {
+   "id": 24,
+   "theme": "P",
+   "notion": "ega",
+   "question": "A-t-on le droit d'insulter publiquement quelqu'un parce qu'il est différent (handicap, apparence physique, sexe…) ?",
+   "answer": "Non, c'est puni par la loi",
+   "distractors": [
+    "Oui, au nom de la liberté d'expression",
+    "Oui, si c'est sur les réseaux sociaux",
+    "Oui, si on ne cite pas son nom"
+   ],
+   "explanation": "L'injure publique à caractère discriminatoire est un délit, y compris en ligne."
+  },
+  {
+   "id": 25,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Le régime de la France est :",
+   "answer": "Une république démocratique",
+   "distractors": [
+    "Une monarchie parlementaire",
+    "Un empire constitutionnel",
+    "Une république fédérale"
+   ],
+   "explanation": "La France est une République « indivisible, laïque, démocratique et sociale » (article 1er de la Constitution de 1958)."
+  },
+  {
+   "id": 26,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Pourquoi le principe de laïcité doit-il être respecté à l'école ?",
+   "answer": "Pour protéger la liberté de conscience des élèves",
+   "distractors": [
+    "Pour interdire aux élèves d'avoir une religion",
+    "Pour enseigner toutes les religions à égalité",
+    "Pour permettre aux professeurs de dire leur foi"
+   ],
+   "explanation": "L'école publique est neutre : elle protège les élèves de toute pression religieuse ou politique, afin qu'ils forment librement leur jugement."
+  },
+  {
+   "id": 27,
+   "theme": "P",
+   "notion": "laic",
+   "question": "En quelle année la loi de séparation des Églises et de l'État a-t-elle été votée ?",
+   "answer": "1905",
+   "distractors": [
+    "1789",
+    "1881",
+    "1946"
+   ],
+   "explanation": "La loi du 9 décembre 1905 garantit la liberté de culte et sépare les Églises de l'État : la République ne reconnaît ni ne subventionne aucun culte."
+  },
+  {
+   "id": 28,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Une personne a-t-elle le droit de ne pas croire en une religion ?",
+   "answer": "Oui, chacun est libre de croire ou non",
+   "distractors": [
+    "Non, chacun doit déclarer une religion",
+    "Oui, mais seulement après dix-huit ans",
+    "Oui, si sa famille lui donne son accord"
+   ],
+   "explanation": "La liberté de conscience protège autant les croyants que les athées et les agnostiques."
+  },
+  {
+   "id": 29,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Quel droit est garanti par la laïcité ?",
+   "answer": "La liberté de conscience",
+   "distractors": [
+    "Le droit de grève",
+    "La liberté de la presse",
+    "Le droit d'association"
+   ],
+   "explanation": "La laïcité garantit la liberté de conscience : croire, ne pas croire ou changer de religion, et l'égalité de tous quelle que soit leur conviction."
+  },
+  {
+   "id": 30,
+   "theme": "P",
+   "notion": "laic",
+   "question": "À l'école publique, qui peut porter des signes religieux très visibles ?",
+   "answer": "Personne, ni élèves ni enseignants",
+   "distractors": [
+    "Les élèves seulement, pas les enseignants",
+    "Les enseignants seulement, pas les élèves",
+    "Les lycéens seulement, pas les écoliers"
+   ],
+   "explanation": "La loi de 2004 interdit aux élèves les signes religieux ostensibles ; les enseignants, agents publics, doivent une neutralité totale."
+  },
+  {
+   "id": 31,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Selon le principe de laïcité, que signifie la neutralité de l'État ?",
+   "answer": "L'État ne favorise aucune religion",
+   "distractors": [
+    "L'État choisit une religion officielle",
+    "L'État finance tous les cultes à égalité",
+    "L'État interdit les religions en public"
+   ],
+   "explanation": "L'État n'a pas de religion, ne finance aucun culte et traite toutes les croyances de la même manière."
+  },
+  {
+   "id": 32,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Que peut faire un usager du service public dans une mairie ?",
+   "answer": "Porter un signe religieux",
+   "distractors": [
+    "Choisir l'agent qui le reçoit",
+    "Refuser un agent du sexe opposé",
+    "Exiger un agent de sa religion"
+   ],
+   "explanation": "La neutralité s'impose aux agents, pas aux usagers. Mais un usager ne peut pas choisir son interlocuteur selon le sexe ou la religion."
+  },
+  {
+   "id": 33,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Qui doit respecter le principe de neutralité religieuse dans une préfecture ?",
+   "answer": "Les agents publics qui y travaillent",
+   "distractors": [
+    "Les usagers venant faire une démarche",
+    "Seulement les usagers étrangers",
+    "Les agents et les usagers"
+   ],
+   "explanation": "L'obligation de neutralité pèse sur les agents publics, représentants de l'État. Les usagers restent libres de leurs convictions."
+  },
+  {
+   "id": 34,
+   "theme": "P",
+   "notion": "laic",
+   "question": "La laïcité impose-t-elle aux agents publics d'être neutres vis-à-vis des usagers ?",
+   "answer": "Oui, pendant tout leur service",
+   "distractors": [
+    "Non, ils peuvent montrer leur religion",
+    "Oui, mais seulement dans les écoles",
+    "Non, sauf s'ils sont fonctionnaires titulaires"
+   ],
+   "explanation": "Tout agent public, titulaire ou contractuel, doit rester neutre pendant son service : pas de signe religieux, pas de prosélytisme."
+  },
+  {
+   "id": 35,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Que garantit le principe de laïcité ?",
+   "answer": "La liberté de conscience et l'égalité de tous",
+   "distractors": [
+    "La priorité donnée à la religion majoritaire",
+    "L'interdiction de toute religion dans l'espace public",
+    "Le financement de tous les cultes par l'État"
+   ],
+   "explanation": "La laïcité garantit à chacun la liberté de croire ou non et l'égalité devant la loi quelles que soient ses convictions."
+  },
+  {
+   "id": 36,
+   "theme": "P",
+   "notion": "laic",
+   "question": "A-t-on le droit de changer de religion ?",
+   "answer": "Oui, c'est un choix personnel et libre",
+   "distractors": [
+    "Non, la religion est fixée à la naissance",
+    "Oui, avec l'accord de sa famille",
+    "Oui, après une déclaration en mairie"
+   ],
+   "explanation": "La liberté de conscience comprend le droit de changer de religion ou d'en abandonner une, sans autorisation de quiconque."
+  },
+  {
+   "id": 37,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Que représente la laïcité ?",
+   "answer": "Un principe de séparation de l'État et des cultes",
+   "distractors": [
+    "La religion officielle de la France depuis 1905",
+    "L'interdiction pour tous de croire en Dieu",
+    "Une fête nationale célébrée au mois de décembre"
+   ],
+   "explanation": "La laïcité est un principe constitutionnel : l'État est séparé des religions et garantit la liberté de conscience de chacun."
+  },
+  {
+   "id": 38,
+   "theme": "P",
+   "notion": "laic",
+   "question": "Qu'est-ce qui est interdit par la Charte de la laïcité à l'école ?",
+   "answer": "Refuser un cours pour des motifs religieux",
+   "distractors": [
+    "Avoir et exprimer une religion personnelle",
+    "Étudier le fait religieux en cours d'histoire",
+    "Porter une croix discrète autour du cou"
+   ],
+   "explanation": "La Charte de la laïcité à l'école (2013) précise qu'aucun élève ne peut contester un enseignement ou refuser un cours en invoquant sa religion."
+  },
+  {
+   "id": 39,
+   "theme": "P",
+   "notion": "sym",
+   "question": "Que dit l'article 1er de la Constitution française ?",
+   "answer": "La France est une République laïque",
+   "distractors": [
+    "La France est une monarchie constitutionnelle",
+    "La France est une République fédérale",
+    "La France est une République chrétienne"
+   ],
+   "explanation": "Article 1er : « La France est une République indivisible, laïque, démocratique et sociale. » Elle assure l'égalité de tous devant la loi."
+  },
+  {
+   "id": 40,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qu'est-ce que l'État de droit ?",
+   "answer": "Un État où les dirigeants aussi respectent le droit",
+   "distractors": [
+    "Un État où le chef décide seul des lois",
+    "Un État où seuls les citoyens obéissent à la loi",
+    "Un État où la police fixe elle-même les règles"
+   ],
+   "explanation": "Dans un État de droit, les gouvernants sont soumis aux règles comme les citoyens, sous le contrôle de juges indépendants."
+  },
+  {
+   "id": 41,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Le président de la République a commis un crime. Quelle proposition est correcte ?",
+   "answer": "Il pourra être poursuivi à la fin de son mandat",
+   "distractors": [
+    "Il ne pourra jamais être poursuivi",
+    "Il est jugé tout de suite comme un citoyen",
+    "Il est jugé par le gouvernement"
+   ],
+   "explanation": "Article 67 de la Constitution : le Président ne peut pas être poursuivi pendant son mandat, mais les poursuites reprennent après. Il peut aussi être destitué par le Parlement."
+  },
+  {
+   "id": 42,
+   "theme": "S",
+   "notion": "inst",
+   "question": "La loi est l'expression de :",
+   "answer": "La volonté générale",
+   "distractors": [
+    "La volonté du président",
+    "La volonté des juges",
+    "La volonté du gouvernement"
+   ],
+   "explanation": "Article 6 de la DDHC : « La loi est l'expression de la volonté générale. » Elle est votée par le Parlement, élu par les citoyens."
+  },
+  {
+   "id": 43,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Quelle est la durée du mandat du conseil municipal et du maire ?",
+   "answer": "6 ans",
+   "distractors": [
+    "4 ans",
+    "5 ans",
+    "7 ans"
+   ],
+   "explanation": "Les conseillers municipaux sont élus pour 6 ans ; ils élisent ensuite le maire parmi eux."
+  },
+  {
+   "id": 44,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Que garantit l'État de droit ?",
+   "answer": "Que tous respectent la loi, sous le contrôle des juges",
+   "distractors": [
+    "Que le gouvernement peut décider sans aucun contrôle",
+    "Que les lois votées ne peuvent jamais être modifiées",
+    "Que la police fixe elle-même les sanctions"
+   ],
+   "explanation": "L'État de droit soumet chacun, y compris l'État, au droit. Des juges indépendants contrôlent le respect des règles."
+  },
+  {
+   "id": 45,
+   "theme": "S",
+   "notion": "vote",
+   "question": "Une personne peut-elle voter à la place d'une autre ?",
+   "answer": "Non, sauf si elle a reçu une procuration",
+   "distractors": [
+    "Oui, si c'est un membre de sa famille",
+    "Oui, si elle a sa carte d'identité",
+    "Non, aucune exception n'existe"
+   ],
+   "explanation": "Le vote est personnel. La procuration (faite au commissariat, à la gendarmerie ou en ligne) permet de confier son vote à un autre électeur."
+  },
+  {
+   "id": 46,
+   "theme": "S",
+   "notion": "vote",
+   "question": "Est-ce que le vote est obligatoire ?",
+   "answer": "Non, c'est un droit et un devoir civique",
+   "distractors": [
+    "Oui, sous peine d'une amende",
+    "Oui, pour les élections présidentielles",
+    "Oui, sous peine de perdre ses droits"
+   ],
+   "explanation": "En France, voter n'est pas obligatoire (sauf pour les grands électeurs aux sénatoriales). C'est un devoir civique moral."
+  },
+  {
+   "id": 47,
+   "theme": "S",
+   "notion": "inst",
+   "question": "À la fin de son mandat, le président de la République peut-il décider de rester au pouvoir ?",
+   "answer": "Non, il doit quitter ses fonctions",
+   "distractors": [
+    "Oui, s'il en décide ainsi lui-même",
+    "Oui, si le gouvernement l'accepte",
+    "Oui, pour une année supplémentaire"
+   ],
+   "explanation": "Le mandat est de 5 ans, renouvelable une seule fois consécutivement. À son terme, une nouvelle élection a lieu."
+  },
+  {
+   "id": 48,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qui dirige l'action du Gouvernement ?",
+   "answer": "Le Premier ministre",
+   "distractors": [
+    "Le président du Sénat",
+    "Le président de l'Assemblée nationale",
+    "Le ministre de l'Intérieur"
+   ],
+   "explanation": "Article 21 de la Constitution : « Le Premier ministre dirige l'action du Gouvernement »."
+  },
+  {
+   "id": 49,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qui nomme le Premier ministre ?",
+   "answer": "Le président de la République",
+   "distractors": [
+    "L'Assemblée nationale",
+    "Les citoyens par un vote",
+    "Le Conseil constitutionnel"
+   ],
+   "explanation": "Article 8 de la Constitution : le Président nomme le Premier ministre, puis les ministres sur sa proposition."
+  },
+  {
+   "id": 50,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Quelle est l'organisation administrative de la France ?",
+   "answer": "Un État décentralisé (communes, départements, régions)",
+   "distractors": [
+    "Un État fédéral formé d'États autonomes (Länder)",
+    "Un État très centralisé, sans élus locaux",
+    "Un ensemble de provinces indépendantes de Paris"
+   ],
+   "explanation": "La France est un État unitaire décentralisé (article 1er) : les collectivités territoriales s'administrent librement par des conseils élus."
+  },
+  {
+   "id": 51,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qu'est-ce que le pouvoir législatif ? Le pouvoir :",
+   "answer": "De voter les lois",
+   "distractors": [
+    "De juger les délits",
+    "De faire appliquer les lois",
+    "De diriger l'administration"
+   ],
+   "explanation": "Le pouvoir législatif appartient au Parlement (Assemblée nationale et Sénat), qui vote les lois et contrôle le gouvernement."
+  },
+  {
+   "id": 52,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Pourquoi séparer les trois pouvoirs dans une démocratie ?",
+   "answer": "Pour éviter les abus et protéger les libertés",
+   "distractors": [
+    "Pour rendre les élections inutiles",
+    "Pour donner plus de pouvoir au président",
+    "Pour réduire le nombre de ministres"
+   ],
+   "explanation": "Selon Montesquieu, « le pouvoir arrête le pouvoir ». Séparer législatif, exécutif et judiciaire empêche qu'une seule autorité concentre tout."
+  },
+  {
+   "id": 53,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qui sanctionne l'auteur d'un vol ?",
+   "answer": "La justice (le juge)",
+   "distractors": [
+    "La victime elle-même",
+    "Le maire de la commune",
+    "La police directement"
+   ],
+   "explanation": "Seul un juge peut prononcer une peine. La police enquête et interpelle, mais ne juge pas ; se faire justice soi-même est interdit."
+  },
+  {
+   "id": 54,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Quel est le rôle du gouvernement ?",
+   "answer": "Conduire la politique de la nation",
+   "distractors": [
+    "Juger les citoyens accusés",
+    "Voter seul les lois du pays",
+    "Élire le président de la République"
+   ],
+   "explanation": "Article 20 de la Constitution : le Gouvernement détermine et conduit la politique de la nation et dispose de l'administration."
+  },
+  {
+   "id": 55,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Que se passe-t-il si un ministre ne respecte pas la loi ?",
+   "answer": "Il peut être poursuivi et jugé",
+   "distractors": [
+    "Rien, sa fonction le protège toujours",
+    "Il est seulement changé de ministère",
+    "Il choisit lui-même sa propre sanction"
+   ],
+   "explanation": "Personne n'est au-dessus des lois. Pour les infractions commises dans leurs fonctions, les ministres sont jugés par la Cour de justice de la République."
+  },
+  {
+   "id": 56,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Combien de députés composent l'Assemblée nationale ?",
+   "answer": "577",
+   "distractors": [
+    "348",
+    "500",
+    "925"
+   ],
+   "explanation": "L'Assemblée nationale compte 577 députés élus pour 5 ans. Le Sénat compte 348 sénateurs ; ensemble ils forment 925 parlementaires."
+  },
+  {
+   "id": 57,
+   "theme": "S",
+   "notion": "vote",
+   "question": "Qui peut voter aux élections en France ?",
+   "answer": "Les Français majeurs inscrits sur les listes",
+   "distractors": [
+    "Tout résident en France depuis un an",
+    "Les Français de plus de 21 ans",
+    "Les Français propriétaires d'un logement"
+   ],
+   "explanation": "Il faut être français, majeur (18 ans) et inscrit sur les listes électorales. Les citoyens de l'UE peuvent voter aux municipales et aux européennes."
+  },
+  {
+   "id": 58,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Pour combien de temps sont élus les sénateurs ?",
+   "answer": "6 ans",
+   "distractors": [
+    "4 ans",
+    "5 ans",
+    "9 ans"
+   ],
+   "explanation": "Les sénateurs sont élus pour 6 ans au suffrage indirect (par des grands électeurs). Le Sénat est renouvelé par moitié tous les 3 ans."
+  },
+  {
+   "id": 59,
+   "theme": "S",
+   "notion": "inst",
+   "question": "La séparation des pouvoirs est un principe fondamental. Quels sont les trois pouvoirs concernés ?",
+   "answer": "Législatif, exécutif et judiciaire",
+   "distractors": [
+    "Législatif, militaire et judiciaire",
+    "Exécutif, religieux et économique",
+    "Municipal, régional et national"
+   ],
+   "explanation": "Le législatif vote les lois (Parlement), l'exécutif les applique (Président, Gouvernement), le judiciaire juge (tribunaux)."
+  },
+  {
+   "id": 60,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Est-ce que le président de la République a tous les pouvoirs ?",
+   "answer": "Non, la Constitution limite ses pouvoirs",
+   "distractors": [
+    "Oui, il décide de tout seul",
+    "Oui, sauf en matière de justice",
+    "Oui, s'il a la majorité au Parlement"
+   ],
+   "explanation": "Les pouvoirs du Président sont définis par la Constitution et équilibrés par le Parlement, les juges et le Conseil constitutionnel."
+  },
+  {
+   "id": 61,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Qui est le préfet ?",
+   "answer": "Le représentant de l'État dans le département",
+   "distractors": [
+    "Le président élu du conseil départemental",
+    "Le chef de la police municipale de la ville",
+    "Le maire de la plus grande ville du département"
+   ],
+   "explanation": "Nommé par le Président de la République, le préfet représente l'État dans le département (et la région). Il délivre notamment les titres de séjour."
+  },
+  {
+   "id": 62,
+   "theme": "S",
+   "notion": "vote",
+   "question": "Quelle condition est nécessaire pour voter aux élections ?",
+   "answer": "Être inscrit sur les listes électorales",
+   "distractors": [
+    "Être propriétaire de son logement",
+    "Avoir un emploi déclaré depuis un an",
+    "Avoir obtenu un diplôme en France"
+   ],
+   "explanation": "Il faut aussi être français (ou citoyen de l'UE pour certaines élections), majeur et jouir de ses droits civiques. L'inscription se fait en mairie ou en ligne."
+  },
+  {
+   "id": 63,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Qui dirige la commune ?",
+   "answer": "Le maire, avec le conseil municipal",
+   "distractors": [
+    "Le préfet du département",
+    "Le président du conseil régional",
+    "Le sous-préfet, avec les élus"
+   ],
+   "explanation": "Le maire, élu par le conseil municipal, exécute ses décisions. Il est aussi officier d'état civil et agent de l'État."
+  },
+  {
+   "id": 64,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Quel est le régime politique de la France aujourd'hui ?",
+   "answer": "La Ve République",
+   "distractors": [
+    "La IVe République",
+    "La IIIe République",
+    "Le Second Empire"
+   ],
+   "explanation": "La Ve République a été fondée par la Constitution du 4 octobre 1958, à l'initiative du général de Gaulle."
+  },
+  {
+   "id": 65,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qu'est-ce que l'Hôtel de Matignon ?",
+   "answer": "La résidence du Premier ministre",
+   "distractors": [
+    "La résidence du président de la République",
+    "Le siège du Sénat, à Paris",
+    "Le siège de l'Assemblée nationale"
+   ],
+   "explanation": "Matignon accueille le Premier ministre. Le Président est à l'Élysée, le Sénat au palais du Luxembourg, l'Assemblée au palais Bourbon."
+  },
+  {
+   "id": 66,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Le Parlement est composé :",
+   "answer": "De l'Assemblée nationale et du Sénat",
+   "distractors": [
+    "Du président et du gouvernement",
+    "De l'Assemblée et du gouvernement",
+    "Du Sénat et du Conseil d'État"
+   ],
+   "explanation": "Le Parlement est bicaméral : l'Assemblée nationale (577 députés) et le Sénat (348 sénateurs)."
+  },
+  {
+   "id": 67,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Quel est le rôle du président de la République ?",
+   "answer": "Garantir le respect de la Constitution",
+   "distractors": [
+    "Voter les lois avec le Sénat",
+    "Juger les crimes les plus graves",
+    "Diriger chaque jour les ministères"
+   ],
+   "explanation": "Article 5 : le Président veille au respect de la Constitution, assure le fonctionnement des pouvoirs publics et garantit l'indépendance nationale. Il est chef des armées."
+  },
+  {
+   "id": 68,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Quel est le rôle du Premier ministre ?",
+   "answer": "Diriger l'action du Gouvernement",
+   "distractors": [
+    "Commander seul les forces armées",
+    "Présider les séances du Parlement",
+    "Nommer le président du Sénat"
+   ],
+   "explanation": "Le Premier ministre dirige le Gouvernement, assure l'exécution des lois et est responsable devant l'Assemblée nationale."
+  },
+  {
+   "id": 69,
+   "theme": "S",
+   "notion": "inst",
+   "question": "Qui est le chef du Gouvernement ?",
+   "answer": "Le Premier ministre",
+   "distractors": [
+    "Le président du Sénat",
+    "Le ministre de l'Intérieur",
+    "Le président de l'Assemblée"
+   ],
+   "explanation": "Le Premier ministre est le chef du Gouvernement ; le Président de la République préside le Conseil des ministres."
+  },
+  {
+   "id": 70,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Combien y a-t-il de régions en France ?",
+   "answer": "18 (13 en métropole, 5 en outre-mer)",
+   "distractors": [
+    "13 (toutes situées en métropole)",
+    "22 (21 en métropole, 1 en Corse)",
+    "27 (22 en métropole, 5 en outre-mer)"
+   ],
+   "explanation": "Depuis 2016, la France compte 18 régions : 13 en métropole (dont la Corse) et 5 en outre-mer. Il y a 101 départements."
+  },
+  {
+   "id": 71,
+   "theme": "S",
+   "notion": "droit",
+   "question": "Quel est le rôle du Défenseur des droits ?",
+   "answer": "Défendre les droits face aux administrations",
+   "distractors": [
+    "Défendre les accusés devant les tribunaux",
+    "Contrôler que les lois sont constitutionnelles",
+    "Représenter l'État dans le département"
+   ],
+   "explanation": "Autorité indépendante, le Défenseur des droits aide gratuitement les personnes face aux services publics et lutte contre les discriminations."
+  },
+  {
+   "id": 72,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Depuis quand l'euro est-il la monnaie unique ?",
+   "answer": "Depuis 2002 pour les pièces et billets",
+   "distractors": [
+    "Depuis 1992 pour les pièces et billets",
+    "Depuis 1957 pour les pièces et billets",
+    "Depuis 2010 pour les pièces et billets"
+   ],
+   "explanation": "L'euro existe comme monnaie de compte depuis 1999 ; les pièces et billets circulent depuis le 1er janvier 2002."
+  },
+  {
+   "id": 73,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Quel est le rôle principal du département ?",
+   "answer": "L'action sociale (RSA, aide à l'enfance…)",
+   "distractors": [
+    "La gestion des écoles primaires",
+    "L'état civil et les mariages",
+    "Les lycées et les transports régionaux"
+   ],
+   "explanation": "Le département est la collectivité de la solidarité : RSA, protection de l'enfance, personnes âgées et handicapées. Il gère aussi les collèges."
+  },
+  {
+   "id": 74,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Quel est le rôle principal des communes ?",
+   "answer": "Les services de proximité (état civil, écoles…)",
+   "distractors": [
+    "La gestion des lycées et des trains régionaux",
+    "Le versement du RSA et de l'aide aux personnes âgées",
+    "La délivrance des titres de séjour"
+   ],
+   "explanation": "La commune gère l'état civil, les écoles maternelles et élémentaires, l'urbanisme, la voirie… Les titres de séjour relèvent de la préfecture."
+  },
+  {
+   "id": 75,
+   "theme": "S",
+   "notion": "loc",
+   "question": "Combien de communes environ existe-t-il en France ?",
+   "answer": "Environ 35 000",
+   "distractors": [
+    "Environ 3 500",
+    "Environ 15 000",
+    "Environ 100 000"
+   ],
+   "explanation": "La France compte près de 35 000 communes, un nombre très élevé par rapport aux autres pays européens."
+  },
+  {
+   "id": 76,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quel traité concerne la construction de l'Union européenne ?",
+   "answer": "Le traité de Maastricht",
+   "distractors": [
+    "Le traité de Versailles",
+    "Le traité de Westphalie",
+    "Le traité de l'Atlantique Nord"
+   ],
+   "explanation": "Signé en 1992, le traité de Maastricht crée l'Union européenne et prévoit la monnaie unique. Le traité de Versailles (1919) clôt la Première Guerre mondiale."
+  },
+  {
+   "id": 77,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quel État a quitté l'Union européenne en 2020 ?",
+   "answer": "Le Royaume-Uni",
+   "distractors": [
+    "La Suisse",
+    "La Norvège",
+    "Le Danemark"
+   ],
+   "explanation": "Le Royaume-Uni est sorti de l'UE le 31 janvier 2020 (Brexit). La Suisse et la Norvège n'en ont jamais été membres."
+  },
+  {
+   "id": 78,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quelle est la devise de l'Union européenne ?",
+   "answer": "« Unie dans la diversité »",
+   "distractors": [
+    "« L'union fait la force »",
+    "« Paix et prospérité »",
+    "« Ensemble pour l'Europe »"
+   ],
+   "explanation": "La devise de l'UE, adoptée en 2000, est « Unie dans la diversité ». « L'union fait la force » est la devise de la Belgique."
+  },
+  {
+   "id": 79,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quel est l'hymne de l'Union européenne ?",
+   "answer": "L'Ode à la joie de Beethoven",
+   "distractors": [
+    "Le Boléro de Ravel",
+    "Les Quatre Saisons de Vivaldi",
+    "Le Chant des partisans"
+   ],
+   "explanation": "L'hymne européen est l'Ode à la joie, extrait de la 9e symphonie de Beethoven, joué sans paroles."
+  },
+  {
+   "id": 80,
+   "theme": "S",
+   "notion": "ue",
+   "question": "De quoi est composé le drapeau européen ?",
+   "answer": "De 12 étoiles dorées en cercle sur fond bleu",
+   "distractors": [
+    "De 27 étoiles dorées en cercle sur fond bleu",
+    "De 12 étoiles blanches en cercle sur fond rouge",
+    "De 27 étoiles blanches en ligne sur fond bleu"
+   ],
+   "explanation": "Les 12 étoiles symbolisent l'unité et la perfection ; leur nombre ne correspond pas au nombre de pays membres (27)."
+  },
+  {
+   "id": 81,
+   "theme": "S",
+   "notion": "ue",
+   "question": "De quelle couleur est le drapeau européen ?",
+   "answer": "Bleu, avec des étoiles jaunes",
+   "distractors": [
+    "Blanc, avec des étoiles bleues",
+    "Rouge, avec des étoiles jaunes",
+    "Bleu, avec des étoiles blanches"
+   ],
+   "explanation": "Le drapeau européen montre un cercle de 12 étoiles jaunes (or) sur fond bleu."
+  },
+  {
+   "id": 82,
+   "theme": "S",
+   "notion": "ue",
+   "question": "En quelle année le traité de Maastricht, qui marque la fondation de l'Union européenne, a-t-il été signé ?",
+   "answer": "1992",
+   "distractors": [
+    "1957",
+    "1986",
+    "2002"
+   ],
+   "explanation": "Maastricht : 1992. Traité de Rome (CEE) : 1957. Euro en circulation : 2002."
+  },
+  {
+   "id": 83,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Où est le siège du Parlement européen ?",
+   "answer": "À Strasbourg",
+   "distractors": [
+    "À Bruxelles",
+    "À Luxembourg",
+    "À Francfort"
+   ],
+   "explanation": "Le siège officiel du Parlement européen est à Strasbourg, où ont lieu les sessions plénières ; certaines réunions se tiennent à Bruxelles."
+  },
+  {
+   "id": 84,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Où est le siège de la Commission européenne ?",
+   "answer": "À Bruxelles",
+   "distractors": [
+    "À Strasbourg",
+    "À Luxembourg",
+    "À La Haye"
+   ],
+   "explanation": "La Commission européenne siège à Bruxelles (Belgique)."
+  },
+  {
+   "id": 85,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quel État n'est pas membre de l'Union européenne ?",
+   "answer": "La Suisse",
+   "distractors": [
+    "L'Autriche",
+    "Le Portugal",
+    "La Pologne"
+   ],
+   "explanation": "La Suisse n'a jamais adhéré à l'UE, même si elle fait partie de l'espace Schengen."
+  },
+  {
+   "id": 86,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quand célèbre-t-on la journée de l'Europe ?",
+   "answer": "Le 9 mai",
+   "distractors": [
+    "Le 8 mai",
+    "Le 1er mai",
+    "Le 25 mars"
+   ],
+   "explanation": "Le 9 mai rappelle la déclaration de Robert Schuman (9 mai 1950), point de départ de la construction européenne. Le 8 mai commémore 1945."
+  },
+  {
+   "id": 87,
+   "theme": "S",
+   "notion": "ue",
+   "question": "À quelle fréquence les élections européennes sont-elles organisées ?",
+   "answer": "Tous les 5 ans",
+   "distractors": [
+    "Tous les 4 ans",
+    "Tous les 6 ans",
+    "Tous les 7 ans"
+   ],
+   "explanation": "Les députés européens sont élus pour 5 ans au suffrage universel direct (dernière élection : juin 2024)."
+  },
+  {
+   "id": 88,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quelle condition est nécessaire pour voter aux élections européennes ?",
+   "answer": "Être citoyen de l'UE, majeur et inscrit",
+   "distractors": [
+    "Être né dans un pays de l'Europe",
+    "Résider en France depuis dix ans",
+    "Avoir la nationalité française seulement"
+   ],
+   "explanation": "Tout citoyen d'un pays de l'UE résidant en France peut voter aux européennes s'il est majeur et inscrit sur les listes électorales."
+  },
+  {
+   "id": 89,
+   "theme": "S",
+   "notion": "ue",
+   "question": "Quel pays est un pays fondateur de l'Union européenne ?",
+   "answer": "L'Italie",
+   "distractors": [
+    "L'Espagne",
+    "Le Royaume-Uni",
+    "Le Danemark"
+   ],
+   "explanation": "Les six fondateurs (CECA 1951, traité de Rome 1957) sont : France, Allemagne de l'Ouest, Italie, Belgique, Pays-Bas, Luxembourg."
+  },
+  {
+   "id": 90,
+   "theme": "D",
+   "notion": "fam",
+   "question": "À quelle liberté la PMA fait-elle référence ?",
+   "answer": "La liberté de fonder une famille",
+   "distractors": [
+    "La liberté de réunion et d'association",
+    "La liberté d'entreprendre et de travailler",
+    "La liberté de conscience et de religion"
+   ],
+   "explanation": "La procréation médicalement assistée aide à avoir un enfant. Depuis 2021, elle est ouverte aux couples de femmes et aux femmes seules."
+  },
+  {
+   "id": 91,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Au nom de quoi l'État justifie-t-il la restriction des droits ?",
+   "answer": "De l'ordre public et des droits d'autrui",
+   "distractors": [
+    "Des choix personnels du président",
+    "De l'intérêt du parti au pouvoir",
+    "De la morale religieuse majoritaire"
+   ],
+   "explanation": "Une liberté ne peut être limitée que par la loi, pour protéger l'ordre public (sécurité, santé…) ou les droits des autres."
+  },
+  {
+   "id": 92,
+   "theme": "D",
+   "notion": "fam",
+   "question": "Concernant le droit de se marier, quelle proposition est correcte ?",
+   "answer": "On épouse librement qui l'on veut, dès 18 ans",
+   "distractors": [
+    "Les parents choisissent le conjoint de l'enfant",
+    "On peut se marier dès 16 ans sans condition",
+    "Un homme peut épouser plusieurs femmes"
+   ],
+   "explanation": "Le mariage exige 18 ans révolus et le consentement libre des deux époux. La polygamie est interdite."
+  },
+  {
+   "id": 93,
+   "theme": "D",
+   "notion": "fam",
+   "question": "Est-il toujours possible de divorcer ?",
+   "answer": "Oui, chaque époux peut le demander",
+   "distractors": [
+    "Non, le mariage est définitif en France",
+    "Oui, mais seulement si le mari est d'accord",
+    "Oui, mais seulement après dix ans de mariage"
+   ],
+   "explanation": "Chacun des époux peut demander le divorce, même si l'autre refuse (par exemple pour altération définitive du lien conjugal)."
+  },
+  {
+   "id": 94,
+   "theme": "D",
+   "notion": "just",
+   "question": "La peine de mort est :",
+   "answer": "Abolie en France",
+   "distractors": [
+    "Réservée aux crimes terroristes",
+    "Possible en temps de guerre",
+    "Décidée par le Président"
+   ],
+   "explanation": "Abolie en 1981 (loi Badinter), la peine de mort est interdite par la Constitution depuis 2007 (article 66-1)."
+  },
+  {
+   "id": 95,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Laquelle de ces citations est inscrite dans la Déclaration des droits de l'homme et du citoyen de 1789 ?",
+   "answer": "« Les hommes naissent et demeurent libres et égaux en droits »",
+   "distractors": [
+    "« Tous les hommes naissent égaux devant Dieu et le roi »",
+    "« Les citoyens naissent libres et doivent obéir à la nation »",
+    "« Les hommes naissent libres mais inégaux en droits »"
+   ],
+   "explanation": "C'est l'article 1er de la DDHC du 26 août 1789, texte qui fait partie de la Constitution actuelle."
+  },
+  {
+   "id": 96,
+   "theme": "D",
+   "notion": "fam",
+   "question": "Le recours à l'avortement est-il autorisé ?",
+   "answer": "Oui, c'est une liberté garantie par la Constitution",
+   "distractors": [
+    "Non, il est interdit sauf danger pour la mère",
+    "Oui, mais seulement avec l'accord du conjoint",
+    "Oui, mais seulement pour les femmes majeures"
+   ],
+   "explanation": "Légalisée en 1975 (loi Veil), l'IVG est inscrite dans la Constitution depuis mars 2024. Le délai est de 14 semaines de grossesse."
+  },
+  {
+   "id": 97,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Que contient la Constitution ?",
+   "answer": "L'organisation des pouvoirs et les droits fondamentaux",
+   "distractors": [
+    "L'ensemble des règles du Code civil et du Code pénal",
+    "La liste complète des lois votées chaque année",
+    "Les traités signés par la France avec les autres pays"
+   ],
+   "explanation": "La Constitution de 1958 organise les institutions. Par son préambule, elle garantit aussi les droits de la DDHC de 1789, du préambule de 1946 et de la Charte de l'environnement."
+  },
+  {
+   "id": 98,
+   "theme": "D",
+   "notion": "lib",
+   "question": "Que garantit la liberté de la presse ?",
+   "answer": "Le droit d'informer librement, dans le respect de la loi",
+   "distractors": [
+    "Le droit de tout publier, sans aucune limite légale",
+    "Le contrôle des journaux par le ministère de la Culture",
+    "Le droit de publier, après l'accord d'un juge"
+   ],
+   "explanation": "La loi de 1881 garantit la liberté de la presse, sans autorisation préalable ; la diffamation et l'injure restent punies."
+  },
+  {
+   "id": 99,
+   "theme": "D",
+   "notion": "env",
+   "question": "Que prévoit la Charte de l'environnement ?",
+   "answer": "Le droit à un environnement sain et le devoir de le préserver",
+   "distractors": [
+    "L'interdiction progressive des voitures dans toutes les villes",
+    "La création obligatoire d'un parc naturel dans chaque région",
+    "Le droit pour l'État de polluer s'il le juge vraiment utile"
+   ],
+   "explanation": "Adossée à la Constitution en 2005, la Charte de l'environnement donne à chacun des droits et des devoirs envers l'environnement."
+  },
+  {
+   "id": 100,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Que signifie la dignité humaine ?",
+   "answer": "Toute personne doit être respectée",
+   "distractors": [
+    "Le respect est dû aux personnes honnêtes seulement",
+    "On peut humilier une personne qui a commis une faute",
+    "Le respect dû à chacun dépend de sa nationalité"
+   ],
+   "explanation": "La dignité est inhérente à chaque être humain : nul ne peut être traité comme un objet, humilié ou soumis à des traitements dégradants."
+  },
+  {
+   "id": 101,
+   "theme": "D",
+   "notion": "lib",
+   "question": "Que signifie le droit de manifester ?",
+   "answer": "Exprimer ensemble et pacifiquement son opinion dans la rue",
+   "distractors": [
+    "Se rassembler dans la rue sans aucune déclaration",
+    "Bloquer librement les routes et les services publics",
+    "Exprimer son opinion par tous les moyens, même violents"
+   ],
+   "explanation": "Une manifestation doit en principe être déclarée en préfecture ou en mairie et rester pacifique. Les violences et dégradations sont punies."
+  },
+  {
+   "id": 102,
+   "theme": "D",
+   "notion": "fam",
+   "question": "Que signifie PMA ?",
+   "answer": "Procréation médicalement assistée",
+   "distractors": [
+    "Protection maternelle et adoption",
+    "Prise en charge médicale adaptée",
+    "Prévention médicale de l'adulte"
+   ],
+   "explanation": "La PMA regroupe les techniques médicales (insémination, FIV…) qui aident à avoir un enfant."
+  },
+  {
+   "id": 103,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Quel texte est le plus difficile à modifier ?",
+   "answer": "La Constitution",
+   "distractors": [
+    "Une loi ordinaire",
+    "Un décret",
+    "Un arrêté municipal"
+   ],
+   "explanation": "La Constitution est la norme suprême : sa révision exige un vote du Congrès à la majorité des 3/5 ou un référendum (article 89)."
+  },
+  {
+   "id": 104,
+   "theme": "D",
+   "notion": "laic",
+   "question": "Quelle liberté permet à une personne de croire en la religion de son choix ?",
+   "answer": "La liberté de conscience",
+   "distractors": [
+    "La liberté d'expression",
+    "La liberté d'association",
+    "La liberté de réunion"
+   ],
+   "explanation": "La liberté de conscience permet de croire, de ne pas croire ou de changer de religion."
+  },
+  {
+   "id": 105,
+   "theme": "D",
+   "notion": "trav",
+   "question": "Qu'est-ce que le droit de grève ?",
+   "answer": "Le droit des salariés de cesser ensemble le travail",
+   "distractors": [
+    "Le droit d'un salarié de refuser seul une tâche",
+    "Le droit des salariés d'être payés pendant la grève",
+    "Le droit de bloquer l'accès à l'entreprise"
+   ],
+   "explanation": "La grève est une cessation collective et concertée du travail pour des revendications professionnelles. Les jours de grève ne sont pas payés."
+  },
+  {
+   "id": 106,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Qu'est-ce que la Constitution ?",
+   "answer": "Le texte fondamental, la norme suprême",
+   "distractors": [
+    "Le recueil de toutes les lois pénales",
+    "Un traité signé entre pays européens",
+    "Le programme du président élu"
+   ],
+   "explanation": "La Constitution du 4 octobre 1958 organise l'État et garantit les droits ; toutes les autres règles doivent la respecter."
+  },
+  {
+   "id": 107,
+   "theme": "D",
+   "notion": "fam",
+   "question": "Qui peut demander à avorter ?",
+   "answer": "Toute femme enceinte, même mineure",
+   "distractors": [
+    "Seulement les femmes mariées",
+    "Seulement les femmes françaises",
+    "Seulement les femmes majeures"
+   ],
+   "explanation": "Toute femme, majeure ou mineure, française ou étrangère, peut demander une IVG. Une mineure peut garder le secret vis-à-vis de ses parents si elle est accompagnée d'un adulte de son choix."
+  },
+  {
+   "id": 108,
+   "theme": "D",
+   "notion": "vote",
+   "question": "Une femme majeure de nationalité française a-t-elle le droit de voter aux élections ?",
+   "answer": "Oui, à toutes les élections",
+   "distractors": [
+    "Seulement aux élections locales",
+    "Oui, avec l'accord de son mari",
+    "Non, sauf si elle est mariée"
+   ],
+   "explanation": "Les femmes votent depuis 1944 (premier vote en 1945), avec exactement les mêmes droits que les hommes."
+  },
+  {
+   "id": 109,
+   "theme": "D",
+   "notion": "lib",
+   "question": "Concernant l'utilisation des réseaux sociaux, quelle proposition est correcte ?",
+   "answer": "On est responsable de ce que l'on publie en ligne",
+   "distractors": [
+    "Sous un pseudonyme, on ne risque rien",
+    "Seul l'hébergeur est responsable des messages",
+    "Les lois françaises ne s'y appliquent pas"
+   ],
+   "explanation": "La loi s'applique en ligne : injures, menaces, harcèlement ou diffamation sont punis, même sous pseudonyme."
+  },
+  {
+   "id": 110,
+   "theme": "D",
+   "notion": "env",
+   "question": "Jeter un mégot par terre est :",
+   "answer": "Interdit et puni d'une amende",
+   "distractors": [
+    "Toléré en dehors des villes",
+    "Autorisé sur les trottoirs",
+    "Interdit seulement en forêt"
+   ],
+   "explanation": "Jeter un mégot ou un déchet sur la voie publique est puni d'une amende forfaitaire de 135 €."
+  },
+  {
+   "id": 111,
+   "theme": "D",
+   "notion": "droit",
+   "question": "L'État peut-il limiter les droits et libertés ?",
+   "answer": "Oui, par la loi, pour protéger l'ordre public",
+   "distractors": [
+    "Non, les libertés ne peuvent jamais être limitées",
+    "Oui, librement, sans avoir besoin de se justifier",
+    "Oui, par simple décision du maire ou du préfet"
+   ],
+   "explanation": "Les limites doivent être prévues par la loi, nécessaires et proportionnées, et contrôlées par le juge."
+  },
+  {
+   "id": 112,
+   "theme": "D",
+   "notion": "env",
+   "question": "Parmi ces actions, laquelle permet d'adopter une attitude respectueuse de l'environnement ?",
+   "answer": "Trier ses déchets",
+   "distractors": [
+    "Brûler ses déchets au jardin",
+    "Laver sa voiture dans la rivière",
+    "Laisser ses appareils en veille"
+   ],
+   "explanation": "Le tri permet le recyclage. Brûler ses déchets verts ou ménagers à l'air libre est en principe interdit."
+  },
+  {
+   "id": 113,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Quelle proposition constitue une obligation ?",
+   "answer": "Déclarer ses revenus chaque année",
+   "distractors": [
+    "Voter à toutes les élections nationales",
+    "Adhérer à un syndicat dans son entreprise",
+    "Faire partie d'une association de quartier"
+   ],
+   "explanation": "La déclaration de revenus est obligatoire chaque année, même sans revenu imposable. Le vote et l'adhésion syndicale sont libres."
+  },
+  {
+   "id": 114,
+   "theme": "D",
+   "notion": "lib",
+   "question": "Pour quel motif peut-on limiter la liberté d'expression ?",
+   "answer": "Pour sanctionner l'injure ou la diffamation",
+   "distractors": [
+    "Pour interdire toute critique du gouvernement",
+    "Pour interdire l'expression des opinions minoritaires",
+    "Pour interdire l'usage des langues étrangères"
+   ],
+   "explanation": "La liberté d'expression permet de critiquer les dirigeants ; ses seules limites sont fixées par la loi (injure, diffamation, appel à la haine ou à la violence)."
+  },
+  {
+   "id": 115,
+   "theme": "D",
+   "notion": "env",
+   "question": "Pourquoi doit-on trier ses déchets ?",
+   "answer": "Pour permettre leur recyclage",
+   "distractors": [
+    "Pour réduire son impôt sur le revenu",
+    "Pour obtenir une aide de la mairie",
+    "Pour pouvoir les jeter dans la rue"
+   ],
+   "explanation": "Le tri permet de recycler les matériaux, de réduire la pollution et le volume des déchets incinérés ou enfouis."
+  },
+  {
+   "id": 116,
+   "theme": "D",
+   "notion": "just",
+   "question": "Que doit faire une victime de violences ?",
+   "answer": "Porter plainte (police ou gendarmerie)",
+   "distractors": [
+    "Attendre que les violences s'arrêtent d'elles-mêmes",
+    "Régler le problème en famille, sans en parler",
+    "Se faire justice elle-même contre l'agresseur"
+   ],
+   "explanation": "La victime peut porter plainte et être aidée : numéros 17 (urgence), 3919 (violences faites aux femmes), 119 (enfance en danger)."
+  },
+  {
+   "id": 117,
+   "theme": "D",
+   "notion": "just",
+   "question": "Que doit-on faire face aux ordres des policiers ou gendarmes ?",
+   "answer": "S'y conformer, puis contester si besoin",
+   "distractors": [
+    "Les ignorer s'ils semblent injustes",
+    "Discuter avant d'obéir",
+    "Leur résister si on est innocent"
+   ],
+   "explanation": "Il faut obéir aux ordres légaux des forces de l'ordre ; on peut ensuite contester (plainte, IGPN, Défenseur des droits). La rébellion est un délit."
+  },
+  {
+   "id": 118,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quel est le rôle de la police ?",
+   "answer": "Protéger les personnes et faire respecter la loi",
+   "distractors": [
+    "Juger et condamner les auteurs de délits et de crimes",
+    "Voter les règles de sécurité publique du pays",
+    "Collecter les amendes, les taxes et les impôts"
+   ],
+   "explanation": "Police et gendarmerie assurent la sécurité, préviennent et constatent les infractions. Seuls les juges condamnent."
+  },
+  {
+   "id": 119,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quel est un exemple d'assistance à personne en danger ?",
+   "answer": "Appeler les secours quand quelqu'un fait un malaise",
+   "distractors": [
+    "Filmer la scène pour servir de preuve plus tard",
+    "Attendre qu'un témoin plus qualifié intervienne",
+    "Continuer son chemin si d'autres sont présents"
+   ],
+   "explanation": "Ne pas porter secours à une personne en péril, quand on le peut sans risque, est un délit. Appeler le 15, le 18 ou le 112 suffit souvent."
+  },
+  {
+   "id": 120,
+   "theme": "D",
+   "notion": "env",
+   "question": "Quel exemple illustre une limitation de liberté pour protéger l'intérêt général ?",
+   "answer": "L'interdiction de fumer dans les lieux publics fermés",
+   "distractors": [
+    "Le droit de choisir librement sa religion ou d'en changer",
+    "Le droit de se marier librement à partir de 18 ans",
+    "La liberté de s'exprimer dans les journaux et en ligne"
+   ],
+   "explanation": "Cette interdiction (depuis 2007) restreint la liberté individuelle pour protéger la santé publique."
+  },
+  {
+   "id": 121,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quelle est l'attitude à avoir lorsqu'on est témoin de violences ?",
+   "answer": "Alerter la police (17) sans se mettre en danger",
+   "distractors": [
+    "Intervenir physiquement contre l'agresseur",
+    "Filmer la scène et la publier en ligne",
+    "Ne rien faire car ce n'est pas son affaire"
+   ],
+   "explanation": "Le témoin doit alerter (17, 112, ou 114 par SMS). Il n'est pas tenu de s'exposer lui-même à un danger."
+  },
+  {
+   "id": 122,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quelle est l'infraction la plus grave ?",
+   "answer": "Le crime",
+   "distractors": [
+    "Le délit",
+    "La contravention",
+    "L'incivilité"
+   ],
+   "explanation": "Il existe trois catégories d'infractions, de la moins grave à la plus grave : contravention (tribunal de police), délit (tribunal correctionnel), crime (cour d'assises)."
+  },
+  {
+   "id": 123,
+   "theme": "D",
+   "notion": "droit",
+   "question": "Quelle obligation concerne toutes les personnes résidant en France, quelle que soit leur nationalité ?",
+   "answer": "Respecter les lois françaises",
+   "distractors": [
+    "Voter aux élections",
+    "Faire un service civique",
+    "Parler couramment français"
+   ],
+   "explanation": "Toute personne présente en France doit respecter la loi française, quelle que soit sa nationalité."
+  },
+  {
+   "id": 124,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quelle proposition représente un exemple de crime ?",
+   "answer": "Un meurtre",
+   "distractors": [
+    "Un vol",
+    "Une escroquerie",
+    "Un excès de vitesse"
+   ],
+   "explanation": "Le meurtre, le viol ou le vol à main armée sont des crimes, jugés par la cour d'assises. Le vol simple et l'escroquerie sont des délits."
+  },
+  {
+   "id": 125,
+   "theme": "D",
+   "notion": "just",
+   "question": "Quelle proposition représente un exemple de délit ?",
+   "answer": "Un vol",
+   "distractors": [
+    "Un meurtre",
+    "Un viol",
+    "Un stationnement gênant"
+   ],
+   "explanation": "Le vol simple est un délit (tribunal correctionnel). Le meurtre et le viol sont des crimes ; le stationnement gênant est une contravention."
+  },
+  {
+   "id": 126,
+   "theme": "D",
+   "notion": "just",
+   "question": "Qui veille au maintien de l'ordre public ?",
+   "answer": "La police et la gendarmerie",
+   "distractors": [
+    "Les sociétés de sécurité privées",
+    "Les associations de quartier",
+    "Les juges et les avocats"
+   ],
+   "explanation": "Le maintien de l'ordre relève de la police nationale (villes) et de la gendarmerie nationale (zones rurales et périurbaines)."
+  },
+  {
+   "id": 127,
+   "theme": "D",
+   "notion": "env",
+   "question": "S'agissant des déchets, quelle proposition est correcte ?",
+   "answer": "Les dépôts sauvages sont punis d'une amende",
+   "distractors": [
+    "On peut les déposer près des poubelles",
+    "On peut les laisser au bord de la route",
+    "On peut brûler ses déchets chez soi"
+   ],
+   "explanation": "Les déchets doivent aller dans les poubelles ou à la déchetterie. Un dépôt sauvage peut coûter jusqu'à 1 500 € d'amende."
+  },
+  {
+   "id": 128,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quel était le surnom de Louis XIV ?",
+   "answer": "Le Roi-Soleil",
+   "distractors": [
+    "Le Bien-Aimé",
+    "Le Bon Roi",
+    "Le Lion"
+   ],
+   "explanation": "Louis XIV (règne 1643-1715) est le Roi-Soleil, symbole de la monarchie absolue et de Versailles. « Le Bien-Aimé » désigne Louis XV."
+  },
+  {
+   "id": 129,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quel roi de France a été exécuté pendant la Révolution française ?",
+   "answer": "Louis XVI",
+   "distractors": [
+    "Louis XIV",
+    "Louis XV",
+    "Charles X"
+   ],
+   "explanation": "Louis XVI est guillotiné le 21 janvier 1793, quelques mois après la proclamation de la République."
+  },
+  {
+   "id": 130,
+   "theme": "H",
+   "notion": "hist",
+   "question": "En quelle année Napoléon Ier est-il devenu empereur ?",
+   "answer": "1804",
+   "distractors": [
+    "1789",
+    "1815",
+    "1799"
+   ],
+   "explanation": "Napoléon Bonaparte, Premier consul après le coup d'État de 1799, est sacré empereur en 1804. Il est battu à Waterloo en 1815."
+  },
+  {
+   "id": 131,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Lequel de ces personnages a un lien avec la République française ?",
+   "answer": "Jules Ferry",
+   "distractors": [
+    "Louis XIV",
+    "Charlemagne",
+    "Clovis"
+   ],
+   "explanation": "Jules Ferry a fait voter les lois de 1881-1882 rendant l'école primaire publique gratuite, laïque et obligatoire. Les trois autres sont des rois ou empereurs."
+  },
+  {
+   "id": 132,
+   "theme": "H",
+   "notion": "hist",
+   "question": "De quand date l'appel à la résistance du général de Gaulle ?",
+   "answer": "Du 18 juin 1940",
+   "distractors": [
+    "Du 8 mai 1945",
+    "Du 6 juin 1944",
+    "Du 11 novembre 1918"
+   ],
+   "explanation": "Depuis Londres, à la BBC, de Gaulle appelle les Français à poursuivre le combat contre l'Allemagne nazie."
+  },
+  {
+   "id": 133,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Pourquoi la Shoah est-elle étudiée à l'école ?",
+   "answer": "Pour transmettre la mémoire du génocide des Juifs",
+   "distractors": [
+    "Pour expliquer les causes de la Grande Guerre",
+    "Pour étudier l'histoire de la colonisation",
+    "Pour présenter les religions du monde"
+   ],
+   "explanation": "La Shoah, génocide de près de 6 millions de Juifs par les nazis, est enseignée pour transmettre la mémoire et lutter contre l'antisémitisme et le racisme."
+  },
+  {
+   "id": 134,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quel pays a été colonisé par la France ?",
+   "answer": "L'Algérie",
+   "distractors": [
+    "L'Argentine",
+    "L'Australie",
+    "Le Japon"
+   ],
+   "explanation": "L'Algérie a été colonisée de 1830 à 1962, date de son indépendance après une guerre de huit ans."
+  },
+  {
+   "id": 135,
+   "theme": "H",
+   "notion": "vote",
+   "question": "Depuis quand les Français élisent-ils le président de la République au suffrage universel direct ?",
+   "answer": "Depuis 1962",
+   "distractors": [
+    "Depuis 1946",
+    "Depuis 1958",
+    "Depuis 1981"
+   ],
+   "explanation": "La réforme est adoptée par référendum en 1962 ; la première élection directe a lieu en 1965."
+  },
+  {
+   "id": 136,
+   "theme": "H",
+   "notion": "ue",
+   "question": "Quelle est la première étape de la construction européenne en 1951 ?",
+   "answer": "La CECA (charbon et acier)",
+   "distractors": [
+    "Le traité de Rome",
+    "L'espace Schengen",
+    "Le traité de Maastricht"
+   ],
+   "explanation": "La Communauté européenne du charbon et de l'acier (1951) réunit six pays. Le traité de Rome (1957) crée ensuite la CEE."
+  },
+  {
+   "id": 137,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Durant le mandat de quel président la peine de mort a-t-elle été abolie ?",
+   "answer": "François Mitterrand",
+   "distractors": [
+    "Charles de Gaulle",
+    "Jacques Chirac",
+    "Valéry Giscard d'Estaing"
+   ],
+   "explanation": "En 1981, sous François Mitterrand, la loi portée par le garde des Sceaux Robert Badinter abolit la peine de mort."
+  },
+  {
+   "id": 138,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quel régime politique a été mis en place pendant la Révolution française en 1792 ?",
+   "answer": "La République",
+   "distractors": [
+    "L'Empire",
+    "Le Consulat",
+    "La monarchie constitutionnelle"
+   ],
+   "explanation": "La Ire République est proclamée le 21 septembre 1792. La monarchie constitutionnelle avait duré de 1791 à 1792."
+  },
+  {
+   "id": 139,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Qui était une figure de la Résistance française pendant la Seconde Guerre mondiale ?",
+   "answer": "Jean Moulin",
+   "distractors": [
+    "Philippe Pétain",
+    "Pierre Laval",
+    "Georges Clemenceau"
+   ],
+   "explanation": "Jean Moulin a unifié les mouvements de Résistance pour de Gaulle. Pétain et Laval ont dirigé le régime de collaboration de Vichy ; Clemenceau est un homme de la Première Guerre mondiale."
+  },
+  {
+   "id": 140,
+   "theme": "H",
+   "notion": "hist",
+   "question": "En 1944, qu'est-ce qui a changé pour les femmes ?",
+   "answer": "Elles ont obtenu le droit de vote",
+   "distractors": [
+    "Elles ont obtenu le droit de travailler",
+    "Elles ont obtenu le droit de divorcer",
+    "Elles ont obtenu le droit à l'IVG"
+   ],
+   "explanation": "L'ordonnance du 21 avril 1944 donne aux femmes le droit de vote et d'éligibilité. Elles votent pour la première fois en 1945."
+  },
+  {
+   "id": 141,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quelle organisation internationale a été créée en 1945 après la Seconde Guerre mondiale ?",
+   "answer": "L'Organisation des Nations unies (ONU)",
+   "distractors": [
+    "L'Organisation du traité de l'Atlantique (OTAN)",
+    "La Société des Nations (SDN)",
+    "La Communauté économique européenne (CEE)"
+   ],
+   "explanation": "L'ONU est fondée en 1945 pour maintenir la paix. La SDN datait de 1919, l'OTAN de 1949, la CEE de 1957."
+  },
+  {
+   "id": 142,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quelle peine a été supprimée en 1981 ?",
+   "answer": "La peine de mort",
+   "distractors": [
+    "La prison à perpétuité",
+    "Les travaux forcés",
+    "Le bannissement"
+   ],
+   "explanation": "La loi du 9 octobre 1981, portée par Robert Badinter, abolit la peine de mort."
+  },
+  {
+   "id": 143,
+   "theme": "H",
+   "notion": "ue",
+   "question": "En quelle année l'euro est-il devenu la monnaie utilisée en France ?",
+   "answer": "2002",
+   "distractors": [
+    "1992",
+    "1999",
+    "2008"
+   ],
+   "explanation": "Les pièces et billets en euros remplacent le franc le 1er janvier 2002."
+  },
+  {
+   "id": 144,
+   "theme": "H",
+   "notion": "hist",
+   "question": "En quelle année a commencé la Première Guerre mondiale ?",
+   "answer": "1914",
+   "distractors": [
+    "1870",
+    "1918",
+    "1939"
+   ],
+   "explanation": "La Première Guerre mondiale dure de 1914 à 1918 (armistice du 11 novembre). La Seconde commence en 1939."
+  },
+  {
+   "id": 145,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Où a eu lieu le débarquement en 1944 ?",
+   "answer": "En Normandie",
+   "distractors": [
+    "En Bretagne",
+    "En Picardie",
+    "Dans le Nord"
+   ],
+   "explanation": "Le 6 juin 1944 (Jour J), les Alliés débarquent sur les plages de Normandie. Un second débarquement a lieu en Provence le 15 août 1944."
+  },
+  {
+   "id": 146,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Quel continent a été le plus concerné par la décolonisation française après la Seconde Guerre mondiale ?",
+   "answer": "L'Afrique",
+   "distractors": [
+    "L'Asie",
+    "L'Amérique",
+    "L'Océanie"
+   ],
+   "explanation": "La plupart des anciennes colonies françaises d'Afrique deviennent indépendantes autour de 1960 (Sénégal, Côte d'Ivoire, Mali…), l'Algérie en 1962."
+  },
+  {
+   "id": 147,
+   "theme": "H",
+   "notion": "hist",
+   "question": "Que fête-t-on le 8 mai ?",
+   "answer": "La victoire de 1945",
+   "distractors": [
+    "L'armistice de 1918",
+    "La journée de l'Europe",
+    "La fête du Travail"
+   ],
+   "explanation": "Le 8 mai 1945, l'Allemagne nazie capitule : c'est la fin de la Seconde Guerre mondiale en Europe. Le 11 novembre commémore l'armistice de 1918."
+  },
+  {
+   "id": 148,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle mer ou quel océan borde la France métropolitaine ?",
+   "answer": "L'océan Atlantique",
+   "distractors": [
+    "L'océan Indien",
+    "La mer Noire",
+    "La mer Baltique"
+   ],
+   "explanation": "La métropole est bordée par l'océan Atlantique, la Manche, la mer du Nord et la mer Méditerranée."
+  },
+  {
+   "id": 149,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quel pays a une frontière terrestre avec la France métropolitaine ?",
+   "answer": "L'Espagne",
+   "distractors": [
+    "Le Portugal",
+    "L'Autriche",
+    "Les Pays-Bas"
+   ],
+   "explanation": "Voisins terrestres de la métropole : Belgique, Luxembourg, Allemagne, Suisse, Italie, Monaco, Espagne et Andorre."
+  },
+  {
+   "id": 150,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle ville française est un port maritime ?",
+   "answer": "Marseille",
+   "distractors": [
+    "Lyon",
+    "Strasbourg",
+    "Toulouse"
+   ],
+   "explanation": "Marseille est le premier port de France, sur la Méditerranée. Strasbourg a un grand port, mais fluvial (sur le Rhin)."
+  },
+  {
+   "id": 151,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle mer se situe entre la France et l'Angleterre ?",
+   "answer": "La Manche",
+   "distractors": [
+    "La mer du Nord",
+    "La mer d'Irlande",
+    "La mer Celtique"
+   ],
+   "explanation": "La Manche sépare la France de l'Angleterre ; le tunnel sous la Manche les relie depuis 1994."
+  },
+  {
+   "id": 152,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Qu'est-ce que la France d'outre-mer ?",
+   "answer": "Les territoires français situés hors d'Europe",
+   "distractors": [
+    "Les anciennes colonies devenues indépendantes",
+    "Les pays dont la langue officielle est le français",
+    "Les territoires gérés par l'ONU pour la France"
+   ],
+   "explanation": "L'outre-mer comprend notamment la Guadeloupe, la Martinique, la Guyane, La Réunion, Mayotte, la Polynésie et la Nouvelle-Calédonie."
+  },
+  {
+   "id": 153,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle chaîne de montagnes est située entre la France et l'Espagne ?",
+   "answer": "Les Pyrénées",
+   "distractors": [
+    "Les Alpes",
+    "Le Jura",
+    "Les Vosges"
+   ],
+   "explanation": "Les Pyrénées forment la frontière avec l'Espagne. Les Alpes séparent la France de l'Italie et de la Suisse ; le Jura longe la Suisse."
+  },
+  {
+   "id": 154,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle île française se trouve dans l'océan Indien ?",
+   "answer": "La Réunion",
+   "distractors": [
+    "La Martinique",
+    "La Guadeloupe",
+    "La Corse"
+   ],
+   "explanation": "La Réunion et Mayotte sont dans l'océan Indien. La Martinique et la Guadeloupe sont dans les Antilles (mer des Caraïbes), la Corse en Méditerranée."
+  },
+  {
+   "id": 155,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle est la population approximative de la France en 2025 ?",
+   "answer": "Environ 68 millions",
+   "distractors": [
+    "Environ 48 millions",
+    "Environ 78 millions",
+    "Environ 88 millions"
+   ],
+   "explanation": "Selon l'Insee, la France compte environ 68,6 millions d'habitants au 1er janvier 2025, outre-mer compris."
+  },
+  {
+   "id": 156,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quel fleuve traverse Paris ?",
+   "answer": "La Seine",
+   "distractors": [
+    "La Loire",
+    "Le Rhône",
+    "La Garonne"
+   ],
+   "explanation": "La Seine traverse Paris avant de se jeter dans la Manche au Havre. La Loire est le plus long fleuve de France."
+  },
+  {
+   "id": 157,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Lequel de ces pays partage des frontières terrestres avec la France ?",
+   "answer": "L'Italie",
+   "distractors": [
+    "Les Pays-Bas",
+    "Le Danemark",
+    "L'Irlande"
+   ],
+   "explanation": "L'Italie est frontalière de la France par les Alpes. Les Pays-Bas, le Danemark et l'Irlande ne touchent pas la France."
+  },
+  {
+   "id": 158,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quel pays a une frontière avec la France métropolitaine au nord-est ?",
+   "answer": "L'Allemagne",
+   "distractors": [
+    "L'Espagne",
+    "L'Italie",
+    "Andorre"
+   ],
+   "explanation": "Au nord-est, la France touche la Belgique, le Luxembourg et l'Allemagne (le Rhin marque une partie de la frontière)."
+  },
+  {
+   "id": 159,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Où se trouvent les principales activités économiques en France ?",
+   "answer": "En Île-de-France et dans les grandes métropoles",
+   "distractors": [
+    "Surtout dans les zones rurales et montagneuses",
+    "Surtout dans les territoires d'outre-mer",
+    "Surtout le long de la frontière espagnole"
+   ],
+   "explanation": "L'Île-de-France produit à elle seule environ 30 % de la richesse nationale ; les grandes métropoles (Lyon, Marseille, Toulouse…) concentrent l'activité."
+  },
+  {
+   "id": 160,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Parmi ces pays, lequel attire le plus de visiteurs chaque année ?",
+   "answer": "La France",
+   "distractors": [
+    "L'Espagne",
+    "L'Italie",
+    "Les États-Unis"
+   ],
+   "explanation": "La France est le pays le plus visité au monde, avec environ 100 millions de touristes internationaux par an."
+  },
+  {
+   "id": 161,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Où habite la majorité des Français ?",
+   "answer": "En ville",
+   "distractors": [
+    "À la campagne",
+    "À la montagne",
+    "Sur le littoral"
+   ],
+   "explanation": "Environ 80 % des Français vivent dans des zones urbaines."
+  },
+  {
+   "id": 162,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle région est la plus peuplée ?",
+   "answer": "L'Île-de-France",
+   "distractors": [
+    "Auvergne-Rhône-Alpes",
+    "Les Hauts-de-France",
+    "La Nouvelle-Aquitaine"
+   ],
+   "explanation": "L'Île-de-France compte plus de 12 millions d'habitants, devant Auvergne-Rhône-Alpes (environ 8 millions)."
+  },
+  {
+   "id": 163,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Quelle ville française fait partie des 10 plus grandes métropoles du pays ?",
+   "answer": "Lyon",
+   "distractors": [
+    "Ajaccio",
+    "Limoges",
+    "Chartres"
+   ],
+   "explanation": "Lyon est la 2e ou 3e agglomération de France, avec Paris et Marseille."
+  },
+  {
+   "id": 164,
+   "theme": "H",
+   "notion": "geo",
+   "question": "Lequel de ces départements de France est le plus touristique ?",
+   "answer": "Paris",
+   "distractors": [
+    "La Creuse",
+    "La Lozère",
+    "Le Cantal"
+   ],
+   "explanation": "Paris, avec ses monuments et musées, est la destination la plus visitée de France."
+  },
+  {
+   "id": 165,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quand peut-on visiter gratuitement des lieux culturels en France ?",
+   "answer": "Lors des Journées européennes du patrimoine",
+   "distractors": [
+    "Lors de la fête nationale du 14 juillet",
+    "Lors de la Fête de la musique en juin",
+    "Lors du premier jour de l'année"
+   ],
+   "explanation": "Chaque année en septembre, les Journées européennes du patrimoine ouvrent gratuitement de nombreux monuments, souvent fermés au public."
+  },
+  {
+   "id": 166,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Combien de personnes parlent français dans le monde ?",
+   "answer": "Environ 320 millions",
+   "distractors": [
+    "Environ 70 millions",
+    "Environ 150 millions",
+    "Environ 1 milliard"
+   ],
+   "explanation": "Selon l'Organisation internationale de la Francophonie, environ 320 millions de personnes parlent français, sur les cinq continents."
+  },
+  {
+   "id": 167,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Qui était Marguerite Yourcenar ?",
+   "answer": "Une écrivaine élue à l'Académie française",
+   "distractors": [
+    "Une chanteuse populaire des années 1950",
+    "Une résistante entrée au Panthéon en 2015",
+    "Une scientifique, prix Nobel de chimie"
+   ],
+   "explanation": "Autrice des « Mémoires d'Hadrien », Marguerite Yourcenar est élue à l'Académie française en 1980."
+  },
+  {
+   "id": 168,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quel peintre est français ?",
+   "answer": "Claude Monet",
+   "distractors": [
+    "Pablo Picasso",
+    "Vincent Van Gogh",
+    "Rembrandt"
+   ],
+   "explanation": "Claude Monet est le chef de file de l'impressionnisme (« Impression, soleil levant »). Picasso est espagnol, Van Gogh et Rembrandt néerlandais."
+  },
+  {
+   "id": 169,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quel musée est situé à Paris ?",
+   "answer": "Le Louvre",
+   "distractors": [
+    "Le Prado",
+    "Le British Museum",
+    "Le musée des Offices"
+   ],
+   "explanation": "Le Louvre, plus grand musée du monde, abrite La Joconde. Le Prado est à Madrid, le British Museum à Londres, les Offices à Florence."
+  },
+  {
+   "id": 170,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Qui était Auguste Rodin ?",
+   "answer": "Un sculpteur",
+   "distractors": [
+    "Un peintre",
+    "Un écrivain",
+    "Un compositeur"
+   ],
+   "explanation": "Rodin (1840-1917) est l'auteur du « Penseur » et du « Baiser ». Un musée lui est consacré à Paris."
+  },
+  {
+   "id": 171,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quel est le classement de la langue française parmi les langues les plus parlées dans le monde ?",
+   "answer": "5e",
+   "distractors": [
+    "1re",
+    "2e",
+    "12e"
+   ],
+   "explanation": "Le français est la 5e langue la plus parlée au monde, après l'anglais, le mandarin, le hindi et l'espagnol."
+  },
+  {
+   "id": 172,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quelle cathédrale célèbre a été en partie détruite par un incendie en 2019 ?",
+   "answer": "Notre-Dame de Paris",
+   "distractors": [
+    "La cathédrale de Chartres",
+    "La cathédrale de Reims",
+    "La cathédrale de Strasbourg"
+   ],
+   "explanation": "L'incendie du 15 avril 2019 détruit la flèche et la toiture. Notre-Dame a rouvert en décembre 2024."
+  },
+  {
+   "id": 173,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Qui était une écrivaine française célèbre ?",
+   "answer": "Simone de Beauvoir",
+   "distractors": [
+    "Marie Curie",
+    "Édith Piaf",
+    "Coco Chanel"
+   ],
+   "explanation": "Simone de Beauvoir (« Le Deuxième Sexe », 1949) est une figure du féminisme. Marie Curie est scientifique, Piaf chanteuse, Chanel créatrice de mode."
+  },
+  {
+   "id": 174,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Qui était un célèbre musicien français ?",
+   "answer": "Claude Debussy",
+   "distractors": [
+    "Wolfgang Amadeus Mozart",
+    "Ludwig van Beethoven",
+    "Giuseppe Verdi"
+   ],
+   "explanation": "Debussy (1862-1918) est un compositeur français (« Clair de lune »). Mozart est autrichien, Beethoven allemand, Verdi italien."
+  },
+  {
+   "id": 175,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Qui était Auguste Renoir ?",
+   "answer": "Un peintre impressionniste",
+   "distractors": [
+    "Un sculpteur classique",
+    "Un écrivain romantique",
+    "Un architecte baroque"
+   ],
+   "explanation": "Pierre-Auguste Renoir peint notamment le « Bal du moulin de la Galette ». Son fils Jean Renoir était cinéaste."
+  },
+  {
+   "id": 176,
+   "theme": "H",
+   "notion": "cult",
+   "question": "Quelle fête est française ?",
+   "answer": "Le 14 juillet",
+   "distractors": [
+    "Thanksgiving",
+    "Le 4 juillet",
+    "La Saint-Patrick"
+   ],
+   "explanation": "Le 14 juillet, fête nationale, rappelle la prise de la Bastille (1789) et la fête de la Fédération (1790)."
+  },
+  {
+   "id": 177,
+   "theme": "V",
+   "notion": "fam",
+   "question": "Quel mariage est reconnu par l'État ?",
+   "answer": "Le mariage civil, en mairie",
+   "distractors": [
+    "Le mariage religieux, seul",
+    "Le mariage coutumier, seul",
+    "Le mariage déclaré au notaire"
+   ],
+   "explanation": "Seul le mariage civil, célébré par le maire, a une valeur légale. Une cérémonie religieuse ne peut avoir lieu qu'après le mariage civil."
+  },
+  {
+   "id": 178,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Auprès de quelle institution les parents peuvent-ils inscrire leur enfant à l'école publique ?",
+   "answer": "La mairie",
+   "distractors": [
+    "La préfecture",
+    "La CAF",
+    "Le rectorat"
+   ],
+   "explanation": "L'inscription en maternelle ou en élémentaire se fait à la mairie, puis l'admission est faite par le directeur de l'école."
+  },
+  {
+   "id": 179,
+   "theme": "V",
+   "notion": "fam",
+   "question": "En cas de divorce, qui exerce l'autorité parentale ?",
+   "answer": "Les deux parents, en principe",
+   "distractors": [
+    "La mère, sauf décision du juge",
+    "Le père, sauf décision du juge",
+    "Le parent chez qui vit l'enfant"
+   ],
+   "explanation": "Le divorce ne change pas l'autorité parentale : les deux parents continuent à l'exercer ensemble, même si l'enfant vit chez l'un d'eux."
+  },
+  {
+   "id": 180,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Quelle aide permet aux personnes qui ont des difficultés financières d'avoir un avocat ?",
+   "answer": "L'aide juridictionnelle",
+   "distractors": [
+    "L'aide personnalisée au logement",
+    "Le revenu de solidarité active",
+    "La complémentaire santé solidaire"
+   ],
+   "explanation": "L'aide juridictionnelle prend en charge tout ou partie des frais d'avocat et de justice selon les ressources."
+  },
+  {
+   "id": 181,
+   "theme": "V",
+   "notion": "fam",
+   "question": "Où faut-il déclarer la naissance d'un enfant ?",
+   "answer": "À la mairie du lieu de naissance",
+   "distractors": [
+    "À la mairie du domicile des parents",
+    "À la préfecture du département",
+    "À la caisse d'allocations familiales"
+   ],
+   "explanation": "La déclaration se fait dans les 5 jours suivant l'accouchement, à la mairie de la commune où l'enfant est né."
+  },
+  {
+   "id": 182,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Quelle est l'une des conditions pour passer l'examen du permis de conduire ?",
+   "answer": "Avoir au moins 17 ans et le code de la route",
+   "distractors": [
+    "Avoir au moins 18 ans et un véhicule à soi",
+    "Être de nationalité française et majeur",
+    "Avoir un emploi et une assurance auto"
+   ],
+   "explanation": "Depuis 2024, on peut passer le permis B dès 17 ans, après avoir réussi l'examen du code de la route."
+  },
+  {
+   "id": 183,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Un bail locatif est valide s'il est :",
+   "answer": "Écrit et signé par le propriétaire et le locataire",
+   "distractors": [
+    "Conclu oralement entre le propriétaire et le locataire",
+    "Signé par le locataire seul et remis au propriétaire",
+    "Validé par l'agence et enregistré en mairie"
+   ],
+   "explanation": "Pour une location de logement, le contrat (bail) doit être écrit et signé par les deux parties."
+  },
+  {
+   "id": 184,
+   "theme": "V",
+   "notion": "env",
+   "question": "Où peut-on déposer un lave-vaisselle cassé ?",
+   "answer": "À la déchetterie ou chez le vendeur",
+   "distractors": [
+    "Sur le trottoir, le jour des poubelles",
+    "Dans le bac des ordures ménagères",
+    "Dans le conteneur à verre du quartier"
+   ],
+   "explanation": "Les appareils électriques se déposent à la déchetterie ; le vendeur doit reprendre l'ancien appareil quand on en achète un neuf."
+  },
+  {
+   "id": 185,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Quel numéro d'urgence permet d'appeler la police ?",
+   "answer": "Le 17",
+   "distractors": [
+    "Le 15",
+    "Le 18",
+    "Le 115"
+   ],
+   "explanation": "17 : police-gendarmerie ; 15 : SAMU ; 18 : pompiers ; 112 : numéro d'urgence européen ; 115 : hébergement d'urgence."
+  },
+  {
+   "id": 186,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Concernant l'accès aux soins, quelle proposition est correcte ?",
+   "answer": "En cas d'urgence, l'hôpital soigne tout le monde",
+   "distractors": [
+    "Les urgences soignent seulement les assurés",
+    "Il faut payer avant d'être soigné aux urgences",
+    "Les urgences sont réservées aux Français"
+   ],
+   "explanation": "L'hôpital public a l'obligation d'accueillir et de soigner toute personne en situation d'urgence, quelle que soit sa situation."
+  },
+  {
+   "id": 187,
+   "theme": "V",
+   "notion": "fam",
+   "question": "À qui est accessible la contraception ?",
+   "answer": "À toute personne, y compris mineure",
+   "distractors": [
+    "Aux femmes majeures seulement",
+    "Aux mineurs avec accord parental",
+    "Aux femmes mariées seulement"
+   ],
+   "explanation": "La contraception est accessible à tous, y compris aux mineurs, de façon confidentielle. Elle est gratuite pour les moins de 26 ans."
+  },
+  {
+   "id": 188,
+   "theme": "V",
+   "notion": "vie",
+   "question": "Qu'est-ce que le principe de confidentialité dans le domaine de la santé ?",
+   "answer": "Le secret médical, protégé par la loi",
+   "distractors": [
+    "Le partage des informations avec l'employeur",
+    "L'information obligatoire de la famille",
+    "La publication anonyme des dossiers"
+   ],
+   "explanation": "Le médecin est tenu au secret médical : il ne peut pas révéler vos informations de santé, ni à l'employeur ni à la famille, sans votre accord."
+  },
+  {
+   "id": 189,
+   "theme": "V",
+   "notion": "vie",
+   "question": "L'inscription à l'Assurance maladie est :",
+   "answer": "Obligatoire",
+   "distractors": [
+    "Facultative",
+    "Réservée aux Français",
+    "Réservée aux salariés"
+   ],
+   "explanation": "Toute personne qui travaille ou réside de façon stable et régulière en France doit être affiliée à l'Assurance maladie (protection universelle maladie)."
+  },
+  {
+   "id": 190,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Qui peut demander un congé parental d'éducation ?",
+   "answer": "Le père ou la mère, s'il est salarié",
+   "distractors": [
+    "La mère seulement, si elle est salariée",
+    "Le père seulement, après la naissance",
+    "Les fonctionnaires seulement"
+   ],
+   "explanation": "Tout parent salarié ayant au moins un an d'ancienneté peut demander un congé parental, quel que soit son sexe."
+  },
+  {
+   "id": 191,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Quelles sont les affaires traitées par le conseil de prud'hommes ?",
+   "answer": "Les litiges du travail (salarié/employeur)",
+   "distractors": [
+    "Les litiges entre voisins ou copropriétaires",
+    "Les litiges entre époux lors d'un divorce",
+    "Les litiges entre commerçants ou sociétés"
+   ],
+   "explanation": "Le conseil de prud'hommes juge les conflits liés au contrat de travail (salaire, licenciement…). Les litiges entre commerçants vont au tribunal de commerce."
+  },
+  {
+   "id": 192,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Travailler sans être déclaré est :",
+   "answer": "Illégal (travail dissimulé)",
+   "distractors": [
+    "Toléré pour les étudiants",
+    "Autorisé à temps partiel",
+    "Autorisé avec un petit salaire"
+   ],
+   "explanation": "Le travail non déclaré prive le salarié de protection sociale (maladie, chômage, retraite). L'employeur risque de lourdes sanctions."
+  },
+  {
+   "id": 193,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Lorsqu'un employeur veut qu'un salarié travaille plus longtemps que la durée prévue dans le contrat de travail :",
+   "answer": "Il doit payer les heures supplémentaires",
+   "distractors": [
+    "Le salarié doit les faire gratuitement",
+    "Il peut les imposer sans limite",
+    "Il peut les payer au tarif normal"
+   ],
+   "explanation": "Les heures au-delà de 35 h par semaine sont des heures supplémentaires, majorées (25 % puis 50 % en général) ou compensées par du repos."
+  },
+  {
+   "id": 194,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Quelle est la mission de France Travail ?",
+   "answer": "Accompagner les demandeurs d'emploi",
+   "distractors": [
+    "Délivrer les titres de séjour",
+    "Contrôler les entreprises",
+    "Verser les pensions de retraite"
+   ],
+   "explanation": "France Travail (ex-Pôle emploi) inscrit et accompagne les demandeurs d'emploi et verse les allocations chômage."
+  },
+  {
+   "id": 195,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Dans une entreprise, le droit syndical permet :",
+   "answer": "D'adhérer à un syndicat et d'être représenté",
+   "distractors": [
+    "De négocier seul son salaire avec la direction",
+    "De refuser les règles du règlement intérieur",
+    "De bloquer l'entreprise sans préavis"
+   ],
+   "explanation": "Chaque salarié peut librement adhérer au syndicat de son choix, ou à aucun ; les syndicats défendent les intérêts des salariés."
+  },
+  {
+   "id": 196,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Dans une entreprise, le droit de grève autorise :",
+   "answer": "À cesser ensemble le travail pour revendiquer",
+   "distractors": [
+    "À cesser le travail en étant payé normalement",
+    "À empêcher les autres salariés de travailler",
+    "À occuper les locaux et bloquer la production"
+   ],
+   "explanation": "La grève est une cessation collective du travail. Le salaire n'est pas versé pour les heures de grève, et les non-grévistes doivent pouvoir travailler."
+  },
+  {
+   "id": 197,
+   "theme": "V",
+   "notion": "trav",
+   "question": "Quelles sont les conditions pour toucher les allocations chômage ?",
+   "answer": "Avoir assez travaillé et perdu son emploi involontairement",
+   "distractors": [
+    "Avoir démissionné et être inscrit depuis un an",
+    "Avoir plus de 50 ans et ne plus vouloir travailler",
+    "Avoir travaillé au moins dix ans dans la même entreprise"
+   ],
+   "explanation": "Il faut avoir travaillé au moins 6 mois sur les 24 derniers mois, avoir perdu son emploi involontairement et être inscrit à France Travail."
+  },
+  {
+   "id": 198,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Qu'est-ce que l'école maternelle ?",
+   "answer": "L'école des enfants de 3 à 6 ans",
+   "distractors": [
+    "L'école des enfants de 6 à 11 ans",
+    "L'école des enfants de 11 à 15 ans",
+    "La crèche des enfants de 0 à 3 ans"
+   ],
+   "explanation": "La maternelle accueille les enfants de 3 à 6 ans. Elle est obligatoire depuis 2019, comme l'instruction dès 3 ans."
+  },
+  {
+   "id": 199,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Comment s'appelle le diplôme passé par les élèves à la fin du collège ?",
+   "answer": "Le diplôme national du brevet",
+   "distractors": [
+    "Le baccalauréat général",
+    "Le certificat d'études primaires",
+    "Le certificat d'aptitude (CAP)"
+   ],
+   "explanation": "Le brevet se passe en fin de 3e. Le baccalauréat se passe à la fin du lycée."
+  },
+  {
+   "id": 200,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Les parents d'élève ont le droit de :",
+   "answer": "Être informés et élire des représentants",
+   "distractors": [
+    "Choisir les programmes enseignés en classe",
+    "Assister librement à tous les cours",
+    "Choisir l'enseignant de leur enfant"
+   ],
+   "explanation": "Les parents sont informés de la scolarité de leur enfant (bulletins, rencontres) et élisent chaque année leurs représentants au conseil d'école ou d'administration."
+  },
+  {
+   "id": 201,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Qui peut manger à la cantine scolaire ?",
+   "answer": "Tous les enfants scolarisés",
+   "distractors": [
+    "Les enfants dont les parents travaillent",
+    "Les enfants de nationalité française",
+    "Les enfants inscrits avant septembre"
+   ],
+   "explanation": "Lorsqu'une cantine existe, tout enfant scolarisé qui le souhaite peut y être inscrit, sans discrimination (Code de l'éducation)."
+  },
+  {
+   "id": 202,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "À quel âge commence l'instruction obligatoire des enfants ?",
+   "answer": "3 ans",
+   "distractors": [
+    "6 ans",
+    "5 ans",
+    "4 ans"
+   ],
+   "explanation": "Depuis la rentrée 2019, l'instruction est obligatoire de 3 à 16 ans (contre 6 ans auparavant)."
+  },
+  {
+   "id": 203,
+   "theme": "V",
+   "notion": "fam",
+   "question": "Quel est l'âge de la majorité ?",
+   "answer": "18 ans",
+   "distractors": [
+    "16 ans",
+    "20 ans",
+    "21 ans"
+   ],
+   "explanation": "La majorité est fixée à 18 ans depuis 1974 (elle était de 21 ans auparavant)."
+  },
+  {
+   "id": 204,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "À l'école, il est interdit aux parents de :",
+   "answer": "Retirer leur enfant de certains cours par conviction religieuse",
+   "distractors": [
+    "Demander un rendez-vous avec l'enseignant de leur enfant",
+    "Voter aux élections des représentants des parents d'élèves",
+    "Consulter les notes et les bulletins scolaires de leur enfant"
+   ],
+   "explanation": "Les enseignements sont obligatoires pour tous : les parents ne peuvent pas faire manquer un cours (sport, sciences, histoire…) pour des motifs religieux."
+  },
+  {
+   "id": 205,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Quel motif d'absence est accepté par l'école ?",
+   "answer": "La maladie de l'enfant",
+   "distractors": [
+    "Un départ en vacances anticipé",
+    "La garde d'un petit frère",
+    "Une fête de famille à l'étranger"
+   ],
+   "explanation": "Les motifs légitimes sont notamment la maladie, une réunion solennelle de famille ou un empêchement de transport. Les vacances anticipées ne sont pas acceptées."
+  },
+  {
+   "id": 206,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Des parents ne respectent pas l'obligation d'instruction pour leurs enfants. Quelle sanction maximale risquent-ils ?",
+   "answer": "2 ans de prison et 30 000 € d'amende",
+   "distractors": [
+    "Un simple rappel à l'ordre du maire",
+    "6 mois de prison avec sursis",
+    "Une amende forfaitaire de 135 €"
+   ],
+   "explanation": "Soustraire son enfant à l'obligation scolaire est un délit (article 227-17 du Code pénal) : jusqu'à 2 ans de prison et 30 000 € d'amende."
+  },
+  {
+   "id": 207,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "Quand ont lieu les vacances scolaires de Noël ?",
+   "answer": "Fin décembre – début janvier",
+   "distractors": [
+    "Début décembre – mi-décembre",
+    "Fin novembre – début décembre",
+    "Mi-janvier – fin janvier"
+   ],
+   "explanation": "Les vacances de Noël durent environ deux semaines, couvrant Noël et le Nouvel An, dans toute la France."
+  },
+  {
+   "id": 208,
+   "theme": "V",
+   "notion": "ecole",
+   "question": "À l'école, un enfant en situation de handicap :",
+   "answer": "A le droit d'être scolarisé, avec des aménagements",
+   "distractors": [
+    "Doit être scolarisé dans une école spécialisée",
+    "Peut être refusé par le directeur de l'école",
+    "Doit suivre des cours à domicile uniquement"
+   ],
+   "explanation": "Depuis la loi de 2005, tout enfant handicapé a droit à une scolarisation, si possible en milieu ordinaire, avec des aménagements (AESH, matériel…)."
+  }
+ ]
+}

@@ -60,7 +60,7 @@ Dans Supabase, va dans **Authentication** > **Emails** > **Templates**. Pour cha
 1. Crée un compte sur [cloudflare.com](https://dash.cloudflare.com), puis va dans **Turnstile** > **Add widget**.
 2. **Hostnames :** `examen-civique.mlndao.fr` et `laminendao.github.io`. **Mode :** *Managed*.
 3. Récupère les deux clés :
-   - la **Site key**, publique : colle-la dans `index.html`, dans `turnstileSiteKey` en haut du fichier ;
+   - la **Site key**, publique : colle-la dans `js/config.js`, dans `turnstileSiteKey` ;
    - la **Secret key**, secrète : colle-la dans Supabase, dans **Authentication** > **Attack Protection** (ou *Bot and Abuse Protection*). Active **Enable CAPTCHA protection**, choisis **Turnstile**, puis **Save**.
 4. ⚠️ Fais les deux en même temps. Si Supabase exige le CAPTCHA alors que la clé n'est pas encore dans le site, plus personne ne peut se connecter.
 
@@ -77,7 +77,7 @@ Sur l'offre gratuite, Supabase met le projet en pause après environ 7 jours san
 0. **Crée la tâche.** Sur GitHub, va dans le dépôt > **Add file** > **Create new file**. Nomme le fichier exactement `.github/workflows/supabase-keepalive.yml`, colle le contenu de `deploy/supabase-keepalive.yml`, puis clique sur **Commit changes**. Les dossiers qui commencent par un point ne peuvent pas être créés depuis ici, d'où cette étape manuelle.
 1. Sur GitHub, va dans le dépôt > **Settings** > **Secrets and variables** > **Actions** > **New repository secret**, et crée :
    - `SUPABASE_URL` = `https://rqxohlirhgyxzokzqaha.supabase.co`
-   - `SUPABASE_ANON_KEY` = ta clé publique (celle de `index.html`)
+   - `SUPABASE_ANON_KEY` = ta clé publique (celle de `js/config.js`)
 2. Va dans l'onglet **Actions** > **Supabase keep-alive** > **Run workflow** pour tester. La ligne doit devenir verte ✅.
 3. GitHub désactive les tâches planifiées d'un dépôt sans aucun commit pendant 60 jours. Un commit de temps en temps suffit à l'éviter, et tu recevras un e-mail d'avertissement avant.
 

@@ -1,0 +1,74 @@
+{
+ "sym": {
+  "label": "Symboles de la République",
+  "retenir": "Devise « Liberté, Égalité, Fraternité », drapeau bleu-blanc-rouge, Marseillaise (hymne, 1792), Marianne, 14 juillet. Article 1er : République indivisible, laïque, démocratique et sociale. Langue : le français."
+ },
+ "lib": {
+  "label": "Libertés fondamentales",
+  "retenir": "La liberté consiste à faire tout ce qui ne nuit pas à autrui (DDHC 1789). Expression, presse (loi 1881), association (loi 1901), circulation, manifestation pacifique : libres, mais encadrées par la loi."
+ },
+ "ega": {
+  "label": "Égalité et discriminations",
+  "retenir": "Tous égaux devant la loi, sans distinction d'origine, de sexe ou de religion. Les discriminations sont des délits ; on peut saisir le Défenseur des droits. La répudiation n'a aucune valeur."
+ },
+ "laic": {
+  "label": "Laïcité",
+  "retenir": "Loi de 1905 : séparation des Églises et de l'État, liberté de conscience (croire, ne pas croire, changer). Neutralité imposée aux agents publics, pas aux usagers. À l'école : pas de signes ostensibles (loi 2004), aucun cours refusé pour motif religieux."
+ },
+ "inst": {
+  "label": "Institutions nationales",
+  "retenir": "Ve République (1958). Président : élu 5 ans, garant de la Constitution, chef des armées, nomme le Premier ministre. Premier ministre : dirige le Gouvernement (Matignon). Parlement : 577 députés (5 ans) + 348 sénateurs (6 ans). Séparation des pouvoirs : législatif, exécutif, judiciaire."
+ },
+ "loc": {
+  "label": "Collectivités et administration locale",
+  "retenir": "Communes (~35 000, maire et conseil élus 6 ans : état civil, écoles), départements (101 : action sociale, collèges), régions (18 : lycées, transports). Le préfet représente l'État."
+ },
+ "vote": {
+  "label": "Élections et vote",
+  "retenir": "Pour voter : être français, majeur (18 ans), inscrit sur les listes. Vote non obligatoire. Procuration possible. Citoyens de l'UE : municipales et européennes. Président au suffrage direct depuis 1962."
+ },
+ "ue": {
+  "label": "Union européenne",
+  "retenir": "Maastricht (1992) crée l'UE ; CECA (1951), traité de Rome (1957). 6 fondateurs dont France, Allemagne, Italie. Drapeau : 12 étoiles jaunes sur fond bleu. Devise : « Unie dans la diversité ». Hymne : Ode à la joie. 9 mai. Parlement à Strasbourg, Commission à Bruxelles. Euro en 2002. Brexit 2020."
+ },
+ "droit": {
+  "label": "Constitution et droits fondamentaux",
+  "retenir": "La Constitution est la norme suprême, difficile à réviser. DDHC 1789 : « Les hommes naissent et demeurent libres et égaux en droits ». Les droits ne peuvent être limités que par la loi (ordre public, droits d'autrui). Dignité de chaque personne."
+ },
+ "fam": {
+  "label": "Famille, mariage et santé",
+  "retenir": "Mariage civil en mairie, libre consentement, 18 ans, polygamie interdite. Divorce toujours possible. Autorité parentale conjointe. IVG garantie par la Constitution (2024). Contraception accessible à tous, même mineurs. Naissance déclarée en mairie sous 5 jours."
+ },
+ "just": {
+  "label": "Justice, sécurité et infractions",
+  "retenir": "Contravention < délit (ex. vol) < crime (ex. meurtre). Seul le juge sanctionne. Police et gendarmerie maintiennent l'ordre : on obéit, puis on conteste. Témoin : alerter le 17 sans se mettre en danger. Peine de mort abolie en 1981."
+ },
+ "env": {
+  "label": "Environnement et déchets",
+  "retenir": "Charte de l'environnement (2005) : droit à un environnement sain, devoir de le préserver. Trier ses déchets, objets encombrants à la déchetterie. Mégot ou dépôt sauvage : amende."
+ },
+ "hist": {
+  "label": "Histoire de France",
+  "retenir": "1789 Révolution, 1792 Ire République, 1793 exécution de Louis XVI, 1804 Napoléon empereur, 1881-82 lois Ferry, 1905 laïcité, 1914-1918, 18 juin 1940, 1944 vote des femmes, 6 juin 1944 Normandie, 8 mai 1945, 1958 Ve République, 1962 indépendance de l'Algérie, 1981 abolition."
+ },
+ "geo": {
+  "label": "Géographie de la France",
+  "retenir": "~68 millions d'habitants, surtout en ville. Voisins : Belgique, Luxembourg, Allemagne, Suisse, Italie, Monaco, Espagne, Andorre. Pyrénées (Espagne), Alpes (Italie, Suisse). Seine à Paris. Manche, Atlantique, Méditerranée. Réunion et Mayotte dans l'océan Indien."
+ },
+ "cult": {
+  "label": "Culture et patrimoine",
+  "retenir": "Monet et Renoir (impressionnisme), Rodin (sculpteur), Debussy (musique), Simone de Beauvoir et Marguerite Yourcenar (lettres). Louvre à Paris. Notre-Dame (incendie 2019). Français : 5e langue mondiale, ~320 millions de locuteurs. Journées du patrimoine en septembre."
+ },
+ "trav": {
+  "label": "Travail et emploi",
+  "retenir": "Travail déclaré obligatoire. Heures supplémentaires payées avec majoration. Grève : arrêt collectif, non payé. Syndicat : adhésion libre. Prud'hommes : litiges salarié/employeur. France Travail : chômage si perte involontaire d'emploi."
+ },
+ "ecole": {
+  "label": "École et enfants",
+  "retenir": "Instruction obligatoire de 3 à 16 ans. Inscription en mairie. Maternelle 3-6 ans, brevet en fin de collège. Cours obligatoires (EPS mixte compris). Absences : motif légitime seulement. Enfant handicapé : droit à la scolarisation. Parents : informés et représentés."
+ },
+ "vie": {
+  "label": "Démarches du quotidien",
+  "retenir": "Urgences : 15 SAMU, 17 police, 18 pompiers, 112 européen. Assurance maladie obligatoire ; urgences ouvertes à tous ; secret médical. Bail écrit et signé. Permis dès 17 ans après le code. Aide juridictionnelle pour l'avocat."
+ }
+}

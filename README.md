@@ -1,66 +1,69 @@
-# Examen civique – carte de résident
+# Examen civique : entraînement gratuit
 
-Un site gratuit pour s'entraîner à l'examen civique exigé depuis le 1er janvier 2026 pour une première demande de carte de résident de 10 ans.
+Site d'entraînement à l'examen civique exigé depuis le 1ᵉʳ janvier 2026 pour une première carte de séjour pluriannuelle, une première carte de résident ou une demande de naturalisation.
 
-Il reprend les 209 questions de connaissance publiées par le ministère de l'Intérieur, présentées comme à l'examen : un QCM avec 4 choix et une seule bonne réponse.
+🌐 **En ligne :** https://examen-civique.mlndao.fr
 
-## Comment ça marche
+Il reprend les questions de connaissance publiées par le ministère de l'Intérieur (licence Etalab 2.0), présentées comme à l'examen : un QCM à 4 choix avec une seule bonne réponse. Chaque réponse est expliquée.
 
-Le site propose cinq onglets :
+## Fonctionnalités
 
-- **Série du jour** : 15 questions par jour. La série reprend d'abord les questions auxquelles vous avez mal répondu, puis celles que vous n'avez jamais vues. Revenez chaque jour pour couvrir toute la liste petit à petit.
-- **Examen blanc** : 40 questions tirées au hasard, comme le jour de l'examen. Il faut au moins 32 bonnes réponses (80 %) pour réussir.
-- **Par thème** : les questions d'un seul thème, pour travailler un point faible. Les cinq thèmes sont les principes et valeurs de la République, les institutions, les droits et devoirs, l'histoire-géographie-culture, et la vie en société.
-- **À améliorer** : le bilan automatique de vos points faibles, notion par notion, avec l'essentiel à retenir et un entraînement ciblé.
-- **Révision** : toutes les questions avec leur réponse et leur explication, une recherche par mot-clé et un filtre « seulement mes erreurs ».
+- **Série du jour** : 15 questions par jour. Les erreurs repassent en priorité, puis viennent les questions jamais vues.
+- **Examen blanc** : 40 questions tirées au hasard. Il faut 32 bonnes réponses (80 %) pour réussir.
+- **Par thème** : les 5 thèmes officiels.
+- **À améliorer** : bilan automatique par notion, avec l'essentiel à retenir et un entraînement ciblé.
+- **Révision** : toutes les questions avec réponse et explication, une recherche et un filtre « mes erreurs ».
+- **Comptes** (Supabase) : progression sauvegardée en ligne, export et suppression des données. On peut aussi utiliser le site sans compte.
 
-Après chaque réponse, le site affiche la bonne réponse et une explication. En fin de série, il liste les questions à revoir et les points à améliorer ; l'onglet **À améliorer** fait le bilan par notion.
+## Organisation des fichiers
 
-## Votre progression
+```
+index.html              structure de la page (en-tête, navigation, pied de page)
+404.html                redirection des adresses propres sur GitHub Pages
+CNAME                   domaine personnalisé (examen-civique.mlndao.fr)
 
-Le site compte vos jours d'entraînement consécutifs et les questions que vous maîtrisez (réussies au moins deux fois, dont la dernière). Avec un compte, cette progression est enregistrée en ligne et vous la retrouvez sur tous vos appareils. Sans compte, elle reste dans votre navigateur : utilisez alors le même appareil et le même navigateur.
+assets/css/style.css    tout le style du site
+
+js/config.js            ⚙️ réglages : clés publiques Supabase et Turnstile, éditeur, examen
+js/main.js              point d'entrée : enregistre les pages et démarre l'application
+js/core/                logique sans affichage
+  data.js               chargement des questions, thèmes et notions (JSON)
+  state.js              état partagé (utilisateur connecté, progression)
+  progress.js           sauvegarde locale et en ligne, statistiques, série du jour
+  router.js             navigation et adresses propres (/serie-du-jour…)
+  supabase.js           connexion à Supabase
+  utils.js              petites fonctions utilitaires
+js/auth/                connexion, inscription, mot de passe oublié, anti-robots
+js/ui/                  mise en page commune, menu du compte
+js/views/               un fichier par écran (accueil, quiz, série du jour, examen…)
+
+data/questions/carte-resident.json   les 209 questions, réponses et explications
+data/themes.json                     les 5 thèmes officiels
+data/notions.json                    les notions et leurs fiches « À retenir »
+
+supabase/setup.sql      création de la base (à exécuter dans le SQL Editor de Supabase)
+supabase/emails/        modèles d'e-mails en français
+deploy/                 tâche GitHub qui empêche la mise en veille de Supabase
+docs/                   documents de travail
+```
+
+**Modifier une question ou une explication :** édite `data/questions/carte-resident.json`.
+**Ajouter un examen** (carte de séjour pluriannuelle, naturalisation) : ajoute un fichier dans `data/questions/`.
+
+## Tester sur son ordinateur
+
+Le site charge ses données avec `fetch` : il faut donc un petit serveur local. Ouvrir `index.html` en double-cliquant ne suffit pas.
+
+```bash
+python3 -m http.server 8000
+```
+
+Puis ouvre http://localhost:8000. Pense à ajouter `http://localhost:8000/**` dans les Redirect URLs de Supabase si tu testes la connexion.
 
 ## Mise en ligne
 
-La liste complète des réglages pour la production (nom de domaine, e-mails Brevo, e-mails en français, anti-robots, mise en veille) est dans `MISE_EN_LIGNE.md`.
-
-## Comptes utilisateurs (Supabase)
-
-Le site propose un espace de connexion : chaque personne crée son compte (prénom, e-mail, mot de passe) et retrouve sa progression et ses points à améliorer sur tous ses appareils. Sans configuration, le site fonctionne en mode « sans compte » (progression gardée dans le navigateur).
-
-Mise en place, une seule fois :
-
-1. Créer un projet gratuit sur [supabase.com](https://supabase.com).
-2. Dans **SQL Editor**, coller le contenu de `supabase_setup.sql` et cliquer sur **Run**. Cela crée la table `progress` et les règles de sécurité : chacun ne voit que sa propre progression.
-3. Dans **Authentication > URL Configuration**, mettre l'adresse du site dans **Site URL** (par exemple `https://laminendao.github.io/examen_civique/`) et l'ajouter aussi dans **Redirect URLs**. Les liens de confirmation et de réinitialisation du mot de passe renvoient vers cette adresse.
-4. Dans **Project Settings > API**, copier la **Project URL** et la clé **anon public**, puis les coller en haut de `index.html` :
-
-   ```js
-   window.EC_CONFIG = {
-     supabaseUrl: "https://xxxx.supabase.co",
-     supabaseAnonKey: "eyJ..."
-   };
-   ```
-
-   La clé « anon » est faite pour être publique : la sécurité repose sur les règles de l'étape 2. Ne jamais mettre la clé `service_role` dans le site.
-5. Facultatif : dans **Authentication > Sign In / Providers > Email**, désactiver **Confirm email** pour que les comptes soient actifs sans passer par l'e-mail de confirmation.
-
-Chaque compte a sa propre progression, indépendante de celle faite sans compte. À l'inscription, le site demande le nom complet, puis, de façon facultative, le genre et la situation professionnelle. Ces informations sont visibles dans Supabase, dans **Authentication > Users**, champ *raw user meta data*. Un bouton en bas de l'onglet **À améliorer** permet de remettre sa progression à zéro.
-
-## Mentions légales, confidentialité et suppression de compte
-
-- Le pied de page donne accès aux **mentions légales** et à la **politique de confidentialité** (RGPD). Le nom de l'éditeur et l'adresse de contact se règlent en haut de `index.html`, dans `editorName` et `contactEmail`.
-- Le menu de la pastille ouvre **Mon compte et mes données** : on peut y télécharger ses données (fichier JSON) et supprimer son compte.
-- Pour que la suppression de compte fonctionne, exécuter à nouveau `supabase_setup.sql` dans **SQL Editor** : le script ajoute la fonction `delete_my_account`. On peut le relancer sans risque.
-- Vérifier dans Supabase (**Project Settings > General**) que le projet est hébergé dans une région de l'Union européenne.
+Le site est hébergé sur GitHub Pages. La liste des réglages (domaine, e-mails Brevo, modèles d'e-mails, anti-robots, mise en veille) se trouve dans `MISE_EN_LIGNE.md`.
 
 ## Licence
 
-Code, design, réponses et explications : tous droits réservés (voir `LICENSE`). Les questions officielles restent sous licence ouverte Etalab 2.0.
-
-## Bon à savoir
-
-- Les questions de mise en situation de l'examen ne sont pas publiées par le ministère : elles ne figurent donc pas sur ce site.
-- Le ministère publie les questions, pas les réponses. Les réponses proposées ici ont été rédigées pour la révision.
-
-Source des questions : [formation-civique.interieur.gouv.fr](https://formation-civique.interieur.gouv.fr/examen-civique/liste-officielle-des-questions-de-connaissance-cr/) (licence Etalab 2.0).
+Code, design, réponses et explications : © Mouhamadou Lamine NDAO, tous droits réservés (voir `LICENSE`). Les questions officielles restent sous licence ouverte Etalab 2.0.
