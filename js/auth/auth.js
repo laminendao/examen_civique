@@ -5,7 +5,7 @@ import { esc, initials } from "../core/utils.js";
 import { APP_URL, go, hasView, takeInitialTab } from "../core/router.js";
 import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats, initialExam } from "../core/progress.js";
 import { useExam } from "../ui/exam-switch.js";
-import { view, setChrome } from "../ui/layout.js";
+import { view, setChrome, toast } from "../ui/layout.js";
 import { captchaEnabled, renderCaptcha, getCaptchaToken } from "./captcha.js";
 
 const authBox = () => document.getElementById("auth");
@@ -157,14 +157,15 @@ async function enter(u){
   startApp();
 }
 
-async function enterGuest(){ state.user = null; loadLocal(); await useExam(initialExam()); startApp(); }
+export async function enterGuest(){ state.user = null; loadLocal(); await useExam(initialExam()); startApp(); }
 
 export async function logout(){
   if (state.user){
     cancelPendingSave(); await pushRemote();
     try { await sb.auth.signOut(); } catch(err) {}
     state.user = null; state.store = emptyStore(); setSync("");
-    showAuth("login", ["info", "Tu es déconnecté. À bientôt <i class='ic' data-i='hand'></i>"]);
+    await enterGuest();   // retour au site, sans compte
+    toast("Tu es déconnecté. À bientôt !");
   } else showAuth("login");
 }
 

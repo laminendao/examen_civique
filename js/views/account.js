@@ -4,8 +4,8 @@ import { state, emptyStore } from "../core/state.js";
 import { esc } from "../core/utils.js";
 import { go } from "../core/router.js";
 import { cancelPendingSave, forgetLocal } from "../core/progress.js";
-import { page, render } from "../ui/layout.js";
-import { showAuth, frErr } from "../auth/auth.js";
+import { page, render, toast } from "../ui/layout.js";
+import { showAuth, frErr, enterGuest } from "../auth/auth.js";
 import { mail, CONTACT } from "./legal.js";
 
 export function showAccount(){
@@ -52,7 +52,8 @@ export function showAccount(){
         cancelPendingSave();
         try { await sb.auth.signOut(); } catch(e) {}
         state.user = null; state.store = emptyStore();
-        showAuth("login", ["info","Ton compte et toutes tes données ont été supprimés."]);
+        await enterGuest();
+        toast("Ton compte et toutes tes données ont été supprimés.");
       } catch(err){
         const el = document.getElementById("del-err"); el.hidden = false;
         el.textContent = /function|schema cache|not find/i.test(err.message||"")
