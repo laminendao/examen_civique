@@ -7,6 +7,8 @@ import { cancelPendingSave, forgetLocal } from "../core/progress.js";
 import { page, render, toast } from "../ui/layout.js";
 import { showAuth, frErr, enterGuest } from "../auth/auth.js";
 import { mail, CONTACT } from "./legal.js";
+import { AVATARS, paintAvatar } from "../ui/avatar.js";
+import { initials } from "../core/utils.js";
 
 export function showAccount(){
   if (!state.user){
@@ -16,6 +18,15 @@ export function showAccount(){
     return;
   }
   render(page("<i class='ic' data-i='settings'></i>", "Mon compte et mes données", "", `
+    <div class="card">
+      <h2 class="sec" style="margin:0 0 4px">Ma pastille <span class="note">(facultatif)</span></h2>
+      <p class="note" style="margin:0 0 12px">Choisis l'icône qui s'affiche en haut à droite, ou garde tes initiales.</p>
+      <div class="avpick" role="radiogroup" aria-label="Pastille de profil">
+        <button type="button" class="avopt${!state.user.avatar ? " on" : ""}" data-av="" role="radio" aria-checked="${!state.user.avatar}" title="Mes initiales"><span class="ini">${esc(initials(state.user.name))}</span></button>
+        ${AVATARS.map(a => `<button type="button" class="avopt${state.user.avatar === a ? " on" : ""}" data-av="${a}" role="radio" aria-checked="${state.user.avatar === a}"><i class='ic' data-i='${a}'></i></button>`).join("")}
+      </div>
+      <p class="note" id="av-msg" hidden></p>
+    </div>
     <div class="card legal">
       <h2>Mes informations</h2>
       <p><b>Nom :</b> ${esc(state.user.name)}<br><b>E-mail :</b> ${esc(state.user.email||"")}${state.user.gender?`<br><b>Genre :</b> ${esc(state.user.gender)}`:""}${state.user.occupation?`<br><b>Situation professionnelle :</b> ${esc(state.user.occupation)}`:""}</p>
@@ -27,6 +38,19 @@ export function showAccount(){
       <p style="margin:0">Ton compte, ton e-mail, tes informations et toute ta progression seront effacés définitivement. Cette action est irréversible.</p>
       <div class="row"><button class="btn danger-btn" id="del">Supprimer mon compte</button></div>
     </div>`, true));
+  document.querySelectorAll("[data-av]").forEach(b => b.addEventListener("click", async () => {
+    const val = b.dataset.av || null, prev = state.user.avatar, msg = document.getElementById("av-msg");
+    state.user.avatar = val; paintAvatar();
+    document.querySelectorAll("[data-av]").forEach(x => { const on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-checked", on); });
+    try {
+      const { error } = await sb.auth.updateUser({ data: { avatar: val } });
+      if (error) throw error;
+      msg.hidden = true;
+    } catch(e){
+      state.user.avatar = prev; paintAvatar();
+      msg.hidden = false; msg.textContent = "Impossible d'enregistrer ce choix pour l'instant. Réessaie dans un moment.";
+    }
+  }));
   document.getElementById("export").addEventListener("click", ()=>{
     const blob = new Blob([JSON.stringify({compte:{nom:state.user.name, email:state.user.email, genre:state.user.gender||null, situation_professionnelle:state.user.occupation||null}, progression:state.store}, null, 2)], {type:"application/json"});
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "mes-donnees-examen-civique.json"; a.click();

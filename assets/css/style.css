@@ -597,3 +597,11 @@ details.more[open]>summary{margin-bottom:14px}
 .brief{list-style:none;margin:6px 0 0;padding:0}
 .brief li{padding:10px 0;border-top:1px solid var(--line)}
 .brief li:first-child{border-top:0}
+/* Pastille de profil */
+.avatar.has-icon svg{width:22px;height:22px}
+.avpick{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:10px;max-width:520px}
+.avopt{width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);background:#fff;color:var(--accent);display:grid;place-items:center;cursor:pointer;padding:0;font:inherit}
+.avopt .ic{width:24px;height:24px}
+.avopt .ini{font-weight:700;font-size:.95rem}
+.avopt:hover{border-color:var(--accent)}
+.avopt.on{border:2px solid var(--accent);background:var(--accent-soft)}

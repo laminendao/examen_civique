@@ -5,6 +5,7 @@ import { esc, initials } from "../core/utils.js";
 import { APP_URL, go, hasView, takeInitialTab } from "../core/router.js";
 import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats, initialExam } from "../core/progress.js";
 import { useExam } from "../ui/exam-switch.js";
+import { paintAvatar } from "../ui/avatar.js";
 import { view, setChrome, toast } from "../ui/layout.js";
 import { captchaEnabled, renderCaptcha, getCaptchaToken } from "./captcha.js";
 
@@ -135,7 +136,7 @@ function startApp(){
   av.hidden = !u; document.getElementById("signin").hidden = !!u;
   document.getElementById("menu").hidden = true; av.setAttribute("aria-expanded", "false");
   if (u){
-    av.textContent = initials(u.name);
+    paintAvatar();
     av.title = u.name + " · " + u.email;
     av.setAttribute("aria-label", "Compte de " + u.name);
     document.getElementById("who").textContent = u.name;
@@ -152,7 +153,7 @@ function startApp(){
 
 async function enter(u){
   const meta = u.user_metadata || {};
-  state.user = { id: u.id, email: u.email, name: meta.full_name || meta.name || (u.email || "").split("@")[0], gender: meta.gender || null, occupation: meta.occupation || null };
+  state.user = { id: u.id, email: u.email, name: meta.full_name || meta.name || (u.email || "").split("@")[0], gender: meta.gender || null, occupation: meta.occupation || null, avatar: meta.avatar || null };
   await loadRemote();
   await useExam(initialExam());
   startApp();
