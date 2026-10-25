@@ -671,3 +671,9 @@ details.more[open]>summary{margin-bottom:14px}
 .fb-consent input{margin-top:3px}
 .fb-thanks{margin:6px 0;color:var(--ok);font-weight:600}
 .fb-modal{max-width:480px}
+/* Accès réservé aux comptes */
+.gate{display:flex;flex-direction:column;gap:16px}
+.gate-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.gate-list .ic{color:var(--ok);margin-right:6px}
+.lock-note{font-size:.82rem;font-weight:600;color:var(--muted);margin-left:6px}
+.lock-note .ic{width:14px;height:14px;vertical-align:-2px}

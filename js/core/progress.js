@@ -216,3 +216,23 @@ export function activity(n){
   }
   return out;
 }
+
+/* ---------- Progression d'essai (sans compte) reprise dans un nouveau compte ---------- */
+const PENDING = "ec-adopt-guest";   // {email, t} : posé à l'inscription, valable 7 jours
+export function markGuestAdoption(email){ lsSet(PENDING, { email: String(email).trim().toLowerCase(), t: Date.now() }); }
+
+/* À l'entrée dans un compte tout juste créé depuis ce navigateur : on y ajoute la progression faite sans compte. */
+export async function adoptGuestProgress(){
+  const p = lsGet(PENDING);
+  if (!p || !state.user) return false;
+  if (Date.now() - p.t > 7 * 864e5){ try { localStorage.removeItem(PENDING); } catch(e) {} return false; }
+  if (p.email !== String(state.user.email || "").toLowerCase()) return false;
+  const guest = normalize(lsGet(KEY));
+  try { localStorage.removeItem(PENDING); } catch(e) {}
+  if (!Object.keys(guest.exams).length) return false;
+  state.store = mergeStores(guest, state.store);
+  lsSet(localKey(), state.store);
+  try { localStorage.removeItem(KEY); localStorage.removeItem("ec-guest-runs"); } catch(e) {}
+  await pushRemote();
+  return true;
+}

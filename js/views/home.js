@@ -6,6 +6,7 @@ import { esc } from "../core/utils.js";
 import { dailyIds, mastered, weakList, streak, seenCount, mocks, estimate } from "../core/progress.js";
 import { render } from "../ui/layout.js";
 import { themeBars, gauge, MIN_EST } from "./stats.js";
+import { isGuest, freeLeft } from "../ui/gate.js";
 
 const row = (tab, icon, title, desc, extra = "") => `<li><button type="button" class="lrow" data-tab="${tab}" title="${desc}">
   <i class='ic' data-i='${icon}'></i><span><b>${title}${extra}</b></span><i class='ic' data-i='arrow-right'></i></button></li>`;
@@ -24,7 +25,8 @@ export function showHome(){
     ? `<button class="btn primary" data-tab="exam"><i class='ic' data-i='exam'></i> Passer un examen blanc</button><span class="note done-note"><i class='ic' data-i='check'></i> Série du jour terminée, bravo !</span>`
     : `<button class="btn primary" data-tab="daily"><i class='ic' data-i='play'></i> ${started ? `Continuer ma série du jour (${dl.pos}/${DAILY_N})` : "Commencer ma série du jour"}</button>`;
 
-  const nudge = !state.user && sb ? `<p class="nudge"><i class='ic' data-i='save'></i> <button type="button" class="link" data-signup>Crée un compte gratuit</button> pour retrouver ta progression sur tous tes appareils.</p>` : "";
+  const left = freeLeft();
+  const nudge = isGuest() ? `<p class="nudge"><i class='ic' data-i='save'></i> ${left ? `Sans compte : encore ${left} série${left > 1 ? "s" : ""} gratuite${left > 1 ? "s" : ""}.` : "Tes séries d'essai sont terminées."} <button type="button" class="link" data-signup>Crée un compte gratuit</button> pour continuer, passer l'examen blanc et suivre ta progression.</p>` : "";
   const progressCard = `<div class="hero-card">
         <h3>${hello}</h3>
         ${seen >= MIN_EST ? `<span class="note" style="margin-bottom:-6px">Ta note estimée aujourd'hui</span>${gauge(estimate(), true)}` : `<div class="ring">
@@ -70,7 +72,7 @@ export function showHome(){
       ${themeCard}
       <div class="card"><h2 class="sec" style="margin:0 0 6px"><i class='ic' data-i='rocket'></i> Autres entraînements</h2>
         <ul class="lrows">
-          ${row("exam", "exam", "Examen blanc", "40 questions en 45 minutes, corrigées à la fin comme le jour J", last ? ` <span class="pill ${last.g >= PASS ? "ok" : "ko"} sm">dernier : ${last.g}/${last.n}</span>` : "")}
+          ${row("exam", "exam", "Examen blanc", "40 questions en 45 minutes, corrigées à la fin comme le jour J", isGuest() ? ` <span class="lock-note"><i class='ic' data-i='lock'></i> avec un compte</span>` : last ? ` <span class="pill ${last.g >= PASS ? "ok" : "ko"} sm">dernier : ${last.g}/${last.n}</span>` : "")}
           ${row("themes", "book", "Par thème", "Les 5 thèmes officiels, un par un")}
           ${row("weak", "target", "À améliorer", "Tes notions fragiles et un entraînement ciblé", weakN ? ` <span class="badge">${weakN}</span>` : "")}
           ${row("review", "search", "Révision", "Toutes les questions avec réponse et explication")}

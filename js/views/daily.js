@@ -5,10 +5,12 @@ import { dailyIds, save, refreshStats, mastered, missed, markDayDone, dayDone } 
 import { page, render, help } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
 import { feedbackCard, bindFeedbackCard } from "../ui/feedback.js";
+import { gate } from "../ui/gate.js";
 
 export function showDaily(){
   const d = dailyIds();
   if (d.pos >= d.ids.length) return finish(d);
+  if (d.pos === 0 && gate("runs")) return;   // une série déjà commencée peut toujours être terminée
   runQuiz("Série du jour", "<i class='ic' data-i='calendar'></i>", d, finish, save);
 }
 
@@ -27,6 +29,7 @@ function finish(run){
 }
 
 function extraSeries(){
+  if (gate("runs")) return;
   const r = rng(todayStr() + Date.now());
   const ids = Q.map(q => ({ id: q.id, k: (mastered(q.id) ? 2 : (missed(q.id) ? 0 : 1)) + r() }))
     .sort((a, b) => a.k - b.k).slice(0, DAILY_N).map(x => x.id);

@@ -4,6 +4,7 @@ import { esc, shuffle } from "../core/utils.js";
 import { mastered } from "../core/progress.js";
 import { page, render, help, view } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
+import { gate } from "../ui/gate.js";
 
 export function showThemes(){
   render(page("<i class='ic' data-i='book'></i>", "Entraînement par thème", help("Choisis l'un des 5 thèmes officiels de l'examen."), `<div class="grid g3">${Object.entries(THEMES).map(([k, th]) => {
@@ -15,6 +16,7 @@ export function showThemes(){
 }
 
 function start(k){
+  if (gate("runs")) return;
   const th = THEMES[k], ids = shuffle(Q.filter(q => q.t === k).map(q => q.id));
   runQuiz(th.label, th.icon, { ids, pos: 0, good: 0, wrong: [] }, run => {
     render(page(th.icon, th.label, "Résultat du thème", summary(run, `<div class="row"><button class="btn" data-tab="themes"><i class='ic' data-i='book'></i> Choisir un autre thème</button></div>`), true));

@@ -4,6 +4,7 @@ import { state } from "../core/state.js";
 import { esc, todayStr } from "../core/utils.js";
 import { qState, estimate, activity, streak, seenCount, mocks } from "../core/progress.js";
 import { page, render, help } from "../ui/layout.js";
+import { gate } from "../ui/gate.js";
 
 export const MIN_EST = 20;   // questions vues avant d'afficher une note estimée
 const DAYS = ["lun", "mar", "mer", "jeu", "ven", "sam", "dim"];
@@ -50,6 +51,7 @@ function heat(){
 }
 
 export function showStats(){
+  if (gate("stats")) return;
   const seen = seenCount(), est = estimate(), list = mocks(), last = list[list.length - 1];
   render(page("<i class='ic' data-i='chart'></i>", "Mon tableau de bord", help(`Ta progression pour l'examen « ${esc(EXAMS[state.exam].label)} ». La note estimée est indicative : elle combine ce que tu as réussi dans chaque thème, pondéré comme à l'examen (11 questions sur les principes, 6 sur les institutions, 11 sur les droits et devoirs, 8 sur l'histoire, 4 sur la vie en société).`), `
     <div class="dash">

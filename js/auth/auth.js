@@ -3,7 +3,7 @@ import { sb, RECOVERING } from "../core/supabase.js";
 import { state, emptyStore } from "../core/state.js";
 import { esc, initials } from "../core/utils.js";
 import { APP_URL, go, hasView, takeInitialTab } from "../core/router.js";
-import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats, initialExam } from "../core/progress.js";
+import { loadLocal, loadRemote, pushRemote, cancelPendingSave, setSync, refreshStats, initialExam, markGuestAdoption, adoptGuestProgress } from "../core/progress.js";
 import { useExam } from "../ui/exam-switch.js";
 import { paintAvatar } from "../ui/avatar.js";
 import { view, setChrome, toast } from "../ui/layout.js";
@@ -105,6 +105,7 @@ export function showAuth(mode = "login", msg = null){
         if (error) throw error;
         await enter(data.user);
       } else if (mode==="signup"){
+        markGuestAdoption(v("a-email"));   // la progression faite sans compte suivra dans le nouveau compte
         const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{first_name:v("a-first").trim(), last_name:v("a-last").trim(), full_name:(v("a-first").trim() + " " + v("a-last").trim()).trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL, ...cap}});
         if (error) throw error;
         if (data.session) await enter(data.user);
@@ -155,8 +156,10 @@ async function enter(u){
   const meta = u.user_metadata || {};
   state.user = { id: u.id, email: u.email, name: meta.full_name || meta.name || (u.email || "").split("@")[0], gender: meta.gender || null, occupation: meta.occupation || null, avatar: meta.avatar || null };
   await loadRemote();
+  const adopted = await adoptGuestProgress();
   await useExam(initialExam());
   startApp();
+  if (adopted) toast("Ta progression faite sans compte a été ajoutée à ton compte.");
 }
 
 export async function enterGuest(){ state.user = null; loadLocal(); await useExam(initialExam()); startApp(); }

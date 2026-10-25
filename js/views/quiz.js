@@ -5,6 +5,7 @@ import { esc, shuffle } from "../core/utils.js";
 import { record, refreshStats, missed, mastered } from "../core/progress.js";
 import { go, setLeaveGuard } from "../core/router.js";
 import { confirmBox } from "../ui/confirm.js";
+import { countGuestRun, gate } from "../ui/gate.js";
 import { page, render, view } from "../ui/layout.js";
 import { reportLink, bindReports } from "../ui/report.js";
 import { readingTools, bindReadingTools, stopSpeaking } from "../ui/reading.js";
@@ -44,7 +45,11 @@ document.addEventListener("keydown", e => {
    opts.exam = true : pas de correction immédiate, run.deadline (ms) = fin du temps imparti. */
 export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}){
   stopSpeaking();
-  if (run.pos >= run.ids.length){ stopTimer(); guardExam(false); return onDone(run); }
+  if (run.pos >= run.ids.length){
+    stopTimer(); guardExam(false);
+    if (!opts.exam && !run.counted){ run.counted = true; countGuestRun(); persist(); }
+    return onDone(run);
+  }
   const q = QI[run.ids[run.pos]];
   const opts4 = shuffle([q.a, ...q.d]);
   const exam = !!opts.exam;
@@ -155,6 +160,7 @@ export function bindTrain(){
 
 /* Entraînement ciblé sur une notion : erreurs d'abord, puis non maîtrisées, puis le reste. */
 export function trainNotion(n){
+  if (gate("runs")) return;
   go("weak", false);
   const qs = Q.filter(q => q.n === n);
   const ids = [

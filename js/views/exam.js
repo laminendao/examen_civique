@@ -7,6 +7,7 @@ import { addMock, mocks, refreshStats } from "../core/progress.js";
 import { page, render, help } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
 import { feedbackCard, bindFeedbackCard } from "../ui/feedback.js";
+import { gate } from "../ui/gate.js";
 
 const DURATION = 45 * 60;   // secondes
 /* Répartition officielle des 40 questions : connaissances et mises en situation par thème. */
@@ -59,6 +60,7 @@ function history(){
 }
 
 export function showExam(){
+  if (gate("exam")) return;
   render(page("<i class='ic' data-i='exam'></i>", "Examen blanc", help("Les conditions du jour J : 40 questions, 45 minutes, correction à la fin. Les questions sont réparties par thème comme à l'examen. Le ministère ne publie pas les mises en situation : celles de l'examen blanc sont des exemples rédigés pour s'entraîner."), `
     <div class="card" style="display:flex;flex-direction:column;gap:18px">
       <div class="grid g3">
