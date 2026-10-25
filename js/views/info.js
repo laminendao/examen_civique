@@ -1,16 +1,16 @@
 /* « Liens utiles » : l'examen en bref et les liens officiels, regroupés par besoin. */
-import { page, render } from "../ui/layout.js";
+import { page, render, help } from "../ui/layout.js";
 import { EXAMS, EXAM_ORDER } from "../core/data.js";
 
 const link = (href, title, desc) => `<li><a class="lrow" href="${href}" target="_blank" rel="noopener">
   <span><b>${title}</b><small>${desc}</small></span><i class='ic' data-i='external'></i></a></li>`;
 
 const group = (icon, title, intro, links) => `<section class="lgroup">
-  <h2><i class='ic' data-i='${icon}'></i> ${title}</h2>${intro ? `<p class="note">${intro}</p>` : ""}
+  <h2><i class='ic' data-i='${icon}'></i> ${title}</h2>
   <ul>${links.join("")}</ul></section>`;
 
 export function showInfo(){
-  render(page("<i class='ic' data-i='link'></i>", "Liens utiles", "Informations officielles vérifiées en octobre 2026. En cas de doute, le site du ministère fait foi.", `<div class="useful-page">
+  render(page("<i class='ic' data-i='link'></i>", "Liens utiles", help("Informations officielles vérifiées en octobre 2026. En cas de doute, le site du ministère fait foi."), `<div class="useful-page">
 
     <section class="facts card">
       <h2><i class='ic' data-i='compass'></i> L'examen en bref</h2>

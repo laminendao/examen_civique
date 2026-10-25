@@ -4,7 +4,7 @@ import { Q, EXAM_N, PASS, EXAMS } from "../core/data.js";
 import { state } from "../core/state.js";
 import { shuffle, esc } from "../core/utils.js";
 import { addMock, mocks, refreshStats } from "../core/progress.js";
-import { page, render } from "../ui/layout.js";
+import { page, render, help } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
 
 const DURATION = 45 * 60;   // secondes
@@ -47,7 +47,7 @@ function chart(list){
 
 function history(){
   const list = mocks();
-  if (!list.length) return `<div class="card"><h2 class="sec" style="margin:0 0 8px"><i class='ic' data-i='chart'></i> Mes examens blancs</h2><p class="note" style="margin:0">Ton historique « ${esc(EXAMS[state.exam].label)} » apparaîtra ici après ton premier examen blanc.</p></div>`;
+  if (!list.length) return "";   // l'historique n'apparaît qu'après un premier examen blanc
   const best = Math.max(...list.map(m => m.g)), passed = list.filter(m => m.g >= PASS).length, last = list[list.length - 1];
   return `<div class="card"><h2 class="sec" style="margin:0 0 14px"><i class='ic' data-i='chart'></i> Mes examens blancs · ${esc(EXAMS[state.exam].label)}</h2>
     <div class="kpis"><div><b>${list.length}</b><span>passé${list.length > 1 ? "s" : ""}</span></div><div><b>${last.g}/${last.n}</b><span>dernière note</span></div><div><b>${best}/40</b><span>meilleure note</span></div><div><b>${passed}</b><span>réussi${passed > 1 ? "s" : ""}</span></div></div>
@@ -58,14 +58,13 @@ function history(){
 }
 
 export function showExam(){
-  render(page("<i class='ic' data-i='exam'></i>", "Examen blanc", "Les conditions du jour J : 40 questions, 45 minutes, correction à la fin.", `
+  render(page("<i class='ic' data-i='exam'></i>", "Examen blanc", help("Les conditions du jour J : 40 questions, 45 minutes, correction à la fin. Les questions sont réparties par thème comme à l'examen. Le ministère ne publie pas les mises en situation : celles de l'examen blanc sont des exemples rédigés pour s'entraîner."), `
     <div class="card" style="display:flex;flex-direction:column;gap:18px">
       <div class="grid g3">
         <div class="stat"><div class="ico"><i class='ic' data-i='question'></i></div><div><b>28 + 12</b><span>connaissances + mises en situation</span></div></div>
         <div class="stat"><div class="ico"><i class='ic' data-i='timer'></i></div><div><b>45 min</b><span>chronomètre, comme le jour J</span></div></div>
         <div class="stat"><div class="ico"><i class='ic' data-i='target'></i></div><div><b>${PASS}/40</b><span>bonnes réponses pour réussir</span></div></div>
       </div>
-      <p class="note" style="margin:0">Les questions sont réparties par thème comme à l'examen. Le ministère ne publie pas les mises en situation : celles de l'examen blanc sont des exemples rédigés pour s'entraîner.</p>
       <div class="row"><button class="btn primary" id="start-exam"><i class='ic' data-i='rocket'></i> Commencer l'examen blanc</button></div>
     </div>
     ${history()}`, true));

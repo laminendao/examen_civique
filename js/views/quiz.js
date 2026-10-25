@@ -58,7 +58,7 @@ export function runQuiz(label, emoji, run, onDone, persist = () => {}, opts = {}
       <div class="opts">${opts4.map((o, i) => `<button class="opt" id="opt-${i}" data-v="${i}"><span class="k">${"ABCD"[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
       <div id="after" hidden></div>
       ${exam ? `<p class="note exam-hint">Comme le jour J, la correction s'affiche à la fin de l'examen.</p>` : ""}
-      <p class="note kbd-hint">Astuce : réponds avec les touches A, B, C, D${exam ? "" : " et passe à la suite avec Entrée"}.</p>
+      ${run.pos === 0 ? `<p class="note kbd-hint">Astuce : réponds avec les touches A, B, C, D${exam ? "" : " et passe à la suite avec Entrée"}.</p>` : ""}
     </div>`, true));
   bindReadingTools(view(), () => [q.q, ...opts4.map((o, i) => "Réponse " + "ABCD"[i] + ". " + o + ".")]);
 

@@ -3,7 +3,7 @@ import { CONFIG } from "../config.js";
 import { state } from "../core/state.js";
 import { esc } from "../core/utils.js";
 import { APP_URL } from "../core/router.js";
-import { page, render } from "../ui/layout.js";
+import { page, render, help } from "../ui/layout.js";
 import { showAuth } from "../auth/auth.js";
 
 export const EDITOR = CONFIG.editorName || "l'éditeur du site";
@@ -19,7 +19,7 @@ function bindBack(){
   if (b) b.addEventListener("click", () => { state.authReturn = false; try { history.replaceState(null, "", APP_URL); } catch(e) {} showAuth("signup"); });
 }
 export function showLegal(){
-  render(page("<i class='ic' data-i='file'></i>", "Mentions légales", "Informations prévues par la loi pour la confiance dans l'économie numérique (LCEN).", `
+  render(page("<i class='ic' data-i='file'></i>", "Mentions légales", help("Informations prévues par la loi pour la confiance dans l'économie numérique (LCEN)."), `
     <div class="card legal">
       <h2>Éditeur du site</h2>
       <p>Ce site est édité à titre personnel et non commercial par ${esc(EDITOR)}.<br>Contact : ${mail}</p>
@@ -32,13 +32,14 @@ export function showLegal(){
       <p>Les questions sont issues de la liste officielle publiée par le ministère de l'Intérieur, réutilisée sous <a href="https://www.etalab.gouv.fr/licence-ouverte-open-licence/" target="_blank" rel="noopener">licence ouverte Etalab 2.0</a>.</p>
       <p>Les réponses, les explications, les fiches « À retenir », le code, la mise en page et le design du site sont la propriété de ${esc(EDITOR)}. Toute reproduction ou réutilisation, totale ou partielle, sans autorisation écrite est interdite.</p>
       <h2>Responsabilité</h2>
+      <p>Le ministère ne publie ni les réponses ni les mises en situation : les réponses, les explications et les mises en situation du site ont été rédigées pour s'entraîner.</p>
       <p>Les réponses et explications ont été rédigées avec soin pour la révision, mais peuvent contenir des erreurs ou devenir obsolètes. Elles n'ont pas de valeur officielle. Signale toute erreur à ${mail}.</p>
     </div>
     ${backBtn()}`, true));
   bindBack();
 }
 export function showPrivacy(){
-  render(page("<i class='ic' data-i='lock'></i>", "Politique de confidentialité", "Comment tes données sont utilisées, conformément au RGPD. Dernière mise à jour : octobre 2026.", `
+  render(page("<i class='ic' data-i='lock'></i>", "Politique de confidentialité", help("Comment tes données sont utilisées, conformément au RGPD. Dernière mise à jour : octobre 2026."), `
     <div class="card legal">
       <h2>Responsable du traitement</h2>
       <p>${esc(EDITOR)}, joignable à ${mail}.</p>

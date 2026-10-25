@@ -39,10 +39,16 @@
 
 <header class="topbar">
   <div class="container">
-    <button class="brand" type="button" data-tab="home" aria-label="Accueil">
-      <span class="logo" aria-hidden="true"><i class='ic' data-i='logo'></i></span>
-      <span><b>Examen civique</b><small id="brand-sub">Entraînement · examen civique</small></span>
-    </button>
+    <div class="brandwrap">
+      <button class="brand" type="button" data-tab="home" aria-label="Accueil"><span class="logo" aria-hidden="true"><i class='ic' data-i='logo'></i></span></button>
+      <div class="brandtext">
+        <button class="brand-title" type="button" data-tab="home">Examen civique</button>
+        <div class="picker" id="picker">
+          <button type="button" class="exam-pick" id="exam-pick" aria-haspopup="true" aria-expanded="false" aria-label="Choisir l'examen"><span class="long" id="exam-pick-long">Carte de résident</span><span class="short" id="exam-pick-short">Résident</span><i class='ic' data-i='chevron'></i></button>
+          <div class="menu exam-menu" id="exam-menu" hidden></div>
+        </div>
+      </div>
+    </div>
     <nav class="navlinks" id="navlinks" aria-label="Navigation principale">
       <button class="navlink" data-tab="home"><span class="e"><i class='ic' data-i='home'></i></span>Accueil</button>
       <button class="navlink" data-tab="daily"><span class="e"><i class='ic' data-i='calendar'></i></span>Série du jour</button>
@@ -64,12 +70,6 @@
     </div>
   </div>
 </header>
-<div class="exambar" id="exambar" hidden>
-  <div class="container">
-    <span class="exambar-lbl">Je m'entraîne pour</span>
-    <div class="exam-tabs" role="tablist" aria-label="Choix de l'examen"></div>
-  </div>
-</div>
 <p class="sync" id="sync" hidden></p>
 
 <main>
@@ -87,9 +87,7 @@
 
 <footer>
   <div class="container">
-    <div><b><i class='ic' data-i='logo'></i> <span id="foot-exam">Examen civique</span></b> — site d'entraînement non officiel.</div>
-    <div>Questions : listes officielles du ministère de l'Intérieur pour les trois examens (licence Etalab 2.0). Le ministère ne publie pas les réponses : celles-ci et leurs explications ont été rédigées pour la révision. Le ministère ne publie pas les mises en situation : celles du site sont des exemples rédigés pour s'entraîner.</div>
-    <div id="storage-note">Ta progression est enregistrée dans ce navigateur uniquement.</div>
+    <div><b><i class='ic' data-i='logo'></i> Examen civique</b> · site d'entraînement non officiel · questions officielles du ministère de l'Intérieur (licence Etalab 2.0)</div>
     <nav class="footlinks" aria-label="Informations légales"><a href="infos-utiles" data-tab="info">Liens utiles</a><a href="mentions-legales" data-tab="legal">Mentions légales</a><a href="confidentialite" data-tab="privacy">Politique de confidentialité</a><a href="https://github.com/laminendao/examen_civique/blob/main/LICENSE" target="_blank" rel="noopener">Licence</a><span>© 2026 mlndao.fr · Tous droits réservés</span></nav>
   </div>
 </footer>

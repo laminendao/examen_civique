@@ -2,12 +2,12 @@
 import { Q, THEMES } from "../core/data.js";
 import { esc } from "../core/utils.js";
 import { missed } from "../core/progress.js";
-import { page, render, view } from "../ui/layout.js";
+import { page, render, help, view } from "../ui/layout.js";
 import { reportLink, bindReports } from "../ui/report.js";
 import { QI } from "../core/data.js";
 
 export function showReview(){
-  render(page("<i class='ic' data-i='search'></i>", "Révision", "Toutes les questions avec leur réponse et leur explication.", `
+  render(page("<i class='ic' data-i='search'></i>", "Révision", help("Toutes les questions avec leur réponse et leur explication."), `
     <div class="searchbox"><div class="inp"><span><i class='ic' data-i='search'></i></span><input type="search" id="search" placeholder="Rechercher un mot (ex. : Sénat, 1905, laïcité)" aria-label="Rechercher"></div>
       <label class="check"><input type="checkbox" id="only-miss"> <i class='ic' data-i='close'></i> Seulement mes erreurs</label></div>
     <div class="list" id="list"></div>`, true));

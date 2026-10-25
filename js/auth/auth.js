@@ -141,7 +141,8 @@ function startApp(){
     document.getElementById("who").textContent = u.name;
     document.getElementById("who-mail").textContent = u.email || "";
   }
-  document.getElementById("storage-note").innerHTML = u
+  const note = document.getElementById("storage-note");
+  if (note) note.innerHTML = u
     ? "<i class='ic' data-i='save'></i> Ta progression est enregistrée dans ton compte : tu la retrouves sur tous tes appareils."
     : "<i class='ic' data-i='save'></i> Ta progression est enregistrée dans ce navigateur uniquement.";
   refreshStats();

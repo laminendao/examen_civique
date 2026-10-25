@@ -5,7 +5,7 @@ import { esc, pct } from "../core/utils.js";
 import { notionStats, weakList, resetProgress, refreshStats, seenCount } from "../core/progress.js";
 import { EXAMS } from "../core/data.js";
 import { go } from "../core/router.js";
-import { page, render } from "../ui/layout.js";
+import { page, render, help } from "../ui/layout.js";
 import { bindTrain } from "./quiz.js";
 
 export function showWeak(){
@@ -18,9 +18,10 @@ export function showWeak(){
   const weakKeys = new Set(weak.map(o => o.k));
   const good = Object.values(all).filter(o => o.seen && !weakKeys.has(o.k));
 
-  render(page("<i class='ic' data-i='target'></i>", "Mes points à améliorer", `Bilan calculé automatiquement à partir de tes ${answered} questions déjà travaillées. Une notion apparaît ici dès qu'une de ses questions a été ratée à la dernière tentative, ou si ton taux de réussite y est sous 80 %.`, `
-    <div class="grid g2">${weak.length ? weak.map(card).join("") : `<div class="card"><p style="margin:0"><i class='ic' data-i='trophy'></i> Aucun point faible pour l'instant sur les notions travaillées. Continue la série du jour pour couvrir les autres questions.</p></div>`}</div>
-    ${good.length ? `<div class="card"><h2 class="sec" style="margin:0 0 12px"><i class='ic' data-i='heart'></i> Notions solides</h2><div class="solid">${good.map(o => `<span><i class='ic' data-i='check'></i> ${esc(NOTIONS[o.k].label)} · ${pct(o.rate)}</span>`).join("")}</div></div>` : ""}
+  render(page("<i class='ic' data-i='target'></i>", "Mes points à améliorer", help(`Bilan calculé automatiquement à partir de tes ${answered} questions déjà travaillées. Une notion apparaît ici dès qu'une de ses questions a été ratée à la dernière tentative, ou si ton taux de réussite y est sous 80 %.`), `
+    <div class="grid g2">${weak.length ? weak.slice(0, 4).map(card).join("") : `<div class="card"><p style="margin:0"><i class='ic' data-i='trophy'></i> Aucun point faible pour l'instant sur les notions travaillées. Continue la série du jour pour couvrir les autres questions.</p></div>`}</div>
+    ${weak.length > 4 ? `<details class="more"><summary>Voir les ${weak.length - 4} autres notions à améliorer</summary><div class="grid g2">${weak.slice(4).map(card).join("")}</div></details>` : ""}
+    ${good.length ? `<details class="more"><summary><i class='ic' data-i='heart'></i> Notions solides (${good.length})</summary><div class="solid">${good.map(o => `<span><i class='ic' data-i='check'></i> ${esc(NOTIONS[o.k].label)} · ${pct(o.rate)}</span>`).join("")}</div></details>` : ""}
     <div id="reset-box"><button type="button" class="link" id="reset"><i class='ic' data-i='trash'></i> Remettre à zéro ma progression pour cet examen</button></div>`));
   bindTrain(); bindReset();
 }

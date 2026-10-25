@@ -2,11 +2,11 @@
 import { Q, THEMES } from "../core/data.js";
 import { esc, shuffle } from "../core/utils.js";
 import { mastered } from "../core/progress.js";
-import { page, render, view } from "../ui/layout.js";
+import { page, render, help, view } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
 
 export function showThemes(){
-  render(page("<i class='ic' data-i='book'></i>", "Entraînement par thème", "Choisis l'un des 5 thèmes officiels de l'examen.", `<div class="grid g3">${Object.entries(THEMES).map(([k, th]) => {
+  render(page("<i class='ic' data-i='book'></i>", "Entraînement par thème", help("Choisis l'un des 5 thèmes officiels de l'examen."), `<div class="grid g3">${Object.entries(THEMES).map(([k, th]) => {
     const qs = Q.filter(q => q.t === k), m = qs.filter(q => mastered(q.id)).length;
     return `<button class="theme" id="th-${k}" data-k="${k}"><span class="ico">${th.icon}</span><strong>${esc(th.label)}</strong><small>${qs.length} questions · ${m} maîtrisées</small><div class="bar"><i style="width:${m / qs.length * 100}%"></i></div><span class="go">Commencer <i class='ic' data-i='arrow-right'></i></span></button>`;
   }).join("")}
