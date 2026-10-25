@@ -647,3 +647,13 @@ details.more[open]>summary{margin-bottom:14px}
 .hero-card .est{margin-top:2px}
 .dash-link{align-self:flex-start;font-weight:600}
 .est .pill{background:none;padding:0;font-size:.9rem}
+/* Pas de surlignage de texte : couleur seule, sans fond */
+.pill,.pill.ok,.pill.ko,.pill.sm{background:none!important;padding:0!important;border-radius:0}
+.pill.ok{color:var(--ok)}.pill.ko{color:var(--ko)}
+.lrows .pill{font-size:.85rem;font-weight:600}
+.solid span{background:none;padding:0;border-radius:0;font-weight:600}
+.solid{gap:6px 18px}
+.flag{background:none;padding:0;border-radius:0}
+.msg.err,.msg.info{background:none;padding:0}
+.sync{background:#fff;border-bottom:1px solid var(--line)}
+.opt.right,.opt.wrong{background:#fff}
