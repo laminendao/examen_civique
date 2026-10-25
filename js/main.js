@@ -28,10 +28,11 @@ import { showReview } from "./views/review.js";
 import { showLegal, showPrivacy } from "./views/legal.js";
 import { showAccount } from "./views/account.js";
 import { showInfo } from "./views/info.js";
+import { showStats } from "./views/stats.js";
 
 registerViews({
   home: showHome, daily: showDaily, exam: showExam, themes: showThemes, weak: showWeak,
-  review: showReview, info: showInfo, legal: showLegal, privacy: showPrivacy, account: showAccount,
+  review: showReview, info: showInfo, stats: showStats, legal: showLegal, privacy: showPrivacy, account: showAccount,
 });
 setupIcons();
 setupNavigation();

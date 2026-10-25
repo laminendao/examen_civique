@@ -58,6 +58,8 @@ function mergeExam(a, b){
     m.stats[id] = !x ? y : !y ? x : (y.seen > x.seen ? y : x);
   }
   m.days = Object.assign({}, a.days, b.days);
+  m.act = {};
+  for (const [d, v] of [...Object.entries(a.act || {}), ...Object.entries(b.act || {})]) if (!m.act[d] || v[0] > m.act[d][0]) m.act[d] = v;
   const mk = new Map();
   for (const x of [...(a.mocks || []), ...(b.mocks || [])]) mk.set(x.t, x);
   m.mocks = [...mk.values()].sort((x, y) => x.t - y.t).slice(-60);
@@ -108,7 +110,12 @@ export const seenCount = () => Object.keys(cur().stats).length;
 export function record(id, ok){
   const st = cur().stats;
   const s = st[id] || { seen: 0, ok: 0, lastOk: false };
-  s.seen++; if (ok) s.ok++; s.lastOk = ok; st[id] = s; save();
+  s.seen++; if (ok) s.ok++; s.lastOk = ok; st[id] = s;
+  // Activité du jour : [questions travaillées, bonnes réponses] (pour le tableau de bord)
+  const c = cur(), d = todayStr();
+  c.act ||= {};
+  const a = c.act[d] || [0, 0]; a[0]++; if (ok) a[1]++; c.act[d] = a;
+  save();
 }
 
 /* Série du jour : d'abord les erreurs, puis les jamais vues, puis le reste. */
@@ -134,7 +141,7 @@ export function markDayDone(score){ cur().days[todayStr()] = { score }; save(); 
 export const dayDone = k => !!cur().days[k];
 
 export function streak(){
-  const days = cur().days;
+  const c = cur(), days = Object.assign({}, c.act || {}, c.days);   // un jour compte dès qu'on a répondu à une question
   let n = 0; const d = new Date();
   if (!days[todayStr(d)]) d.setDate(d.getDate() - 1);
   while (days[todayStr(d)]){ n++; d.setDate(d.getDate() - 1); }
@@ -177,4 +184,35 @@ export function refreshStats(){
   const n = weakList().length;
   document.querySelectorAll(".weak-count").forEach(el => { el.hidden = !n; el.textContent = n; });
   document.dispatchEvent(new Event("ec-stats"));
+}
+
+/* ---------- Tableau de bord ---------- */
+/* État de chaque question : "m" maîtrisée, "c" en cours (vue, pas encore maîtrisée), "n" jamais vue. */
+export function qState(id){ const s = cur().stats[id]; return !s ? "n" : (s.lastOk && s.ok >= 2 ? "m" : "c"); }
+
+/* Note estimée sur 40 si l'examen avait lieu aujourd'hui (indicatif).
+   Chaque question vaut une probabilité de bonne réponse selon son état, pondérée par thème comme à l'examen. */
+const WEIGHTS = { P: 11, S: 6, D: 11, H: 8, V: 4 };
+export function estimate(){
+  const st = cur().stats, by = {};
+  for (const q of Q){
+    const s = st[q.id];
+    const p = !s ? 0.4 : (s.lastOk && s.ok >= 2 ? 0.95 : (s.lastOk ? 0.75 : 0.35));
+    (by[q.t] ||= []).push(p);
+  }
+  let total = 0;
+  for (const [t, w] of Object.entries(WEIGHTS)){ const l = by[t] || [0.4]; total += w * l.reduce((a, b) => a + b, 0) / l.length; }
+  return Math.round(total);
+}
+
+/* Activité des n derniers jours : [{d, n, ok}] du plus ancien au plus récent. */
+export function activity(n){
+  const act = cur().act || {}, days = cur().days || {}, out = [];
+  const d = new Date(); d.setDate(d.getDate() - n + 1);
+  for (let i = 0; i < n; i++){
+    const k = todayStr(d), a = act[k];
+    out.push({ d: k, n: a ? a[0] : (days[k] ? DAILY_N : 0), ok: a ? a[1] : (days[k] ? days[k].score : 0) });
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
 }

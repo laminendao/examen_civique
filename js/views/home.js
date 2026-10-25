@@ -3,8 +3,9 @@ import { Q, THEMES, DAILY_N, EXAMS, PASS } from "../core/data.js";
 import { state } from "../core/state.js";
 import { sb } from "../core/supabase.js";
 import { esc } from "../core/utils.js";
-import { dailyIds, mastered, weakList, streak, seenCount, mocks } from "../core/progress.js";
+import { dailyIds, mastered, weakList, streak, seenCount, mocks, estimate } from "../core/progress.js";
 import { render } from "../ui/layout.js";
+import { themeBars, gauge, MIN_EST } from "./stats.js";
 
 const row = (tab, icon, title, desc, extra = "") => `<li><button type="button" class="lrow" data-tab="${tab}" title="${desc}">
   <i class='ic' data-i='${icon}'></i><span><b>${title}${extra}</b></span><i class='ic' data-i='arrow-right'></i></button></li>`;
@@ -26,15 +27,16 @@ export function showHome(){
   const nudge = !state.user && sb ? `<p class="nudge"><i class='ic' data-i='save'></i> <button type="button" class="link" data-signup>Crée un compte gratuit</button> pour retrouver ta progression sur tous tes appareils.</p>` : "";
   const progressCard = `<div class="hero-card">
         <h3>${hello}</h3>
-        <div class="ring">
+        ${seen >= MIN_EST ? `<span class="note" style="margin-bottom:-6px">Ta note estimée aujourd'hui</span>${gauge(estimate(), true)}` : `<div class="ring">
           <svg width="84" height="84" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="${R}" fill="none" stroke="#ececf0" stroke-width="10"/><circle cx="42" cy="42" r="${R}" fill="none" stroke="#1e40af" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - frac)}" transform="rotate(-90 42 42)"/><text x="42" y="47" text-anchor="middle" font-size="15" font-weight="800" fill="#1d1d1b" font-family="Source Sans 3, sans-serif">${Math.round(frac * 100)}%</text></svg>
           <div><b>${m} / ${Q.length}</b><span title="Une question est maîtrisée quand tu l'as réussie au moins deux fois, dont la dernière.">questions maîtrisées</span></div>
-        </div>
+        </div>`}
         <div class="mini3">
           <div><b>${st}</b><span>jour${st > 1 ? "s" : ""} d'affilée</span></div>
           <div><b>${seen}</b><span>déjà vue${seen > 1 ? "s" : ""}</span></div>
           <div><b>${weakN}</b><span>à améliorer</span></div>
         </div>
+        <button type="button" class="link dash-link" data-tab="stats">Voir mon tableau de bord <i class='ic' data-i='arrow-right'></i></button>
         ${nudge}
       </div>`;
   const startCard = `<div class="hero-card start">
@@ -46,9 +48,8 @@ export function showHome(){
         </ol>
         ${nudge}
       </div>`;
-  const themeCard = seen ? `<div class="card"><h2 class="sec" style="margin:0 0 6px"><i class='ic' data-i='trend-up'></i> Ta progression par thème</h2>
-        ${Object.entries(THEMES).map(([k, th]) => { const qs = Q.filter(q => q.t === k), mm = qs.filter(q => mastered(q.id)).length;
-          return `<div class="themerow"><div><span>${th.icon} ${esc(th.label)}</span><small>${mm}/${qs.length}</small></div><div class="bar"><i style="width:${qs.length ? mm / qs.length * 100 : 0}%"></i></div></div>`; }).join("")}
+  const themeCard = seen ? `<div class="card"><h2 class="sec" style="margin:0 0 10px"><i class='ic' data-i='trend-up'></i> Ta progression par thème</h2>
+        ${themeBars()}
       </div>` : `<div class="card"><h2 class="sec" style="margin:0 0 6px"><i class='ic' data-i='compass'></i> L'examen en bref</h2>
         <ul class="brief"><li><b>40 questions</b> en 45 minutes</li><li><b>32 bonnes réponses</b> pour réussir</li><li>des <b>mises en situation</b> en plus des questions de connaissance</li></ul>
       </div>`;

@@ -4,7 +4,7 @@ import { EXAMS } from "./data.js";
 
 export const SLUGS = {
   home: "", daily: "serie-du-jour", exam: "examen-blanc", themes: "themes", weak: "a-ameliorer",
-  review: "revision", info: "infos-utiles", legal: "mentions-legales", privacy: "confidentialite", account: "mon-compte",
+  review: "revision", info: "infos-utiles", legal: "mentions-legales", privacy: "confidentialite", account: "mon-compte", stats: "mon-suivi",
 };
 const SLUG2TAB = Object.fromEntries(Object.entries(SLUGS).map(([k, v]) => [v, k]));
 /* Pages d'accueil propres à chaque examen : /naturalisation/, /carte-de-resident/… */
