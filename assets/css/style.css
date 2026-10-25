@@ -657,3 +657,17 @@ details.more[open]>summary{margin-bottom:14px}
 .msg.err,.msg.info{background:none;padding:0}
 .sync{background:#fff;border-bottom:1px solid var(--line)}
 .opt.right,.opt.wrong{background:#fff}
+/* Avis */
+.fb-card{position:relative}
+.fb-close{position:absolute;top:10px;right:12px;background:none;border:0;font-size:1.5rem;line-height:1;color:var(--muted);cursor:pointer;padding:4px}
+.fb-form{display:flex;flex-direction:column;gap:12px}
+.stars{display:flex;gap:6px}
+.star{background:none;border:0;padding:2px;cursor:pointer;color:#c9cad1}
+.star .ic{width:30px;height:30px}
+.star.on{color:#e0a106}
+.star.on svg path{fill:currentColor}
+.fb-field textarea{font:inherit;font-weight:400;border:1px solid var(--line-strong);border-radius:6px;padding:10px;resize:vertical}
+.fb-consent{border:0;padding:0;font-weight:400;font-size:.9rem;align-items:flex-start}
+.fb-consent input{margin-top:3px}
+.fb-thanks{margin:6px 0;color:var(--ok);font-weight:600}
+.fb-modal{max-width:480px}

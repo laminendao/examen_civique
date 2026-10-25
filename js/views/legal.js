@@ -49,13 +49,14 @@ export function showPrivacy(){
         <li><b>Facultatif :</b> genre et situation professionnelle, uniquement si tu les indiques.</li>
         <li><b>Progression :</b> tes réponses aux questions, tes jours d'entraînement et ta série du jour.</li>
         <li><b>Sans compte :</b> ta progression reste dans ton navigateur et n'est envoyée nulle part.</li>
+        <li><b>Avis :</b> ta note, ton commentaire et, seulement si tu l'acceptes, ton prénom pour l'afficher sur le site.</li>
         <li><b>Signalement d'erreur :</b> le texte que tu écris, la question concernée et, si tu es connecté, l'identifiant de ton compte.</li>
       </ul>
       <h2>Pourquoi ces données</h2>
       <ul>
         <li>Créer ton compte et te permettre de te connecter (exécution du service).</li>
         <li>Sauvegarder ta progression et calculer tes points à améliorer (exécution du service).</li>
-        <li>Signalements : corriger les questions et les explications (intérêt légitime).</li>
+        <li>Signalements et avis : corriger et améliorer le site (intérêt légitime). Affichage d'un avis : uniquement avec ton accord.</li>
         <li>Genre et situation professionnelle : statistiques globales sur les utilisateurs du site (consentement, champs facultatifs).</li>
       </ul>
       <p>Tes données ne sont ni vendues, ni louées, ni utilisées pour de la publicité. Aucun cookie de suivi ni de publicité n'est utilisé.${CONFIG.goatcounter ? " Le nombre de visites est mesuré avec GoatCounter, un outil sans cookies qui ne collecte aucune donnée personnelle : seuls des totaux anonymes (pages vues, type d'appareil, pays) sont conservés." : ""}</p>

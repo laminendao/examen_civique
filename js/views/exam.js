@@ -6,6 +6,7 @@ import { shuffle, esc } from "../core/utils.js";
 import { addMock, mocks, refreshStats } from "../core/progress.js";
 import { page, render, help } from "../ui/layout.js";
 import { runQuiz, summary, bindTrain } from "./quiz.js";
+import { feedbackCard, bindFeedbackCard } from "../ui/feedback.js";
 
 const DURATION = 45 * 60;   // secondes
 /* Répartition officielle des 40 questions : connaissances et mises en situation par thème. */
@@ -81,9 +82,9 @@ function start(){
     const ok = run.good >= PASS;
     render(page(ok ? "<i class='ic' data-i='trophy'></i>" : "<i class='ic' data-i='exam'></i>", "Résultat de l'examen blanc",
       (run.timeout ? "Temps écoulé ! " : "") + (ok ? "Bravo, tu aurais été reçu !" : "Il manque " + (PASS - run.good) + " bonne(s) réponse(s) pour atteindre le seuil de " + PASS + "."),
-      summary(run, `<p class="note" style="margin:0"><i class='ic' data-i='timer'></i> Durée : ${mfmt(sec)} sur 45 min</p><div class="row"><button class="btn" id="retry"><i class='ic' data-i='refresh'></i> Nouvel examen blanc</button><button class="btn" id="hist"><i class='ic' data-i='chart'></i> Voir mon historique</button></div>`), true));
+      summary(run, `<p class="note" style="margin:0"><i class='ic' data-i='timer'></i> Durée : ${mfmt(sec)} sur 45 min</p><div class="row"><button class="btn" id="retry"><i class='ic' data-i='refresh'></i> Nouvel examen blanc</button><button class="btn" id="hist"><i class='ic' data-i='chart'></i> Voir mon historique</button></div>`) + feedbackCard(), true));
     document.getElementById("retry").addEventListener("click", start);
     document.getElementById("hist").addEventListener("click", showExam);
-    bindTrain();
+    bindTrain(); bindFeedbackCard();
   }, () => {}, { exam: true });
 }

@@ -15,6 +15,7 @@ import { setupExamSwitch, useExam } from "./ui/exam-switch.js";
 import { applyReading } from "./ui/reading.js";
 import { setupAnalytics } from "./ui/analytics.js";
 import { setupPwa } from "./ui/pwa.js";
+import { setupFeedback } from "./ui/feedback.js";
 import { initialExam, rememberExam } from "./core/progress.js";
 import { state } from "./core/state.js";
 import { boot } from "./auth/auth.js";
@@ -41,6 +42,7 @@ setupExamSwitch();
 applyReading();
 setupAnalytics();
 setupPwa();
+setupFeedback();
 
 try {
   await loadData();
