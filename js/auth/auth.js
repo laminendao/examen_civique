@@ -54,7 +54,7 @@ export function showAuth(mode = "login", msg = null){
     newpass:"Choisis ton nouveau mot de passe."};
   const fields = {
     login: F("a-email","E-mail","email","email")+F("a-pass","Mot de passe","password","current-password"),
-    signup: F("a-name","Nom complet","text","name",'maxlength="80"')+F("a-email","E-mail","email","email")+F("a-pass","Mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')
+    signup: `<div class="two">` + F("a-first","Prénom","text","given-name",'maxlength="40"') + F("a-last","Nom","text","family-name",'maxlength="40"') + `</div>` + F("a-email","E-mail","email","email")+F("a-pass","Mot de passe <small>(8 caractères minimum)</small>","password","new-password",'minlength="8"')
       + `<div class="two">` + SEL("a-gender","Genre <small>(facultatif)</small>",["Femme","Homme","Autre","Je préfère ne pas répondre"])
       + SEL("a-job","Situation pro. <small>(facultatif)</small>",["Salarié(e)","Indépendant(e) / entrepreneur","Fonctionnaire","Demandeur(se) d'emploi","Étudiant(e)","Retraité(e)","Sans activité professionnelle","Autre"]) + `</div>`
       + `<p class="note" style="margin:0">Le genre et la situation professionnelle sont facultatifs. Ils servent seulement à mieux connaître les personnes qui utilisent le site. En créant un compte, tu acceptes la <a href="confidentialite" data-tab="privacy" style="color:var(--accent);font-weight:700">politique de confidentialité</a>.</p>`,
@@ -104,7 +104,7 @@ export function showAuth(mode = "login", msg = null){
         if (error) throw error;
         await enter(data.user);
       } else if (mode==="signup"){
-        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{full_name:v("a-name").trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL, ...cap}});
+        const {data, error} = await sb.auth.signUp({email:v("a-email").trim(), password:v("a-pass"), options:{data:{first_name:v("a-first").trim(), last_name:v("a-last").trim(), full_name:(v("a-first").trim() + " " + v("a-last").trim()).trim(), gender:v("a-gender")||null, occupation:v("a-job")||null}, emailRedirectTo:APP_URL, ...cap}});
         if (error) throw error;
         if (data.session) await enter(data.user);
         else showAuth("login", ["info","Compte créé. Ouvre le lien reçu par e-mail pour l'activer, puis connecte-toi ici."]);
